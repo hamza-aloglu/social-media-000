@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminPanel\HomeController as admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,10 @@ Route::get('/show/{id}/{name}', [HomeController::class, 'showView']);
 
 //
 Route::post('/save', [HomeController::class, 'save']);
+
+// ADMIN ROUTES ****************************************************************
+
+Route::get('/admin', [admin::class, 'index']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
