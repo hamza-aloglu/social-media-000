@@ -18,10 +18,10 @@
                             <div class="profile-banner">
                                 <figure class="profile-banner-small">
                                     <a href="profile.html">
-                                        <img src="assets/images/banner/banner-small.jpg" alt="">
+                                        <img src="{{asset('assets')}}/images/banner/banner-small.jpg" alt="">
                                     </a>
                                     <a href="profile.html" class="profile-thumb-2">
-                                        <img src="assets/images/profile/profile-midle-1.jpg" alt="">
+                                        <img src="{{asset('assets')}}/images/profile/profile-midle-1.jpg" alt="">
                                     </a>
                                 </figure>
                                 <div class="profile-desc text-center">
@@ -42,7 +42,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-1.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-1.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -53,8 +53,8 @@
                                             <p class="list-subtitle"><a href="#">adventure</a></p>
                                         </div>
                                         <button class="like-button active">
-                                            <img class="heart" src="assets/images/icons/heart.png" alt="">
-                                            <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
+                                            <img class="heart" src="{{asset('assets')}}/images/icons/heart.png" alt="">
+                                            <img class="heart-color" src="{{asset('assets')}}/images/icons/heart-color.png" alt="">
                                         </button>
                                     </li>
                                     <li class="unorder-list">
@@ -62,7 +62,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-10.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-10.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -73,8 +73,8 @@
                                             <p class="list-subtitle"><a href="#">food</a></p>
                                         </div>
                                         <button class="like-button">
-                                            <img class="heart" src="assets/images/icons/heart.png" alt="">
-                                            <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
+                                            <img class="heart" src="{{asset('assets')}}/images/icons/heart.png" alt="">
+                                            <img class="heart-color" src="{{asset('assets')}}/images/icons/heart-color.png" alt="">
                                         </button>
                                     </li>
                                     <li class="unorder-list">
@@ -82,7 +82,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-5.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-5.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -93,8 +93,8 @@
                                             <p class="list-subtitle"><a href="#">drama</a></p>
                                         </div>
                                         <button class="like-button">
-                                            <img class="heart" src="assets/images/icons/heart.png" alt="">
-                                            <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
+                                            <img class="heart" src="{{asset('assets')}}/images/icons/heart.png" alt="">
+                                            <img class="heart-color" src="{{asset('assets')}}/images/icons/heart-color.png" alt="">
                                         </button>
                                     </li>
                                     <li class="unorder-list">
@@ -102,7 +102,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-4.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-4.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -113,8 +113,8 @@
                                             <p class="list-subtitle"><a href="#">fitness</a></p>
                                         </div>
                                         <button class="like-button">
-                                            <img class="heart" src="assets/images/icons/heart.png" alt="">
-                                            <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
+                                            <img class="heart" src="{{asset('assets')}}/images/icons/heart.png" alt="">
+                                            <img class="heart-color" src="{{asset('assets')}}/images/icons/heart-color.png" alt="">
                                         </button>
                                     </li>
                                 </ul>
@@ -132,7 +132,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-20.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-20.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -148,7 +148,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-18.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-18.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -164,7 +164,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-13.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-13.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -180,7 +180,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-17.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-17.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -196,7 +196,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-10.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-10.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -222,7 +222,7 @@
                             <div class="profile-thumb">
                                 <a href="#">
                                     <figure class="profile-thumb-middle">
-                                        <img src="assets/images/profile/profile-small-37.jpg" alt="profile picture">
+                                        <img src="{{asset('assets')}}/images/profile/profile-small-37.jpg" alt="profile picture">
                                     </figure>
                                 </a>
                             </div>
@@ -270,7 +270,7 @@
                             <div class="profile-thumb">
                                 <a href="#">
                                     <figure class="profile-thumb-middle">
-                                        <img src="assets/images/profile/profile-small-1.jpg" alt="profile picture">
+                                        <img src="{{asset('assets')}}/images/profile/profile-small-1.jpg" alt="profile picture">
                                     </figure>
                                 </a>
                             </div>
@@ -303,8 +303,8 @@
                             </p>
                             <div class="post-thumb-gallery">
                                 <figure class="post-thumb img-popup">
-                                    <a href="assets/images/post/post-1.jpg">
-                                        <img src="assets/images/post/post-1.jpg" alt="post image">
+                                    <a href="{{asset('assets')}}/images/post/post-1.jpg">
+                                        <img src="{{asset('assets')}}/images/post/post-1.jpg" alt="post image">
                                     </a>
                                 </figure>
                             </div>
@@ -341,7 +341,7 @@
                             <div class="profile-thumb">
                                 <a href="#">
                                     <figure class="profile-thumb-middle">
-                                        <img src="assets/images/profile/profile-small-9.jpg" alt="profile picture">
+                                        <img src="{{asset('assets')}}/images/profile/profile-small-9.jpg" alt="profile picture">
                                     </figure>
                                 </a>
                             </div>
@@ -404,7 +404,7 @@
                             <div class="profile-thumb">
                                 <a href="#">
                                     <figure class="profile-thumb-middle">
-                                        <img src="assets/images/profile/profile-small-29.jpg" alt="profile picture">
+                                        <img src="{{asset('assets')}}/images/profile/profile-small-29.jpg" alt="profile picture">
                                     </figure>
                                 </a>
                             </div>
@@ -471,7 +471,7 @@
                             <div class="profile-thumb">
                                 <a href="#">
                                     <figure class="profile-thumb-middle">
-                                        <img src="assets/images/profile/profile-small-37.jpg" alt="profile picture">
+                                        <img src="{{asset('assets')}}/images/profile/profile-small-37.jpg" alt="profile picture">
                                     </figure>
                                 </a>
                             </div>
@@ -506,8 +506,8 @@
                                 <div class="row g-0">
                                     <div class="col-8">
                                         <figure class="post-thumb">
-                                            <a class="gallery-selector" href="assets/images/post/post-2.jpg">
-                                                <img src="assets/images/post/post-2.jpg" alt="post image">
+                                            <a class="gallery-selector" href="{{asset('assets')}}/images/post/post-2.jpg">
+                                                <img src="{{asset('assets')}}/images/post/post-2.jpg" alt="post image">
                                             </a>
                                         </figure>
                                     </div>
@@ -515,22 +515,22 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <figure class="post-thumb">
-                                                    <a class="gallery-selector" href="assets/images/post/post-3.jpg">
-                                                        <img src="assets/images/post/post-3.jpg" alt="post image">
+                                                    <a class="gallery-selector" href="{{asset('assets')}}/images/post/post-3.jpg">
+                                                        <img src="{{asset('assets')}}/images/post/post-3.jpg" alt="post image">
                                                     </a>
                                                 </figure>
                                             </div>
                                             <div class="col-12">
                                                 <figure class="post-thumb">
-                                                    <a class="gallery-selector" href="assets/images/post/post-4.jpg">
-                                                        <img src="assets/images/post/post-4.jpg" alt="post image">
+                                                    <a class="gallery-selector" href="{{asset('assets')}}/images/post/post-4.jpg">
+                                                        <img src="{{asset('assets')}}/images/post/post-4.jpg" alt="post image">
                                                     </a>
                                                 </figure>
                                             </div>
                                             <div class="col-12">
                                                 <figure class="post-thumb">
-                                                    <a class="gallery-selector" href="assets/images/post/post-5.jpg">
-                                                        <img src="assets/images/post/post-5.jpg" alt="post image">
+                                                    <a class="gallery-selector" href="{{asset('assets')}}/images/post/post-5.jpg">
+                                                        <img src="{{asset('assets')}}/images/post/post-5.jpg" alt="post image">
                                                     </a>
                                                 </figure>
                                             </div>
@@ -571,7 +571,7 @@
                             <div class="profile-thumb">
                                 <a href="#">
                                     <figure class="profile-thumb-middle">
-                                        <img src="assets/images/profile/profile-small-4.jpg" alt="profile picture">
+                                        <img src="{{asset('assets')}}/images/profile/profile-small-4.jpg" alt="profile picture">
                                     </figure>
                                 </a>
                             </div>
@@ -636,7 +636,7 @@
                             <div class="profile-thumb">
                                 <a href="#">
                                     <figure class="profile-thumb-middle">
-                                        <img src="assets/images/profile/profile-small-8.jpg" alt="profile picture">
+                                        <img src="{{asset('assets')}}/images/profile/profile-small-8.jpg" alt="profile picture">
                                     </figure>
                                 </a>
                             </div>
@@ -707,7 +707,7 @@
                             <div class="profile-thumb">
                                 <a href="#">
                                     <figure class="profile-thumb-middle">
-                                        <img src="assets/images/profile/profile-small-2.jpg" alt="profile picture">
+                                        <img src="{{asset('assets')}}/images/profile/profile-small-2.jpg" alt="profile picture">
                                     </figure>
                                 </a>
                             </div>
@@ -742,15 +742,15 @@
                                 <div class="row g-0">
                                     <div class="col-6">
                                         <figure class="post-thumb">
-                                            <a class="gallery-selector" href="assets/images/post/post-6.jpg">
-                                                <img src="assets/images/post/post-6.jpg" alt="post image">
+                                            <a class="gallery-selector" href="{{asset('assets')}}/images/post/post-6.jpg">
+                                                <img src="{{asset('assets')}}/images/post/post-6.jpg" alt="post image">
                                             </a>
                                         </figure>
                                     </div>
                                     <div class="col-6">
                                         <figure class="post-thumb">
-                                            <a class="gallery-selector" href="assets/images/post/post-7.jpg">
-                                                <img src="assets/images/post/post-7.jpg" alt="post image">
+                                            <a class="gallery-selector" href="{{asset('assets')}}/images/post/post-7.jpg">
+                                                <img src="{{asset('assets')}}/images/post/post-7.jpg" alt="post image">
                                             </a>
                                         </figure>
                                     </div>
@@ -789,7 +789,7 @@
                             <div class="profile-thumb">
                                 <a href="#">
                                     <figure class="profile-thumb-middle">
-                                        <img src="assets/images/profile/profile-small-9.jpg" alt="profile picture">
+                                        <img src="{{asset('assets')}}/images/profile/profile-small-9.jpg" alt="profile picture">
                                     </figure>
                                 </a>
                             </div>
@@ -858,7 +858,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-9.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-9.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -874,7 +874,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-8.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-8.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -890,7 +890,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-7.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-7.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -906,7 +906,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-6.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-6.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -922,7 +922,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-4.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-4.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -944,7 +944,7 @@
                             <div class="widget-body">
                                 <div class="add-thumb">
                                     <a href="#">
-                                        <img src="assets/images/banner/advertise.jpg" alt="advertisement">
+                                        <img src="{{asset('assets')}}/images/banner/advertise.jpg" alt="advertisement">
                                     </a>
                                 </div>
                             </div>
@@ -961,7 +961,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-15.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-15.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -972,8 +972,8 @@
                                             <p class="list-subtitle"><a href="#">10 mutual</a></p>
                                         </div>
                                         <button class="like-button">
-                                            <img class="heart" src="assets/images/icons/heart.png" alt="">
-                                            <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
+                                            <img class="heart" src="{{asset('assets')}}/images/icons/heart.png" alt="">
+                                            <img class="heart-color" src="{{asset('assets')}}/images/icons/heart-color.png" alt="">
                                         </button>
                                     </li>
                                     <li class="unorder-list">
@@ -981,7 +981,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-18.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-18.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -992,8 +992,8 @@
                                             <p class="list-subtitle"><a href="#">2 mutual</a></p>
                                         </div>
                                         <button class="like-button active">
-                                            <img class="heart" src="assets/images/icons/heart.png" alt="">
-                                            <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
+                                            <img class="heart" src="{{asset('assets')}}/images/icons/heart.png" alt="">
+                                            <img class="heart-color" src="{{asset('assets')}}/images/icons/heart-color.png" alt="">
                                         </button>
                                     </li>
                                     <li class="unorder-list">
@@ -1001,7 +1001,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-14.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-14.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -1012,8 +1012,8 @@
                                             <p class="list-subtitle"><a href="#">drama</a></p>
                                         </div>
                                         <button class="like-button">
-                                            <img class="heart" src="assets/images/icons/heart.png" alt="">
-                                            <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
+                                            <img class="heart" src="{{asset('assets')}}/images/icons/heart.png" alt="">
+                                            <img class="heart-color" src="{{asset('assets')}}/images/icons/heart-color.png" alt="">
                                         </button>
                                     </li>
                                     <li class="unorder-list">
@@ -1021,7 +1021,7 @@
                                         <div class="profile-thumb">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="assets/images/profile/profile-35x35-20.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-20.jpg" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -1032,8 +1032,8 @@
                                             <p class="list-subtitle"><a href="#">fitness</a></p>
                                         </div>
                                         <button class="like-button">
-                                            <img class="heart" src="assets/images/icons/heart.png" alt="">
-                                            <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
+                                            <img class="heart" src="{{asset('assets')}}/images/icons/heart.png" alt="">
+                                            <img class="heart-color" src="{{asset('assets')}}/images/icons/heart-color.png" alt="">
                                         </button>
                                     </li>
                                 </ul>

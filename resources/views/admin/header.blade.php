@@ -58,7 +58,7 @@
                                     <ul class="media-list" role="menu">
                                         <li class="media">
                                             <a class="media-left" href="#">
-                                                <img src="assets-admin/img/avatars/1.png" class="br3" alt="avatar">
+                                                <img src="{{asset('assets-admin')}}/img/avatars/1.png" class="br3" alt="avatar">
                                             </a>
                                             <div class="media-body">
                                                 <h5 class="media-heading">New post
@@ -69,7 +69,7 @@
                                         </li>
                                         <li class="media">
                                             <a class="media-left" href="#">
-                                                <img src="assets-admin/img/avatars/2.png" class="br3" alt="avatar">
+                                                <img src="{{asset('assets-admin')}}/img/avatars/2.png" class="br3" alt="avatar">
                                             </a>
                                             <div class="media-body">
                                                 <h5 class="media-heading">New post
@@ -80,7 +80,7 @@
                                         </li>
                                         <li class="media">
                                             <a class="media-left" href="#">
-                                                <img src="assets-admin/img/avatars/3.png" class="br3" alt="avatar">
+                                                <img src="{{asset('assets-admin')}}/img/avatars/3.png" class="br3" alt="avatar">
                                             </a>
                                             <div class="media-body">
                                                 <h5 class="media-heading">New post
@@ -95,7 +95,7 @@
                                     <div class="media">
                                         <div class="media-left">
                                             <a href="#">
-                                                <img class="media-object" alt="64x64" src="assets-admin/img/avatars/1.png">
+                                                <img class="media-object" alt="64x64" src="{{asset('assets-admin')}}/img/avatars/1.png">
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -114,14 +114,14 @@
                                         </div>
                                         <div class="media-right">
                                             <a href="#">
-                                                <img class="media-object" alt="64x64" src="assets-admin/img/avatars/3.png">
+                                                <img class="media-object" alt="64x64" src="{{asset('assets-admin')}}/img/avatars/3.png">
                                             </a>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <div class="media-left">
                                             <a href="#">
-                                                <img class="media-object" alt="64x64" src="assets-admin/img/avatars/1.png">
+                                                <img class="media-object" alt="64x64" src="{{asset('assets-admin')}}/img/avatars/1.png">
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -272,7 +272,7 @@
         <li class="dropdown dropdown-fuse">
             <div class="navbar-btn btn-group">
                 <button class="btn-hover-effects dropdown-toggle btn" data-toggle="dropdown">
-                    <img src="assets-admin/img/sprites/uk.png" alt="">
+                    <img src="{{asset('assets-admin')}}/img/sprites/uk.png" alt="">
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li>
@@ -289,7 +289,7 @@
         </li>
         <li class="dropdown dropdown-fuse navbar-user">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img class="btn-hover-effects" src="assets-admin/img/avatars/profile_avatar.jpg" alt="avatar">
+                <img class="btn-hover-effects" src="{{asset('assets-admin')}}/img/avatars/profile_avatar.jpg" alt="avatar">
                 <span class="hidden-xs">
                         <span class="name">Doug Adams</span>
                         </span>

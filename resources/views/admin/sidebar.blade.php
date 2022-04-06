@@ -8,7 +8,7 @@
             <div class="sidebar-widget logo-widget">
                 <div class="media">
                     <a class="logo-image" href="index.html">
-                        <!-- <img src="assets-admin/img/logo.png" alt="" class="img-responsive"> -->
+                        <!-- <img src="{{asset('assets-admin')}}/img/logo.png" alt="" class="img-responsive"> -->
                     </a>
                     <div class="logo-slogan">
                         <div>MicroOffice<span class="text-info"></span></div>

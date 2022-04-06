@@ -23,7 +23,7 @@
                                                 <!-- profile picture end -->
                                                 <div class="profile-thumb">
                                                     <figure class="profile-thumb-middle">
-                                                        <img src="assets/images/profile/profile-small-3.jpg" alt="profile picture">
+                                                        <img src="{{asset('assets')}}/images/profile/profile-small-3.jpg" alt="profile picture">
                                                     </figure>
                                                 </div>
                                                 <!-- profile picture end -->
@@ -45,7 +45,7 @@
                                                 <!-- profile picture end -->
                                                 <div class="profile-thumb">
                                                     <figure class="profile-thumb-middle">
-                                                        <img src="assets/images/profile/profile-small-4.jpg" alt="profile picture">
+                                                        <img src="{{asset('assets')}}/images/profile/profile-small-4.jpg" alt="profile picture">
                                                     </figure>
                                                 </div>
                                                 <!-- profile picture end -->
@@ -67,7 +67,7 @@
                                                 <!-- profile picture end -->
                                                 <div class="profile-thumb">
                                                     <figure class="profile-thumb-middle">
-                                                        <img src="assets/images/profile/profile-small-5.jpg" alt="profile picture">
+                                                        <img src="{{asset('assets')}}/images/profile/profile-small-5.jpg" alt="profile picture">
                                                     </figure>
                                                 </div>
                                                 <!-- profile picture end -->
@@ -105,7 +105,7 @@
                                                 <!-- profile picture end -->
                                                 <div class="profile-thumb">
                                                     <figure class="profile-thumb-middle">
-                                                        <img src="assets/images/profile/profile-small-3.jpg" alt="profile picture">
+                                                        <img src="{{asset('assets')}}/images/profile/profile-small-3.jpg" alt="profile picture">
                                                     </figure>
                                                 </div>
                                                 <!-- profile picture end -->
@@ -128,7 +128,7 @@
                                                 <!-- profile picture end -->
                                                 <div class="profile-thumb">
                                                     <figure class="profile-thumb-middle">
-                                                        <img src="assets/images/profile/profile-small-4.jpg" alt="profile picture">
+                                                        <img src="{{asset('assets')}}/images/profile/profile-small-4.jpg" alt="profile picture">
                                                     </figure>
                                                 </div>
                                                 <!-- profile picture end -->
@@ -151,7 +151,7 @@
                                                 <!-- profile picture end -->
                                                 <div class="profile-thumb">
                                                     <figure class="profile-thumb-middle">
-                                                        <img src="assets/images/profile/profile-small-6.jpg" alt="profile picture">
+                                                        <img src="{{asset('assets')}}/images/profile/profile-small-6.jpg" alt="profile picture">
                                                     </figure>
                                                 </div>
                                                 <!-- profile picture end -->
@@ -187,7 +187,7 @@
                     <!-- brand logo start -->
                     <div class="brand-logo text-center">
                         <a href="index.html">
-                            <img src="assets/images/logo/logo.png" alt="brand logo">
+                            <img src="{{asset('assets')}}/images/logo/logo.png" alt="brand logo">
                         </a>
                     </div>
                     <!-- brand logo end -->
@@ -209,7 +209,7 @@
                             <div class="profile-thumb-small">
                                 <a href="javascript:void(0)" class="profile-triger">
                                     <figure>
-                                        <img src="assets/images/profile/profile-35x35-1.jpg" alt="profile picture">
+                                        <img src="{{asset('assets')}}/images/profile/profile-35x35-1.jpg" alt="profile picture">
                                     </figure>
                                 </a>
                                 <div class="profile-dropdown">
@@ -245,7 +245,7 @@
         <div class="mobile-header position-relative ">
             <div class="mobile-logo">
                 <a href="index.html">
-                    <img src="assets/images/logo/logo-white.png" alt="logo">
+                    <img src="{{asset('assets')}}/images/logo/logo-white.png" alt="logo">
                 </a>
             </div>
             <div class="mobile-menu w-100">
@@ -259,7 +259,7 @@
                                 <div class="frnd-request-member">
                                     <figure class="request-thumb">
                                         <a href="profile.html">
-                                            <img src="assets/images/profile/profile-midle-1.jpg" alt="proflie author">
+                                            <img src="{{asset('assets')}}/images/profile/profile-midle-1.jpg" alt="proflie author">
                                         </a>
                                     </figure>
                                     <div class="frnd-content">
@@ -276,7 +276,7 @@
                                 <div class="frnd-request-member">
                                     <figure class="request-thumb">
                                         <a href="profile.html">
-                                            <img src="assets/images/profile/profile-midle-2.jpg" alt="proflie author">
+                                            <img src="{{asset('assets')}}/images/profile/profile-midle-2.jpg" alt="proflie author">
                                         </a>
                                     </figure>
                                     <div class="frnd-content">
@@ -293,7 +293,7 @@
                                 <div class="frnd-request-member">
                                     <figure class="request-thumb">
                                         <a href="profile.html">
-                                            <img src="assets/images/profile/profile-midle-3.jpg" alt="proflie author">
+                                            <img src="{{asset('assets')}}/images/profile/profile-midle-3.jpg" alt="proflie author">
                                         </a>
                                     </figure>
                                     <div class="frnd-content">
@@ -323,7 +323,7 @@
                                 <div class="profile-thumb">
                                     <a href="profile.html">
                                         <figure class="profile-thumb-small profile-active">
-                                            <img src="assets/images/profile/profile-35x35-13.jpg" alt="profile picture">
+                                            <img src="{{asset('assets')}}/images/profile/profile-35x35-13.jpg" alt="profile picture">
                                         </figure>
                                     </a>
                                 </div>
@@ -333,8 +333,8 @@
                                     <span class="active-pro">active now</span>
                                 </div>
                                 <div class="live-chat-settings ml-auto">
-                                    <button class="chat-settings"><img src="assets/images/icons/settings.png" alt=""></button>
-                                    <button class="close-btn"><img src="assets/images/icons/close.png" alt=""></button>
+                                    <button class="chat-settings"><img src="{{asset('assets')}}/images/icons/settings.png" alt=""></button>
+                                    <button class="close-btn"><img src="{{asset('assets')}}/images/icons/close.png" alt=""></button>
                                 </div>
                             </div>
                             <div class="message-list-inner">
@@ -368,7 +368,7 @@
                             <div class="chat-text-field mob-text-box">
                                 <textarea class="live-chat-field custom-scroll" placeholder="Text Message"></textarea>
                                 <button class="chat-message-send" type="submit" value="submit">
-                                    <img src="assets/images/icons/plane.png" alt="">
+                                    <img src="{{asset('assets')}}/images/icons/plane.png" alt="">
                                 </button>
                             </div>
                         </div>
@@ -392,7 +392,7 @@
                 <div class="profile-thumb profile-setting-box">
                     <a href="javascript:void(0)" class="profile-triger">
                         <figure class="profile-thumb-middle">
-                            <img src="assets/images/profile/profile-small-1.jpg" alt="profile picture">
+                            <img src="{{asset('assets')}}/images/profile/profile-small-1.jpg" alt="profile picture">
                         </figure>
                     </a>
                     <div class="profile-dropdown text-left">
