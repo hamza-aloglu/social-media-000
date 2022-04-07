@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('question');
             $table->string('answer');
-            $table->string('status', 6)->nullable();
+            $table->string('status', 10)->nullable();
             $table->timestamps();
         });
     }

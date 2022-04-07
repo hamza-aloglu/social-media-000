@@ -52,3 +52,4 @@ Route::get('/admin', [AdminHomeController::class, 'index']);
 // FAQ ROUTES ****************************************************************
 Route::get('/admin/faq', [\App\Http\Controllers\AdminPanel\FaqController::class, 'index']);
 Route::get('/admin/faq/create', [\App\Http\Controllers\AdminPanel\FaqController::class, 'create']);
+Route::post('/admin/faq/store', [\App\Http\Controllers\AdminPanel\FaqController::class, 'store']);

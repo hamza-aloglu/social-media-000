@@ -36,7 +36,13 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new faq();
+        $data->question = $request->question;
+        $data->answer = $request->answer;
+        $data->status = $request->status;
+
+        $data->save();
+        echo "stored";
     }
 
     /**
