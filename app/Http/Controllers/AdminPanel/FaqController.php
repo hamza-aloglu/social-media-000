@@ -15,7 +15,10 @@ class FaqController extends Controller
      */
     public function index()
     {
-        return view('admin.faq.index');
+        $data = faq::all();
+        return view('admin.faq.index', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -42,7 +45,7 @@ class FaqController extends Controller
         $data->status = $request->status;
 
         $data->save();
-        echo "stored";
+        return redirect('admin/faq');
     }
 
     /**
