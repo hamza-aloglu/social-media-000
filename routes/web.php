@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
+use App\Http\Controllers\AdminPanel\FaqController as AdminFaqController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // ADMIN ROUTES ****************************************************************
 Route::get('/admin', [AdminHomeController::class, 'index']);
 // FAQ ROUTES ****************************************************************
-Route::get('/admin/faq', [\App\Http\Controllers\AdminPanel\FaqController::class, 'index']);
-Route::get('/admin/faq/create', [\App\Http\Controllers\AdminPanel\FaqController::class, 'create']);
-Route::post('/admin/faq/store', [\App\Http\Controllers\AdminPanel\FaqController::class, 'store']);
+Route::get('/admin/faq', [AdminFaqController::class, 'index']);
+Route::get('/admin/faq/create', [AdminFaqController::class, 'create']);
+Route::post('/admin/faq/store', [AdminFaqController::class, 'store']);
+Route::get('/admin/faq/edit/{id}', [AdminFaqController::class, 'edit']);
+Route::post('/admin/faq/update/{id}', [AdminFaqController::class, 'update']);
