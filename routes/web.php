@@ -49,11 +49,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 // ADMIN ROUTES ****************************************************************
-Route::get('/admin', [AdminHomeController::class, 'index']);
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminHomeController::class, 'index']) -> name('index');
 // FAQ ROUTES ****************************************************************
-Route::get('/admin/faq', [AdminFaqController::class, 'index']);
-Route::get('/admin/faq/create', [AdminFaqController::class, 'create']);
-Route::post('/admin/faq/store', [AdminFaqController::class, 'store']);
-Route::get('/admin/faq/edit/{id}', [AdminFaqController::class, 'edit']);
-Route::post('/admin/faq/update/{id}', [AdminFaqController::class, 'update']);
-Route::get('/admin/faq/show/{id}', [AdminFaqController::class, 'show']);
+    Route::prefix('faq')->name('faq.')->controller(AdminFaqController::class)->group(function () {
+        Route::get('/', 'index') -> name('index');
+        Route::get('/create', 'create') -> name('create');
+        Route::post('/store', 'store') -> name('store');
+        Route::get('/edit/{id}', 'edit') -> name('edit');
+        Route::post('/update/{id}', 'update') -> name('update');
+        Route::get('/show/{id}', 'show') -> name('show');
+        Route::get('delete/{id}', 'destroy') -> name('delete');
+    });
+
+});
+

@@ -19,14 +19,6 @@
             </div>
         </li>
     </ul>
-    <form class="navbar-form navbar-left search-form square" role="search">
-        <div class="input-group add-on">
-            <input type="text" class="form-control btn-hover-effects" placeholder="Search..." onfocus="this.placeholder=''" onblur="this.placeholder='Search...'">
-            <button class="btn btn-default text-info-darker hidden-xs hidden-sm" type="submit">
-                <i class="glyphicon glyphicon-search"></i>
-            </button>
-        </div>
-    </form>
     <ul class="nav navbar-nav navbar-right">
         <li class="hidden-xs">
             <div class="navbar-btn btn-group phn">

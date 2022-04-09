@@ -57,13 +57,13 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <a href="/admin/faq/edit/{{$rs -> id}}">Edit</a>
+                                                <a href={{route('admin.faq.edit', ['id' => $rs -> id])}}>Edit</a>
                                             </li>
                                             <li>
-                                                <a href="/admin/faq/delete/{{$rs -> id}}">Delete</a>
+                                                <a href={{route('admin.faq.delete', ['id' => $rs -> id])}}>Delete</a>
                                             </li>
                                             <li>
-                                                <a href="/admin/faq/show/{{$rs -> id}}">Show</a>
+                                                <a href={{route('admin.faq.show', ['id' => $rs -> id])}}>Show</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -74,7 +74,7 @@
                     </table>
                 </div>
             </div>
-            <a href="/admin/faq/create">
+            <a href={{route('admin.faq.create')}}>
                 <button class="button btn-info">Add faq</button>
             </a>
 

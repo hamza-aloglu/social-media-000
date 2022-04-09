@@ -45,9 +45,8 @@
     <div class="topbar-left">
         <ol class="breadcrumb">
             <li class="breadcrumb-link">
-                <a href="index.html">Home</a>
+                <a href={{route('admin.index')}}>Home</a>
             </li>
-            <li class="breadcrumb-current-item">Dashboard</li>
         </ol>
     </div>
 </header>
