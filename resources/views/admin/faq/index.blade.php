@@ -5,6 +5,14 @@
     @include('admin.topbar')
 @endsection
 
+@section('body-class')
+    dashboard-page with-customizer
+@endsection
+
+@section('section-content-class')
+    table-layout animated fadeIn
+@endsection
+
 @section('content')
     <div class="col-xs-12">
         <div class="panel">
@@ -66,7 +74,9 @@
                     </table>
                 </div>
             </div>
-
+            <a href="/admin/faq/create">
+                <button class="button btn-info">Add faq</button>
+            </a>
 
         </div>
         <footer id="content-footer" class="footer-light" style="margin-top: 100px">

@@ -56,3 +56,4 @@ Route::get('/admin/faq/create', [AdminFaqController::class, 'create']);
 Route::post('/admin/faq/store', [AdminFaqController::class, 'store']);
 Route::get('/admin/faq/edit/{id}', [AdminFaqController::class, 'edit']);
 Route::post('/admin/faq/update/{id}', [AdminFaqController::class, 'update']);
+Route::get('/admin/faq/show/{id}', [AdminFaqController::class, 'show']);

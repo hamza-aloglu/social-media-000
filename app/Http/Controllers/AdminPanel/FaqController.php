@@ -54,9 +54,12 @@ class FaqController extends Controller
      * @param  \App\Models\faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function show(faq $faq)
+    public function show(faq $faq, $id)
     {
-        //
+        $data = faq::find($id);
+        return view('admin.faq.show', [
+            'data' => $data
+        ]);
     }
 
     /**

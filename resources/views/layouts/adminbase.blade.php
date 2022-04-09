@@ -29,7 +29,7 @@
 
     @yield('head')
 </head>
-<body class="dashboard-page with-customizer">
+<body class="@yield('body-class')">
 <!-- Body Wrap  -->
 <div id="main">
     @include('admin.header')
@@ -37,7 +37,7 @@
     <!-- Main Wrapper -->
     <section id="content_wrapper">
         @yield('topbar')
-        <section id="content" class="table-layout animated fadeIn">
+        <section id="content" class="@yield('section-content-class')">
             @yield('content')
             @include('admin.footer')
         </section>
