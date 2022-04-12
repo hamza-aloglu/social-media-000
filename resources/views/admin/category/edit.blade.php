@@ -24,7 +24,7 @@
                 <div class="section">
                     <h3>parent id</h3>
                     <select name="parentid" style="width: 100%">
-                        <option value="" selected>Main Category</option>
+                        <option value="0" selected>Main Category</option>
                         @foreach($datalist as $rs)
                             <option value="{{$rs->id}}"  @if($data->parentid == $rs ->id)
                             selected @endif>{{\App\Http\Controllers\AdminPanel\CategoryController::
