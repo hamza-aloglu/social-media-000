@@ -5,9 +5,22 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\Models\category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
+    protected $appends = [
+        'getParentsTree'
+    ];
+
+    public static function getParentsTree($category, $title)
+    {
+        if ($category -> parentid == 0)
+            return $title;
+        $parent = category::find($category->parentid);
+        $title = $parent->title .'>'.$title;
+        return CategoryController::getParentsTree($parent, $title);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +41,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        $data = category::all();
+        return view('admin.category.create', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -40,11 +56,14 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = new category();
-        $data->parentid = 0;
+        $data->parentid = $request->parentid;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->description = $request->description;
-        $data->image = $request->image;
+        if($request -> file('image'))
+        {
+            $data->image = $request->file('image')->store('images');
+        }
         $data->status = $request->status;
 
         $data->save();
@@ -74,8 +93,10 @@ class CategoryController extends Controller
     public function edit(category $category, $id)
     {
         $data = category::find($id);
+        $datalist = category::all();
         return view('admin.category.edit', [
-            'data' => $data
+            'data' => $data,
+            'datalist' => $datalist
         ]);
     }
 
@@ -89,10 +110,14 @@ class CategoryController extends Controller
     public function update(Request $request, category $category, $id)
     {
         $data = category::find($id);
+        $data->parentid = $request->parentid;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->description = $request->description;
-        $data->image = $request->image;
+        if($request -> file('image'))
+        {
+            $data->image = $request->file('image')->store('images');
+        }
         $data->status = $request->status;
 
         $data->save();
@@ -105,8 +130,12 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(category $category)
+    public function destroy(category $category, $id)
     {
-        //
+        $data = category::find($id);
+        if($data -> image)
+            Storage::delete($data->image);
+        $data->delete();
+        return redirect('/admin/category');
     }
 }

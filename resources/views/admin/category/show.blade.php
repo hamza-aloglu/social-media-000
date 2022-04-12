@@ -11,8 +11,7 @@
         }
         .table-row {
             width: 100%;
-            margin-bottom: 20px;
-            margin-top: 10px;
+            margin-bottom: 5px;
             background-color: rgba(174, 191, 179, 0.6);
             padding: 8px;
             border: 1px solid black;
@@ -20,16 +19,18 @@
         }
         .table-header {
             display: inline-block;
-            font-size: 14px;
+            font-size: 15px;
             margin: 0px 5px;
             font-family: Serif;
+            font-weight: bolder;
             color: rgb(132, 168, 227);
         }
 
         .table-content {
             display: inline-block;
-            font-size: 12px;
+            font-size: 13px;
             font-style: italic;
+            margin: 0px;
         }
 
     </style>
@@ -88,7 +89,7 @@
                 </div>
 
                 <a href={{route('admin.category.edit', ['id' => $data -> id])}}) style="margin: 0 20px">
-                <button class="button btn-info">Edit category</button>
+                <button class="button btn-info" style="padding: 0px 20px">Edit</button>
                 </a>
             </div>
 @endsection

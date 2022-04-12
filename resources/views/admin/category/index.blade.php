@@ -25,11 +25,9 @@
                         <thead>
                         <tr class="">
                             <th class="">Id</th>
+                            <th class="">Parent</th>
                             <th class="">Title</th>
-                            <th class="">Keywords</th>
-                            <th class="">Description</th>
                             <th class="">Image</th>
-                            <th class="">Parent Id</th>
                             <th class="">Status</th>
                             <th class="">Action</th>
                         </tr>
@@ -41,19 +39,16 @@
                                     <span>{{$rs -> id}}</span>
                                 </td>
                                 <td class="">
+                                    <span>{{\App\Http\Controllers\AdminPanel\CategoryController::
+                                    getParentsTree($rs, $rs->title)}}</span>
+                                </td>
+                                <td class="">
                                     <span>{{$rs -> title}}</span>
                                 </td>
                                 <td class="">
-                                    <span>{{$rs -> keywords}}</span>
-                                </td>
-                                <td class="">
-                                    <span>{{$rs -> description}}</span>
-                                </td>
-                                <td class="">
-                                    <span>{{$rs -> image}}</span>
-                                </td>
-                                <td class="">
-                                    <span>{{$rs -> parentid}}</span>
+                                    @if($rs -> image)
+                                        <img src="{{Storage::url($rs -> image)}}" alt="{{$rs->title}}" style="height: 50px">
+                                    @endif
                                 </td>
                                 <td class="">
                                     <div class="btn-group text-right">
@@ -89,6 +84,9 @@
 
 
         </div>
+        <a href={{route('admin.category.create')}}>
+            <button class="button btn-info">Add category</button>
+        </a>
         <footer id="content-footer" class="footer-light" style="margin-top: 100px">
             <div class="row">
                 <div class="col-xs-12 text-center">

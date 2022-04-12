@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\category;
 use App\Models\faq;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FaqController extends Controller
 {
@@ -100,8 +102,10 @@ class FaqController extends Controller
      * @param  \App\Models\faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function destroy(faq $faq)
+    public function destroy(faq $faq, $id)
     {
-        //
+        $data = faq::find($id);
+        $data->delete();
+        return redirect('/admin/faq');
     }
 }

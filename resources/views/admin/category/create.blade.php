@@ -1,9 +1,20 @@
 @extends('layouts.adminbase')
 
 @section('title', 'create category')
+@section('head')
+    <style>
+        input:not([type=file]) {
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        form {
+        }
+    </style>
+@endsection
 @section('topbar')
     @include('admin.topbar')
 @endsection
+
 
 @section('body-class')
 
@@ -15,10 +26,26 @@
 
 @section('content')
     <!-- Basic -->
-    <form action={{route('admin.category.store')}} method="post" style="margin: 80px; padding: 20px; background-color: rgba(168, 175, 186, 0.7)">
+    <form action={{route('admin.category.store')}} method="post" enctype="multipart/form-data" style="border-radius: 15px
+     ;margin: 30px; padding: 10px 100px; background-image: linear-gradient(rgba(168, 175, 186, 0.7), gray);
+    font-style: italic">
         @csrf
         <h1 style="text-align: center">Add Category</h1>
         <div class="row mn mln15">
+            <div class="col-md-8 ">
+                <div class="section">
+                    <h3>parent id</h3>
+                    <select id="country" name="parentid" style="width: 100%">
+                        <option value="" selected>Main Category</option>
+                        @foreach($data as $rs)
+                            <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::
+                                getParentsTree($rs, $rs->title)}}</option>
+                        @endforeach
+                    </select>
+                    <i class="arrow"></i>
+                </div>
+            </div>
+
             <div class="col-md-8 ">
                 <div class="section">
                     <h3>Title</h3>
@@ -43,7 +70,6 @@
                     <h3>Image</h3>
                     <input type="file" class="gui-file" name="image" id="file2" onchange="document.getElementById('uploader2').value = this.value;">
                     <input type="text" class="gui-input" id="uploader2" placeholder="Select File">
-                    <button class="button btn-info">Choose File</button>
                     <i class="fa fa-upload"></i>
                 </div>
             </div>
