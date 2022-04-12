@@ -57,9 +57,12 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(category $category)
+    public function show(category $category, $id)
     {
-        //
+        $data = category::find($id);
+        return view('admin.category.show', [
+            'data' => $data
+        ]);
     }
 
     /**

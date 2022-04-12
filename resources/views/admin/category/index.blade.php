@@ -17,7 +17,7 @@
     <div class="col-xs-12">
         <div class="panel">
             <div class="panel-heading ">
-                <span class="panel-title ptn">Faq List</span>
+                <span class="panel-title ptn">Category List</span>
             </div>
             <div class="panel-body pn mt20">
                 <div class="table-responsive">
@@ -86,9 +86,7 @@
                     </table>
                 </div>
             </div>
-            <a href={{route('admin.category.create')}}>
-                <button class="button btn-info">Add faq</button>
-            </a>
+
 
         </div>
         <footer id="content-footer" class="footer-light" style="margin-top: 100px">

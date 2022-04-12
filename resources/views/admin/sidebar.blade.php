@@ -27,6 +27,14 @@
                     <span class="sb-menu-icon fa fa-home"></span>
                 </a>
             </li>
+            <li>
+                <a class="" href="{{route('admin.category.index')}}">
+                    <span class="caret"></span>
+                    <span class="sidebar-title">Category</span>
+                    <span class="sb-menu-icon fa fa-star-half-full "></span>
+                </a>
+
+            </li>
             <li class="sidebar-label pt25">Tools</li>
             <li>
                 <a class="accordion-toggle text-green-300" href="#">
