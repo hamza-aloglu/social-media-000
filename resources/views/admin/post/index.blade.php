@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Category list')
+@section('title', 'post list')
 @section('topbar')
     @include('admin.topbar')
 @endsection
@@ -17,7 +17,7 @@
     <div class="col-xs-12">
         <div class="panel">
             <div class="panel-heading ">
-                <span class="panel-title ptn">Category List</span>
+                <span class="panel-title ptn">post List</span>
             </div>
             <div class="panel-body pn mt20">
                 <div class="table-responsive">
@@ -25,8 +25,9 @@
                         <thead>
                         <tr class="">
                             <th class="">Id</th>
-                            <th class="">Parent</th>
+                            <th class="">Category</th>
                             <th class="">Title</th>
+                            <th class="">Likes</th>
                             <th class="">Image</th>
                             <th class="">Status</th>
                             <th class="">Action</th>
@@ -46,6 +47,9 @@
                                     <span>{{$rs -> title}}</span>
                                 </td>
                                 <td class="">
+                                    <span>{{$rs -> likes}}</span>
+                                </td>
+                                <td class="">
                                     @if($rs -> image)
                                         <img src="{{Storage::url($rs -> image)}}" alt="{{$rs->title}}" style="height: 50px">
                                     @endif
@@ -60,13 +64,13 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <a href={{route('admin.category.edit', ['id' => $rs -> id])}}>Edit</a>
+                                                <a href={{route('admin.post.edit', ['id' => $rs -> id])}}>Edit</a>
                                             </li>
                                             <li>
-                                                <a href={{route('admin.category.delete', ['id' => $rs -> id])}}>Delete</a>
+                                                <a href={{route('admin.post.delete', ['id' => $rs -> id])}}>Delete</a>
                                             </li>
                                             <li>
-                                                <a href={{route('admin.category.show', ['id' => $rs -> id])}}>Show</a>
+                                                <a href={{route('admin.post.show', ['id' => $rs -> id])}}>Show</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -80,8 +84,8 @@
 
 
         </div>
-        <a href={{route('admin.category.create')}}>
-            <button class="button btn-info">Add category</button>
+        <a href={{route('admin.post.create')}}>
+            <button class="button btn-info">Add post</button>
         </a>
         <footer id="content-footer" class="footer-light" style="margin-top: 100px">
             <div class="row">

@@ -37,23 +37,11 @@
             </li>
             <li class="sidebar-label pt25">Tools</li>
             <li>
-                <a class="accordion-toggle text-green-300" href="#">
+                <a class="text-green-300" href="{{route('admin.post.index')}}">
                     <span class="caret"></span>
                     <span class="sidebar-title ">Posts</span>
                     <span class="sb-menu-icon fa fa-share-square-o "></span>
                 </a>
-                <ul class="nav sub-nav">
-                    <li>
-                        <a href="/admin/pending-post">
-                            Pending posts
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/admin/accepted-post">
-                            Accepted posts
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li>
                 <a class="" href="/admin/user">

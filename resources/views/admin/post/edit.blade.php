@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title', 'edit category')
+@section('title', 'edit post')
 @section('topbar')
     @include('admin.topbar')
 @endsection
@@ -16,17 +16,16 @@
 @section('content')
     <!-- Basic -->
     <h3 style="background-color: rgba(50, 17, 237, 0.8); color: white; padding: 7px; margin: 0px 0px 0px 5px;
-         border-radius: 9px;">Edit Category</h3>
-    <form action={{route('admin.category.update', ['id' => $data -> id])}} method="post" enctype="multipart/form-data"
+         border-radius: 9px;">Edit post</h3>
+    <form action={{route('admin.post.update', ['id' => $data -> id])}} method="post" enctype="multipart/form-data"
           style="margin: 0px 10px 5px; padding: 10px 100px;);
     font-family: 'Open Sans',Helvetica,Arial,sans-serif;; background-color: rgb(247, 252, 251)">
         @csrf
         <div class="row mn mln15" style="position: relative; right: 50px;">
             <div class="col-md-12 ">
                 <div class="section">
-                    <h3>parent id</h3>
-                    <select name="parentid" style="width: 100%; padding: 5px">
-                        <option value="0" selected>Main Category</option>
+                    <h3>category id</h3>
+                    <select name="category_id" style="width: 100%; padding: 5px">
                         @foreach($datalist as $rs)
                             <option value="{{$rs->id}}"  @if($data->parentid == $rs ->id)
                             selected @endif>{{\App\Http\Controllers\AdminPanel\CategoryController::
@@ -63,6 +62,12 @@
                     <input type="text" class="gui-input" id="uploader2" placeholder="Select File">
 
                     <i class="fa fa-upload"></i>
+                </div>
+            </div>
+            <div class="col-md-12 ">
+                <div class="section">
+                    <h3>Detail</h3>
+                    <textarea name="detail" cols="120" rows="10">{{$data -> detail}}</textarea>
                 </div>
             </div>
             <div class="col-md-12 ">

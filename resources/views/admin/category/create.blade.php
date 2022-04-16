@@ -26,17 +26,20 @@
 
 @section('content')
     <!-- Basic -->
-    <form action={{route('admin.category.store')}} method="post" enctype="multipart/form-data" style="border-radius: 15px
-     ;margin: 30px; padding: 10px 100px; background-image: linear-gradient(rgba(168, 175, 186, 0.7), gray);
-    font-style: italic">
+
+    <h3 style="background-color: rgba(50, 17, 237, 0.8); color: white; padding: 7px; margin: 0px 0px 0px 5px;
+         border-radius: 9px;">Add Category</h3>
+    <form action={{route('admin.category.store')}} method="post" enctype="multipart/form-data" style="margin: 0px 10px 5px; padding: 10px 100px;);
+    font-family: 'Open Sans',Helvetica,Arial,sans-serif;; background-color: rgb(247, 252, 251)">
+
         @csrf
-        <h1 style="text-align: center">Add Category</h1>
-        <div class="row mn mln15">
-            <div class="col-md-8 ">
+        <div class="row mn mln15" style="position: relative; right: 50px;">
+
+            <div class="col-md-12">
                 <div class="section">
                     <h3>parent id</h3>
-                    <select id="country" name="parentid" style="width: 100%">
-                        <option value="" selected>Main Category</option>
+                    <select id="country" name="parentid" style="width: 100%; padding: 5px">
+                        <option value="0" selected>Main Category</option>
                         @foreach($data as $rs)
                             <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::
                                 getParentsTree($rs, $rs->title)}}</option>
@@ -46,23 +49,23 @@
                 </div>
             </div>
 
-            <div class="col-md-8 ">
+            <div class="col-md-12 ">
                 <div class="section">
                     <h3>Title</h3>
-                    <input type="text" name="title" id="from" class="gui-input" style="width: 100%" placeholder="Title">
+                    <input type="text" name="title" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Title">
 
                 </div>
             </div>
-            <div class="col-md-8 ">
+            <div class="col-md-12 ">
                 <div class="section">
                     <h3>Keywords</h3>
-                    <input type="text" name="keywords" id="from" class="gui-input" style="width: 100%" placeholder="Keywords">
+                    <input type="text" name="keywords" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Keywords">
                 </div>
             </div>
-            <div class="col-md-8 ">
+            <div class="col-md-12 ">
                 <div class="section">
                     <h3>Description</h3>
-                    <input type="text" name="description" id="from" class="gui-input" style="width: 100%" placeholder="Description">
+                    <input type="text" name="description" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Description">
                 </div>
             </div>
             <div class="col-md-6 prn hidden-xs">
@@ -73,10 +76,10 @@
                     <i class="fa fa-upload"></i>
                 </div>
             </div>
-            <div class="col-md-8 ">
+            <div class="col-md-12 ">
                 <div class="section">
                     <h3>Status</h3>
-                    <select id="country" name="status" style="width: 100%">
+                    <select id="country" name="status" style="width: 100%; padding: 5px">
                         <option value="" selected disabled>Select status</option>
                         <option value="Enabled">Enabled</option>
                         <option value="Disabled">Disabled</option>
@@ -87,6 +90,6 @@
 
         </div>
         <input type="submit" class="button btn-info" style="display: block;padding: 5px 15px; margin: 10px 0;
-                                border: 1px solid gray" value="save">
+                                border: 1px solid gray; position: relative; right: 43px" value="save">
     </form>
 @endsection
