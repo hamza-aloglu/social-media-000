@@ -41,7 +41,7 @@
                                 </td>
                                 <td class="">
                                     <span>{{\App\Http\Controllers\AdminPanel\CategoryController::
-                                    getParentsTree($rs, $rs->title)}}</span>
+                                    getParentsTree($rs -> category, $rs->category->title)}}</span>
                                 </td>
                                 <td class="">
                                     <span>{{$rs -> title}}</span>

@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *

@@ -27,7 +27,7 @@
                     <h3>category id</h3>
                     <select name="category_id" style="width: 100%; padding: 5px">
                         @foreach($datalist as $rs)
-                            <option value="{{$rs->id}}"  @if($data->parentid == $rs ->id)
+                            <option value="{{$rs->id}}"  @if($data->category_id == $rs ->id)
                             selected @endif>{{\App\Http\Controllers\AdminPanel\CategoryController::
                                 getParentsTree($rs, $rs->title)}}</option>
                         @endforeach
@@ -74,8 +74,7 @@
                 <div class="section">
                     <h3>Status</h3>
                     <select id="country" name="status" style="width: 100%; padding: 5px">
-                        <option value="" selected disabled>Select status</option>
-                        <option value="Enabled">Enabled</option>
+                        <option value="Enabled" selected>Enabled</option>
                         <option value="Disabled">Disabled</option>
                     </select>
                     <i class="arrow"></i>

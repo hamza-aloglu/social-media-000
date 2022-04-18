@@ -57,7 +57,8 @@
                 </div>
                 <div class="table-row">
                     <div class="table-header">category id:</div>
-                    <div class="table-content">{{$data -> category_id}}</div>
+                    <div class="table-content">{{\App\Http\Controllers\AdminPanel\CategoryController::
+                        getParentsTree($data -> category, $data->category->title)}}</div>
                 </div>
                 <div class="table-row">
                     <div class="table-header">Title:</div>
@@ -84,7 +85,7 @@
                 <div class="table-row">
                     <div class="table-header">Image:</div>
                     @if($data -> image)
-                        <img src="{{Storage::url($data -> image)}}" alt="{{$data->title}}" style="height: 50px">
+                        <img src="{{Storage::url($data -> image)}}" alt="{{$data->title}}" style="height: 200px">
                     @endif
                 </div>
                 <div class="table-row">

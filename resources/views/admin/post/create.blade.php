@@ -38,7 +38,7 @@
             <div class="col-md-12">
                 <div class="section">
                     <h3>category</h3>
-                    <select id="country" name="category_id" style="width: 100%; padding: 5px">
+                    <select name="category_id" style="width: 100%; padding: 5px">
                         @foreach($data as $rs)
                             <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::
                                 getParentsTree($rs, $rs->title)}}</option>
