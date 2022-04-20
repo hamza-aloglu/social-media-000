@@ -100,7 +100,7 @@
                     <div class="table-header">Updated at:</div>
                     <div class="table-content">{{$data -> updated_at}}</div>
                 </div>
-
+                <br>
                 <a href={{route('admin.post.edit', ['id' => $data -> id])}}) style="margin: 0 20px">
                 <button class="button btn-info" style="padding: 0px 20px">Edit</button>
                 </a>

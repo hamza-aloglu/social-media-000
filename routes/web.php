@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
 use App\Http\Controllers\AdminPanel\FaqController as AdminFaqController;
 use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController;
 use App\Http\Controllers\AdminPanel\PostController as AdminPostController;
+use App\Http\Controllers\AdminPanel\ImageController as AdminImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -84,6 +85,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/update/{id}', 'update') -> name('update');
         Route::get('/show/{id}', 'show') -> name('show');
         Route::get('delete/{id}', 'destroy') -> name('delete');
+    });
+    // Image ROUTES ****************************************************************
+    Route::prefix('image')->name('image.')->controller(AdminImageController::class)->
+    group(function () {
+        Route::get('/{pid}', 'index') -> name('index');
+        Route::post('/store/{pid}', 'store') -> name('store');
+        Route::post('/update/{pid}/{id}', 'update') -> name('update');
+        Route::get('delete/{pid}/{id}', 'destroy') -> name('delete');
     });
 });
 
