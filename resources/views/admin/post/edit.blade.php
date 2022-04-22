@@ -1,4 +1,7 @@
 @extends('layouts.adminbase')
+@section('head')
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+@endsection
 
 @section('title', 'edit post')
 @section('topbar')
@@ -67,7 +70,18 @@
             <div class="col-md-12 ">
                 <div class="section">
                     <h3>Detail</h3>
-                    <textarea name="detail" cols="120" rows="10">{{$data -> detail}}</textarea>
+                    <textarea id="detail" name="detail">{!! $data -> detail !!}</textarea>
+                    <script>
+                        ClassicEditor
+                            .create( document.querySelector( '#detail' ) )
+                            .then( editor => {
+                                console.log( editor );
+                            } )
+                            .catch( error => {
+                                console.error( error );
+                            } );
+                    </script>
+
                 </div>
             </div>
             <div class="col-md-12 ">

@@ -77,6 +77,7 @@
     <script src="{{asset('assets-admin')}}/js/demo/widgets_sidebar.js"></script>
     <script src="{{asset('assets-admin')}}/js/pages/dashboard1.js"></script>
     <script src="{{asset('assets-admin')}}/js/demo/widgets.js"></script>
+    @yield('foot')
     <!-- /Scripts -->
 @show
 </body>
