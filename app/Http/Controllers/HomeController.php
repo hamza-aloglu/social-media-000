@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -9,7 +10,10 @@ class HomeController extends Controller
     //
     public function index()
     {
-        return view('home.index');
+        $postlist1 = Post::limit(6)->get();
+        return view('home.index', [
+            'postlist1' => $postlist1
+        ]);
     }
 
     public function test()
