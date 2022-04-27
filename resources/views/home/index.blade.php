@@ -297,13 +297,15 @@
                         </div>
                         <!-- post title start -->
                         <div class="post-content">
+                            <a class="" href="{{route('post', ['id'=>$rs->id])}}" style="color: inherit">
                             <p class="post-desc">
-                                {!! $rs->detail !!}
+                                    {{ $rs->description }}
                             </p>
+                            </a>
                             @if($rs -> image)
-                            <div class="post-thumb-gallery">
-                                <figure class="post-thumb img-popup">
-                                    <a href="{{asset('assets')}}/images/post/post-1.jpg">
+                            <div class="post-thumb-gallery img-gallery">
+                                <figure class="post-thumb">
+                                    <a class="" href="{{route('post', ['id'=>$rs->id])}}">
                                         <img src="{{Storage::url($rs->image)}}" alt="post image">
                                     </a>
                                 </figure>

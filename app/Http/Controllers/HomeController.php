@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,16 @@ class HomeController extends Controller
         $postlist1 = Post::limit(6)->get();
         return view('home.index', [
             'postlist1' => $postlist1
+        ]);
+    }
+
+    public function post($id)
+    {
+        $data = Post::find($id);
+        $images = DB::table('images')->where('post_id', $id)->get();
+        return view('home.post', [
+            'data' => $data,
+            'images' => $images
         ]);
     }
 

@@ -51,6 +51,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+
+
+Route::get('/post/{id}', [HomeController::class, 'post']) -> name('post');
+
 // ADMIN ROUTES ****************************************************************
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index']) -> name('index');
