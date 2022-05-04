@@ -8,7 +8,7 @@
                     <div class="header-top-navigation">
                         <nav>
                             <ul>
-                                <li class="active"><a href="index.html">home</a></li>
+                                <li class="active"><a href="">home</a></li>
                                 <li class="msg-trigger"><a class="msg-trigger-btn" href="#a">message</a>
                                     <div class="message-dropdown" id="a">
                                         <div class="dropdown-title">
@@ -92,84 +92,53 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="notification-trigger"><a class="msg-trigger-btn" href="#b">notification</a>
+                                @php
+                                    $mainCategories = \App\Http\Controllers\HomeController::maincategorylist();
+                                @endphp
+                                <li class="notification-trigger"><a class="msg-trigger-btn" href="#b">Category</a>
                                     <div class="message-dropdown" id="b">
                                         <div class="dropdown-title">
-                                            <p class="recent-msg">Notification</p>
+                                            <p class="recent-msg">Categories</p>
                                             <button>
                                                 <i class="flaticon-settings"></i>
                                             </button>
                                         </div>
                                         <ul class="dropdown-msg-list">
+                                            @foreach($mainCategories as $rs)
                                             <li class="msg-list-item d-flex justify-content-between">
                                                 <!-- profile picture end -->
                                                 <div class="profile-thumb">
                                                     <figure class="profile-thumb-middle">
-                                                        <img src="{{asset('assets')}}/images/profile/profile-small-3.jpg" alt="profile picture">
+                                                        @if($rs -> image)
+                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" alt="profile picture">
+                                                        @else
+                                                            <img src="{{asset('assets')}}/images/profile/profile-small-3.jpg" alt="profile picture">
+                                                        @endif
+
                                                     </figure>
                                                 </div>
                                                 <!-- profile picture end -->
 
                                                 <!-- message content start -->
                                                 <div class="msg-content notification-content">
-                                                    <a href="profile.html">Robert Faul</a>,
-                                                    <a href="profile.html">william jhon</a>
-                                                    <p>and 35 other people reacted to your photo</p>
+                                                    <a href="{{route('postcategory', ['id' => $rs -> id, 'slug' => $rs -> title])}}">{{$rs -> title}}</a>
+                                                    <p>{{$rs -> keywords}}</p>
+
+                                                    @if(count($rs->children))
+                                                        <p>
+                                                            @include('home.categorytree', ['children'=>$rs->children])
+                                                        </p>
+                                                    @endif
                                                 </div>
                                                 <!-- message content end -->
 
                                                 <!-- message time start -->
                                                 <div class="msg-time">
-                                                    <p>25 Apr 2019</p>
+                                                    <p>{{$rs -> created_at}}</p>
                                                 </div>
                                                 <!-- message time end -->
                                             </li>
-                                            <li class="msg-list-item d-flex justify-content-between">
-                                                <!-- profile picture end -->
-                                                <div class="profile-thumb">
-                                                    <figure class="profile-thumb-middle">
-                                                        <img src="{{asset('assets')}}/images/profile/profile-small-4.jpg" alt="profile picture">
-                                                    </figure>
-                                                </div>
-                                                <!-- profile picture end -->
-
-                                                <!-- message content start -->
-                                                <div class="msg-content notification-content">
-                                                    <a href="profile.html">Robert mushkil</a>,
-                                                    <a href="profile.html">Terry jhon</a>
-                                                    <p>and 20 other people reacted to your photo</p>
-                                                </div>
-                                                <!-- message content end -->
-
-                                                <!-- message time start -->
-                                                <div class="msg-time">
-                                                    <p>20 May 2019</p>
-                                                </div>
-                                                <!-- message time end -->
-                                            </li>
-                                            <li class="msg-list-item d-flex justify-content-between">
-                                                <!-- profile picture end -->
-                                                <div class="profile-thumb">
-                                                    <figure class="profile-thumb-middle">
-                                                        <img src="{{asset('assets')}}/images/profile/profile-small-6.jpg" alt="profile picture">
-                                                    </figure>
-                                                </div>
-                                                <!-- profile picture end -->
-
-                                                <!-- message content start -->
-                                                <div class="msg-content notification-content">
-                                                    <a href="profile.html">Horijon Mbala</a>,
-                                                    <a href="profile.html">Bashu jhon</a>
-                                                    <p>and 55 other people reacted to your post</p>
-                                                </div>
-                                                <!-- message content end -->
-
-                                                <!-- message time start -->
-                                                <div class="msg-time">
-                                                    <p>15 Jan 2019</p>
-                                                </div>
-                                                <!-- message time end -->
-                                            </li>
+                                            @endforeach
                                         </ul>
                                         <div class="msg-dropdown-footer">
                                             <button>See all in messenger</button>

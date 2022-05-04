@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    //
+    public static function maincategorylist()
+    {
+        return category::where('parentid', '=', 0) -> with('children') -> get();
+    }
+
+
     public function index()
     {
         $postlist1 = Post::limit(6)->get();
@@ -20,11 +26,17 @@ class HomeController extends Controller
     public function post($id)
     {
         $data = Post::find($id);
-        $images = DB::table('images')->where('post_id', $id)->get();
+        // $images = DB::table('images')->where('post_id', $id)->get();
+        $images = DB::select('SELECT * FROM images WHERE post_id = ?', [$id]); // could be problematic.
         return view('home.post', [
             'data' => $data,
             'images' => $images
         ]);
+    }
+
+    public function postcategory($id, $slug)
+    {
+        echo "id: ", $id, "slug", $slug;
     }
 
     public function test()
