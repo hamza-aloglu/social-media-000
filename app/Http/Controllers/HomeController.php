@@ -34,9 +34,14 @@ class HomeController extends Controller
         ]);
     }
 
-    public function postcategory($id, $slug)
+    public function postcategory($cid, $slug)
     {
-        echo "id: ", $id, "slug", $slug;
+        $category = category::find($cid);
+        $posts = DB::table('posts')->where('category_id', $cid)->get();
+        return view('home.categoryposts', [
+            'category'=>$category,
+            'posts'=>$posts
+        ]);
     }
 
     public function test()

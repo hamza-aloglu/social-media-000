@@ -52,7 +52,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-
+Route::get('/', [HomeController::class, 'index']) -> name('home');
 Route::get('/post/{id}', [HomeController::class, 'post']) -> name('post');
 Route::get('/postcategory/{id}/{slug}', [HomeController::class, 'postcategory']) ->
     name('postcategory');

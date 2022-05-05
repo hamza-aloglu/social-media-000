@@ -1,6 +1,13 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
 @foreach($children as $subcategory)
 <nav>
-    <li class="notification-trigger"><a class="msg-trigger-btn" href="#{{$subcategory->id}}">Category</a>
+    <li class="notification-trigger">
+        <a class="msg-trigger-btn" href="#{{$subcategory->id}}">
+            <p class="text-success fw-bold">subcategories</p>
+        </a>
         <div class="message-dropdown" id="{{$subcategory->id}}">
             <div class="dropdown-title">
                 <p class="recent-msg">Categories</p>

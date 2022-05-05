@@ -8,7 +8,7 @@
                     <div class="header-top-navigation">
                         <nav>
                             <ul>
-                                <li class="active"><a href="">home</a></li>
+                                <li class="active"><a href="{{route('home')}}">home</a></li>
                                 <li class="msg-trigger"><a class="msg-trigger-btn" href="#a">message</a>
                                     <div class="message-dropdown" id="a">
                                         <div class="dropdown-title">
@@ -155,7 +155,7 @@
                 <div class="col-md-2">
                     <!-- brand logo start -->
                     <div class="brand-logo text-center">
-                        <a href="index.html">
+                        <a href="{{route('home')}}">
                             <img src="{{asset('assets')}}/images/logo/logo.png" alt="brand logo">
                         </a>
                     </div>
