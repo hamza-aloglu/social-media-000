@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use App\Models\Post;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,8 +19,10 @@ class HomeController extends Controller
     public function index()
     {
         $postlist1 = Post::limit(6)->get();
+        $setting = Setting::first();
         return view('home.index', [
-            'postlist1' => $postlist1
+            'postlist1'=>$postlist1,
+            'setting'=>$setting
         ]);
     }
 

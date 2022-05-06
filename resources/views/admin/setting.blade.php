@@ -47,10 +47,12 @@
                         </li>
                     </ul>
                     <form action="{{route('admin.setting.update')}}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="tab-content p25">
                             <div id="tab5_1" class="tab-pane active">
                                 <div class="col-md-12 ">
                                     <div class="section">
+                                        <input type="hidden" value="{{$data -> id}}" name="id" id="from">
                                         <h3>Title</h3>
                                         <input type="text" value="{{$data -> title}}" name="title" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Title">
 
@@ -77,8 +79,8 @@
                                 </div>
                                 <div class="col-md-12 ">
                                     <div class="section">
-                                        <h3>Adress</h3>
-                                        <input type="text" value="{{$data -> adress}}" name="adress" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Adress">
+                                        <h3>Address</h3>
+                                        <input type="text" value="{{$data -> address}}" name="address" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="address">
                                     </div>
                                 </div>
                                 <div class="col-md-12 ">

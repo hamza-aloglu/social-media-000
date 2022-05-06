@@ -102,6 +102,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
     // general routes ****************************************************************
     Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
-    Route::get('/settingupdate', [AdminHomeController::class, 'updateSetting'])->name('setting.update');
+    Route::post('/settingupdate', [AdminHomeController::class, 'updateSetting'])->name('setting.update');
 });
 

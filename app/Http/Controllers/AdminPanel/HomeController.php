@@ -29,8 +29,47 @@ class HomeController extends Controller
         ]);
     }
 
-    public function updateSetting()
+    public function updateSetting(Request $request)
     {
-        echo "updated settings...";
+
+
+        $data = Setting::find($request -> input('id'));
+
+        $data -> title = $request -> input('title');
+        $data -> keywords = $request -> input('keywords');
+        $data -> description = $request -> input('description');
+        $data -> company = $request -> input('company');
+        $data -> address = $request -> input('address');
+        $data -> phone = $request -> input('phone');
+        $data -> fax = $request -> input('fax');
+        $data -> email = $request -> input('email');
+
+        $data -> smtpserver = $request -> input('smtpserver');
+        $data -> smtpemail = $request -> input('smtpemail');
+        $data -> smtppassword = $request -> input('smtppassword');
+        $data -> smtpport = $request -> input('smtpport');
+        $data -> smtpemail = $request -> input('smtpemail');
+        $data -> smtpemail = $request -> input('smtpemail');
+
+        $data -> facebook = $request -> input('facebook');
+        $data -> instagram = $request -> input('instagram');
+        $data -> twitter = $request -> input('twitter');
+        $data -> youtube = $request -> input('youtube');
+
+        $data -> aboutus = $request -> input('abouts');
+        $data -> contact = $request -> input('contact');
+        $data -> references = $request -> input('references');
+        if ($request->file('icon'))
+        {
+            $data -> icon = $request -> file('icon') -> store('images');
+        }
+        $data -> status = $request -> input('status');
+
+        $data->save();
+
+        return redirect()->route('admin.setting', [
+            'data' => $data
+        ]);
+
     }
 }
