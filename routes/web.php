@@ -100,5 +100,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/update/{pid}/{id}', 'update') -> name('update');
         Route::get('delete/{pid}/{id}', 'destroy') -> name('delete');
     });
+    // general routes ****************************************************************
+    Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
+    Route::get('/settingupdate', [AdminHomeController::class, 'updateSetting'])->name('setting.update');
 });
 
