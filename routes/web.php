@@ -52,10 +52,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
+// HOME ROUTES ****************************************************************
 Route::get('/', [HomeController::class, 'index']) -> name('home');
 Route::get('/post/{id}', [HomeController::class, 'post']) -> name('post');
 Route::get('/postcategory/{id}/{slug}', [HomeController::class, 'postcategory']) ->
     name('postcategory');
+Route::get('/about', [HomeController::class, 'about']) -> name('about');
+Route::get('/references', [HomeController::class, 'references']) -> name('references');
+Route::get('/contact', [HomeController::class, 'contact']) -> name('contact');
+
+
 
 // ADMIN ROUTES ****************************************************************
 Route::prefix('admin')->name('admin.')->group(function () {

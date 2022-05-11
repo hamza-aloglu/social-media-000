@@ -178,10 +178,10 @@
                                 <div class="col-md-12 ">
                                     <div class="section">
                                         <h3>About us</h3>
-                                        <textarea id="aboutUs" name="aboutus">{!! $data -> aboutus !!}</textarea>
+                                        <textarea id="aboutus" name="aboutus">{!! $data -> aboutus !!}</textarea>
                                         <script>
                                             ClassicEditor
-                                                .create( document.querySelector( '#aboutUs' ) )
+                                                .create( document.querySelector( '#aboutus' ) )
                                                 .then( editor => {
                                                     console.log( editor );
                                                 } )

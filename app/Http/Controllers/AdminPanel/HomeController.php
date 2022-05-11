@@ -56,7 +56,7 @@ class HomeController extends Controller
         $data -> twitter = $request -> input('twitter');
         $data -> youtube = $request -> input('youtube');
 
-        $data -> aboutus = $request -> input('abouts');
+        $data -> aboutus = $request -> input('aboutus');
         $data -> contact = $request -> input('contact');
         $data -> references = $request -> input('references');
         if ($request->file('icon'))
