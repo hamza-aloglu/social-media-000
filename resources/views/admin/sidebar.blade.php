@@ -67,7 +67,7 @@
             </li>
             <li class="sidebar-label pt25">Elements</li>
             <li class="">
-                <a href="/admin/message">
+                <a href="{{route('admin.message.index')}}">
                     <span class="sidebar-title">Messages</span>
                     <span class="sb-menu-icon fa fa-envelope"></span>
                 </a>

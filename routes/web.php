@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryControlle
 use App\Http\Controllers\AdminPanel\PostController as AdminPostController;
 use App\Http\Controllers\AdminPanel\ImageController as AdminImageController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\AdminPanel\MessageController as MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,6 +107,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/store/{pid}', 'store') -> name('store');
         Route::post('/update/{pid}/{id}', 'update') -> name('update');
         Route::get('delete/{pid}/{id}', 'destroy') -> name('delete');
+    });
+    // Message ROUTES ****************************************************************
+    Route::prefix('message')->name('message.')->controller(MessageController::class)->
+    group(function () {
+        Route::get('/', 'index') -> name('index');
+        Route::get('/show/{id}', 'show') -> name('show');
+        Route::get('destroy/{id}', 'destroy') -> name('destroy');
+        Route::post('update/{id}', 'update') -> name('update');
     });
     // general routes ****************************************************************
     Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
