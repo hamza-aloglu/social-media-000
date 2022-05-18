@@ -32,7 +32,6 @@
          border-radius: 9px;">Add post</h3>
     <form action={{route('admin.post.store')}} method="post" enctype="multipart/form-data" style="margin: 0px 10px 5px; padding: 10px 100px;);
     font-family: 'Open Sans',Helvetica,Arial,sans-serif;; background-color: rgb(247, 252, 251)">
-
         @csrf
         <div class="row mn mln15" style="position: relative; right: 50px;">
 

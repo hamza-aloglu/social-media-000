@@ -33,6 +33,13 @@
                                                 </div>
                                                 <!-- message content end -->
                                             </li>
+                                            <li class="msg-list-item d-flex justify-content-between">
+                                                <!-- message content start -->
+                                                <div class="msg-content">
+                                                    <a href="{{route('faq')}}">FAQ</a>
+                                                </div>
+                                                <!-- message content end -->
+                                            </li>
                                         </ul>
                                     </div>
                                 </li>

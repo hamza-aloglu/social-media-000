@@ -26,7 +26,6 @@
                         <tr class="">
                             <th class="">Id</th>
                             <th class="">Question</th>
-                            <th class="">Answer</th>
                             <th class="">Status</th>
                             <th class="">Action</th>
                         </tr>
@@ -39,9 +38,6 @@
                                 </td>
                                 <td class="">
                                     <span>{{$rs -> question}}</span>
-                                </td>
-                                <td class="">
-                                    <span>{{$rs -> answer}}</span>
                                 </td>
                                 <td class="">
                                     <div class="btn-group text-right">

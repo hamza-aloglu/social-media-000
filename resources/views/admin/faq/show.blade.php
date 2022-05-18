@@ -34,7 +34,7 @@
                                         </div>
                                         <div id="accordion1_1" class="panel-collapse collapse" style="height: 0px;">
                                             <div class="panel-body">
-                                                {{$data->answer}}
+                                                {!!$data->answer!!}
                                                 <br>
                                                 <br>
                                                 <br>
