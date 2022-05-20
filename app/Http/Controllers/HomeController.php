@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\category;
+use App\Models\Comment;
 use App\Models\faq;
 use App\Models\Message;
 use App\Models\Post;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -76,15 +78,37 @@ class HomeController extends Controller
         return redirect()->route('contact')->with('info', "your message has been sent.");
     }
 
+    public function storeComment(Request $request)
+    {
+        // dd($request); //checking values.
+
+        $data = new Comment();
+        $data -> user_id = Auth::id();
+        $data -> post_id = $request -> input('post_id');
+        $data -> comment = $request -> input('comment');
+        $data -> ip = request()->ip();
+        $data -> save();
+
+        return redirect()->route('post', ['id'=>$request -> input('post_id')])->
+        with('info', "your comment has been sent.");
+    }
+
 
     public function post($id)
     {
         $data = Post::find($id);
+
+        $comments = Comment::where('post_id', $id)->where('status', 'true')->get(); // This one uses model of laravel, so we are able to
+                                                           // use relationships of that model
+        //$comments = DB::table('comments')->where('post_id', $id)->get(); // This one does not use model. It
+                                                                           // fetches from mysql directly.
+
         // $images = DB::table('images')->where('post_id', $id)->get();
         $images = DB::select('SELECT * FROM images WHERE post_id = ?', [$id]); // could be problematic.
         return view('home.post', [
             'data' => $data,
-            'images' => $images
+            'images' => $images,
+            'comments' => $comments
         ]);
     }
 

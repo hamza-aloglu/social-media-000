@@ -16,31 +16,33 @@
         </tr>
         <tr class="table-primary">
             <td class="table-secondary w-25 fw-bold">name</td>
-            <td class="table-secondary">{{$data -> name}}</td>
+            <td class="table-secondary">{{$data -> user -> name}}</td>
         </tr>
         <tr class="table-primary">
-            <td class="table-primary w-25 fw-bold">email</td>
-            <td class="table-primary">{{$data -> email}}</td>
+            <td class="table-primary w-25 fw-bold">post title</td>
+            <td class="table-primary">{{$data -> post -> title}}</td>
         </tr>
         <tr class="table-primary">
-            <td class="table-secondary w-25 fw-bold">phone</td>
-            <td class="table-secondary">{{$data -> phone}}</td>
+            <td class="table-secondary w-25 fw-bold">comment</td>
+            <td class="table-secondary">{{$data -> comment}}</td>
         </tr>
         <tr class="table-primary">
-            <td class="table-primary w-25 fw-bold">subject</td>
-            <td class="table-primary">{{$data -> subject}}</td>
-        </tr>
-        <tr class="table-primary">
-            <td class="table-secondary w-25 fw-bold">message</td>
-            <td class="table-secondary">{{$data -> message}}</td>
-        </tr>
-        <tr class="table-primary">
-            <td class="table-primary w-25 fw-bold">ip</td>
-            <td class="table-primary">{{$data -> ip}}</td>
+            <td class="table-primary w-25 fw-bold">IP</td>
+            <td class="table-primary">{{$data -> IP}}</td>
         </tr>
         <tr class="table-primary">
             <td class="table-secondary w-25 fw-bold">status</td>
-            <td class="table-secondary">{{$data -> status}}</td>
+            <td class="table-secondary">
+                <form action="{{route('admin.comment.update', ['id'=>$data->id])}}" method="post">
+                    @csrf
+                    <select name="status" id="">
+                        <option value="{{$data->status}}" selected>{{$data->status}}</option>
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </td>
         </tr>
         <tr class="table-primary">
             <td class="table-primary w-25 fw-bold">created_at</td>
@@ -50,16 +52,7 @@
             <td class="table-secondary w-25 fw-bold">updated_at</td>
             <td class="table-secondary">{{$data -> updated_at}}</td>
         </tr>
-        <tr class="table-primary">
-            <td class="table-secondary w-25 fw-bold">Admin' note</td>
-            <td class="table-secondary">
-                <form action="{{route('admin.message.update', ['id'=>$data -> id])}}" method="post">
-                    @csrf
-                    <textarea name="note" id="note" cols="30" rows="10">{{$data -> note}}</textarea>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </form>
-            </td>
-        </tr>
+
 
 
         <!-- On cells (`td` or `th`) -->

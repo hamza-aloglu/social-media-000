@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPanel\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
 use App\Http\Controllers\AdminPanel\FaqController as AdminFaqController;
@@ -63,6 +64,8 @@ Route::get('/references', [HomeController::class, 'references']) -> name('refere
 Route::get('/contact', [HomeController::class, 'contact']) -> name('contact');
 Route::post('/storemessage', [HomeController::class, 'storeMessage']) -> name('storemessage');
 Route::get('/faq', [HomeController::class, 'faq']) -> name('faq');
+Route::post('/storecomment', [HomeController::class, 'storeComment']) -> name('storecomment');
+
 
 
 
@@ -111,6 +114,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
     // Message ROUTES ****************************************************************
     Route::prefix('message')->name('message.')->controller(MessageController::class)->
+    group(function () {
+        Route::get('/', 'index') -> name('index');
+        Route::get('/show/{id}', 'show') -> name('show');
+        Route::get('destroy/{id}', 'destroy') -> name('destroy');
+        Route::post('update/{id}', 'update') -> name('update');
+    });
+    // Comment ROUTES ****************************************************************
+    Route::prefix('comment')->name('comment.')->controller(CommentController::class)->
     group(function () {
         Route::get('/', 'index') -> name('index');
         Route::get('/show/{id}', 'show') -> name('show');
