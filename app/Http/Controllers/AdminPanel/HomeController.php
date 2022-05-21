@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -31,8 +32,6 @@ class HomeController extends Controller
 
     public function updateSetting(Request $request)
     {
-
-
         $data = Setting::find($request -> input('id'));
 
         $data -> title = $request -> input('title');
@@ -72,4 +71,6 @@ class HomeController extends Controller
         ]);
 
     }
+
+
 }

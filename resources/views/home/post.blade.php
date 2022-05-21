@@ -99,6 +99,7 @@
                     </div>
 
                     <div class="col-lg-8 order-1 order-lg-2">
+                        @include('home.messages')
                         <div class="card card-small">
                             <div class="share-box-inner">
                                 <!-- profile picture end -->
