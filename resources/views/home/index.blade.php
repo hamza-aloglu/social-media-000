@@ -315,17 +315,17 @@
                             </div>
                             @endif
                             <div class="post-meta">
-                                <button class="post-meta-like">
+                                <button  class="post-meta-like">
                                     <i class="bi bi-heart-beat"></i>
                                     <span>{{$rs -> likes}}</span>
                                     <strong>201</strong>
                                 </button>
                                 <ul class="comment-share-meta">
                                     <li>
-                                        <button class="post-comment">
+                                        <a href="{{route('post', ['id'=>$rs->id])}}" class="post-comment">
                                             <i class="bi bi-chat-bubble"></i>
-                                            <span>41</span>
-                                        </button>
+                                            <span>{{$rs -> comments -> count('id')}}</span>
+                                        </a>
                                     </li>
                                     <li>
                                         <button class="post-share">

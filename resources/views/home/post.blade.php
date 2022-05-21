@@ -79,14 +79,17 @@
                                             <li>
                                                 <button class="post-comment">
                                                     <i class="bi bi-chat-bubble"></i>
-                                                    <span>41</span>
+                                                    <span>{{$data -> comments -> count('id')}}</span>
                                                 </button>
                                             </li>
                                             <li>
+                                                <!--
+                                                $average = $data -> comment -> average('rate')
                                                 <button class="post-share">
                                                     <i class="bi bi-share"></i>
-                                                    <span>07</span>
+                                                    <span>number_format($average, 2)</span>
                                                 </button>
+                                                -->
                                             </li>
                                         </ul>
                                     </div>
