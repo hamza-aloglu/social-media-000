@@ -116,14 +116,16 @@
                 <div class="col-md-5">
                     <div class="header-top-right d-flex align-items-center justify-content-end">
                         <!-- header top search start -->
+                        @guest
                         <div class="header-top-search">
                             <form class="top-search-box">
-                                <input type="text" placeholder="Search" class="top-search-field">
-                                <button class="top-search-btn"><i class="flaticon-search"></i></button>
+                                <a class="fs-5 " href="{{route('loginuser')}}">Login</a>
                             </form>
                         </div>
+                        @endguest
                         <!-- header top search end -->
 
+                        @auth()
                         <!-- profile picture start -->
                         <div class="profile-setting-box">
                             <div class="profile-thumb-small">
@@ -145,13 +147,14 @@
                                         </ul>
                                         <ul>
                                             <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
-                                            <li><a href="signup.html"><i class="flaticon-unlock"></i>Sing out</a></li>
+                                            <li><a href="{{route('logoutuser')}}"><i class="flaticon-unlock"></i>Sing out</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- profile picture end -->
+                        @endauth
                     </div>
                 </div>
             </div>
