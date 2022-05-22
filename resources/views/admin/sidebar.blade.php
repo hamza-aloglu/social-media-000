@@ -44,9 +44,9 @@
                 </a>
             </li>
             <li>
-                <a class="" href="/admin/user">
+                <a class="" href="{{route('admin.user.index')}}">
                     <span class="caret"></span>
-                    <span class="sidebar-title">Users</span>
+                    <span class="sidebar-title">Users..</span>
                     <span class="sb-menu-icon fa fa-desktop"></span>
                 </a>
                 <!-- You can add subfiles to users from template.   -->

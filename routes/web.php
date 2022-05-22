@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPanel\AdminUserController;
 use App\Http\Controllers\AdminPanel\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
@@ -134,6 +135,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('destroy/{id}', 'destroy') -> name('destroy');
         Route::post('update/{id}', 'update') -> name('update');
     });
+    // User ROUTES ****************************************************************
+    Route::prefix('user')->name('user.')->controller(AdminUserController::class)->
+    group(function () {
+        Route::get('/', 'index') -> name('index');
+        Route::get('/edit/{id}', 'edit') -> name('edit');
+        Route::get('/show/{id}', 'show') -> name('show');
+        Route::get('destroy/{id}', 'destroy') -> name('destroy');
+        Route::post('update/{id}', 'update') -> name('update');
+        Route::post('addrole/{id}', 'addRole') -> name('addrole');
+        Route::get('destroyrole/{uid}/{rid}', 'destroyRole') -> name('destroyrole');
+    });
+
     // general routes ****************************************************************
     Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
     Route::post('/settingupdate', [AdminHomeController::class, 'updateSetting'])->name('setting.update');
