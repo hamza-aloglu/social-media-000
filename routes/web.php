@@ -77,7 +77,7 @@ Route::post('/loginadmincheck', [HomeController::class, 'loginadmincheck']) -> n
 
 
 // ADMIN ROUTES ****************************************************************
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->middleware(\App\Http\Middleware\CheckAdmin::class)->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index']) -> name('index');
     // FAQ ROUTES ****************************************************************
     Route::prefix('faq')->name('faq.')->controller(AdminFaqController::class)->group(function () {
