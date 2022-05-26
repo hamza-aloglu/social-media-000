@@ -3,6 +3,7 @@
 @section('title', $data -> title)
 
 @section('head')
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 @endsection
 
 @section('content')
@@ -75,22 +76,27 @@
                                             <span>{{$data -> likes}}</span>
                                             <strong>201</strong>
                                         </button>
+                                        @php
+                                            $average = $data->comments->average('rate')
+                                        @endphp
                                         <ul class="comment-share-meta">
+                                            <li>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="ratings">
+                                                        @for($i = 0; $i < $average; $i++)
+                                                            <i class="fa fa-star rating-color"></i>
+                                                        @endfor
+                                                        <span>{{number_format($average, 0)}}</span>
+                                                    </div>
+                                                </div>
+                                            </li>
                                             <li>
                                                 <button class="post-comment">
                                                     <i class="bi bi-chat-bubble"></i>
                                                     <span>{{$data -> comments -> count('id')}}</span>
                                                 </button>
                                             </li>
-                                            <li>
-                                                <!--
-                                                $average = $data -> comment -> average('rate')
-                                                <button class="post-share">
-                                                    <i class="bi bi-share"></i>
-                                                    <span>number_format($average, 2)</span>
-                                                </button>
-                                                -->
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -146,6 +152,14 @@
                                                 <div class="modal-body custom-scroll">
                                                     <textarea name="comment" class="share-field-big custom-scroll"
                                                               placeholder="Say Something"></textarea>
+                                                    <select name="rate" class="form-select form-select-lg mb-3 px-5" aria-label=".form-select-lg example">
+                                                        <option value="1" selected disabled>Rate Post</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                        <option value="4">Four</option>
+                                                        <option value="3">Five</option>
+                                                    </select>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="post-share-btn" data-bs-dismiss="modal">cancel</button>
@@ -211,6 +225,18 @@
                                             <span>0</span>
                                             <strong>201</strong>
                                         </button>
+                                        <ul class="comment-share-meta">
+                                            <li>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="ratings">
+                                                        rated:
+                                                        @for($i = 0; $i < $rs->rate; $i++)
+                                                            <i class="fa fa-star rating-color"></i>
+                                                        @endfor
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

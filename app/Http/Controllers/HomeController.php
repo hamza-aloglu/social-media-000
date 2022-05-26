@@ -86,6 +86,7 @@ class HomeController extends Controller
         $data -> user_id = Auth::id();
         $data -> post_id = $request -> input('post_id');
         $data -> comment = $request -> input('comment');
+        $data -> rate = $request->input('rate');
         $data -> ip = request()->ip();
         $data -> save();
 
@@ -170,8 +171,8 @@ class HomeController extends Controller
             return redirect()->intended('/admin');
         }
 
-        return back()->withErrors([
-            'error' => "Check your inputs",
-        ]);
+        return redirect()->route('loginadmin')->with('error', "Check your inputs");
+
+
     }
 }

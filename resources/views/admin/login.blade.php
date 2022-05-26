@@ -41,6 +41,7 @@
                     <div class="logo-widget">
                         <div class="logo-slogan mtn">
                             <div>Adda Admin<span class="text-info"></span></div>
+                            <h1 class="mb-4 text-danger">@include('home.messages')</h1>
                         </div>
                     </div>
                 </div>

@@ -320,19 +320,27 @@
                                     <span>{{$rs -> likes}}</span>
                                     <strong>201</strong>
                                 </button>
+                                @php
+                                    $average = $rs->comments->average('rate')
+                                @endphp
                                 <ul class="comment-share-meta">
+                                    <li>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="ratings">
+                                                @for($i = 0; $i < $average; $i++)
+                                                    <i class="fa fa-star rating-color"></i>
+                                                @endfor
+                                                <span>{{number_format($average, 0)}}</span>
+                                            </div>
+                                        </div>
+                                    </li>
                                     <li>
                                         <a href="{{route('post', ['id'=>$rs->id])}}" class="post-comment">
                                             <i class="bi bi-chat-bubble"></i>
                                             <span>{{$rs -> comments -> count('id')}}</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <button class="post-share">
-                                            <i class="bi bi-share"></i>
-                                            <span>07</span>
-                                        </button>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>

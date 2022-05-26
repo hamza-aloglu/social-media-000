@@ -54,7 +54,7 @@
                     </form>
                 </div>
                 <div class="col-md-7">
-                    <h1 class="mb-4 text-danger">{{Session::get('error')}}</h1>
+                    <h1 class="mb-4 text-danger">@include('home.messages')</h1>
                     {!!   $setting->contact  !!}
                 </div>
             </div>
