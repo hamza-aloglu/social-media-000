@@ -136,8 +136,8 @@
                                 </a>
                                 <div class="profile-dropdown">
                                     <div class="profile-head">
-                                        <h5 class="name"><a href="#">Madison Howard</a></h5>
-                                        <a class="mail" href="#">mailnam@mail.com</a>
+                                        <h5 class="name"><a href="#">{{\Illuminate\Support\Facades\Auth::user()->name}}</a></h5>
+                                        <a class="mail" href="#">{{\Illuminate\Support\Facades\Auth::user()->email}}</a>
                                     </div>
                                     <div class="profile-body">
                                         <ul>
@@ -147,7 +147,7 @@
                                         </ul>
                                         <ul>
                                             <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
-                                            <li><a href="{{route('logoutuser')}}"><i class="flaticon-unlock"></i>Sing out</a></li>
+                                            <li><a href="{{route('logoutuser')}}"><i class="flaticon-unlock"></i>Sign out</a></li>
                                         </ul>
                                     </div>
                                 </div>

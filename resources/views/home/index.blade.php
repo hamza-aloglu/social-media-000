@@ -357,6 +357,7 @@
                             <h4 class="widget-title">Recent Notifications</h4>
                             <div class="widget-body">
                                 <ul class="like-page-list-wrapper">
+
                                     <li class="unorder-list">
                                         <!-- profile picture end -->
                                         <div class="profile-thumb">
@@ -369,7 +370,16 @@
                                         <!-- profile picture end -->
 
                                         <div class="unorder-list-info">
-                                            <h3 class="list-title"><a href="#">Any one can join with us if you want</a></h3>
+                                            <h3 class="list-title">
+                                                @auth
+                                                    @php
+                                                        $friends = \Illuminate\Support\Facades\Auth::user()->friends()->get();
+                                                    @endphp
+                                                    @foreach($friends as $friend)
+                                                        {{$friend->name}}
+                                                    @endforeach
+                                                @endauth
+                                            </h3>
                                             <p class="list-subtitle">5 min ago</p>
                                         </div>
                                     </li>
