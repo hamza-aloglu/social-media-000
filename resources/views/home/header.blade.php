@@ -141,7 +141,7 @@
                                     </div>
                                     <div class="profile-body">
                                         <ul>
-                                            <li><a href="profile.html"><i class="flaticon-user"></i>Profile</a></li>
+                                            <li><a href="{{route('userpanel')}}"><i class="flaticon-user"></i>Profile</a></li>
                                             <li><a href="#"><i class="flaticon-message"></i>Inbox</a></li>
                                             <li><a href="#"><i class="flaticon-document"></i>Activity</a></li>
                                         </ul>

@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminPanel\FaqController as AdminFaqController;
 use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController;
 use App\Http\Controllers\AdminPanel\PostController as AdminPostController;
 use App\Http\Controllers\AdminPanel\ImageController as AdminImageController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AdminPanel\MessageController as MessageController;
 
@@ -73,8 +74,11 @@ Route::get('/logoutuser', [HomeController::class, 'logout']) -> name('logoutuser
 Route::view('/loginadmin', 'admin.login') ->name('loginadmin');
 Route::post('/loginadmincheck', [HomeController::class, 'loginadmincheck']) -> name('loginadmincheck');
 
-
-
+// USER ROUTES ****************************************************************
+Route::middleware('auth')->group(function () {
+    Route::get('/userpanel', [UserController::class, 'index']) -> name('userpanel');
+    Route::get('/useredit', [UserController::class, 'edit']) -> name('useredit');
+});
 
 // ADMIN ROUTES ****************************************************************
 Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
