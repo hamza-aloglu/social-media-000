@@ -74,11 +74,17 @@ Route::get('/logoutuser', [HomeController::class, 'logout']) -> name('logoutuser
 Route::view('/loginadmin', 'admin.login') ->name('loginadmin');
 Route::post('/loginadmincheck', [HomeController::class, 'loginadmincheck']) -> name('loginadmincheck');
 
+
 // USER ROUTES ****************************************************************
-Route::middleware('auth')->group(function () {
-    Route::get('/userpanel', [UserController::class, 'index']) -> name('userpanel');
-    Route::get('/useredit', [UserController::class, 'edit']) -> name('useredit');
+Route::prefix('userpanel')->middleware('auth')->name('userpanel.')->
+controller(UserController::class)->group(function () {
+    Route::get('/', 'index') -> name('index');
+    Route::get('/comment', 'comment') -> name('comment');
+    Route::get('/commentDestroy/{id}', 'commentdestroy') -> name('commentdestroy');
+    Route::get('/friend', 'friend') -> name('friend');
+    Route::get('/edit', 'edit') -> name('edit');
 });
+
 
 // ADMIN ROUTES ****************************************************************
 Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {

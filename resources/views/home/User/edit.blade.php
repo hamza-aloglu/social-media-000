@@ -1,6 +1,6 @@
 @extends('layouts.frontbase')
 
-@section('title', '...')
+@section('title', 'edit profile of '. \Illuminate\Support\Facades\Auth::user()->name)
 
 
 @section('content')
@@ -26,10 +26,10 @@
                                 <div class="main-menu-inner header-top-navigation">
                                     <nav>
                                         <ul class="main-menu">
-                                            <li class="active"><a href="#">timeline</a></li>
-                                            <li><a href="about.html">comments</a></li>
-                                            <li><a href="friends.html">friends</a></li>
-                                            <li><a href="profile.html">edit profile</a></li>
+                                            <li class="active"><a href="{{route('userpanel.index')}}">timeline</a></li>
+                                            <li><a href="{{route('userpanel.comment')}}">comments</a></li>
+                                            <li><a href="{{route('userpanel.friend')}}">friends</a></li>
+                                            <li><a href="#">edit profile</a></li>
                                         </ul>
                                     </nav>
                                 </div>
