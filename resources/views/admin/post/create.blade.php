@@ -49,6 +49,7 @@
             </div>
 
             <!-- user_id... -->
+            <input hidden name="user_id" type="text" value="{{\Illuminate\Support\Facades\Auth::id()}}">
 
             <div class="col-md-12 ">
                 <div class="section">

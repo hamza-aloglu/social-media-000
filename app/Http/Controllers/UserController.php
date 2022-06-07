@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +17,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('home.user.index');
+        //\App\Models\User::find(\Illuminate\Support\Facades\Auth::id())->posts
+        $postlist1 = User::find(Auth::id())->posts;
+        return view('home.user.index', [
+            'postlist1'=>$postlist1
+        ]);
     }
 
     public function comment()

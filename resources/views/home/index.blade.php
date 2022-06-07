@@ -281,8 +281,8 @@
                             <!-- profile picture end -->
 
                             <div class="posted-author">
-                                <h6 class="author"><a href="profile.html">merry watson</a></h6>
-                                <span class="post-time">20 min ago</span>
+                                <h6 class="author"><a href="profile.html">{{$rs->user->name}}</a></h6>
+                                <span class="post-time">{{$rs->created_at}}</span>
                             </div>
 
                             <div class="post-settings-bar">
