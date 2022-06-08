@@ -8,6 +8,7 @@ use App\Models\faq;
 use App\Models\Message;
 use App\Models\Post;
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -22,13 +23,15 @@ class HomeController extends Controller
 
     public function index()
     {
-        $postlist1 = Post::limit(6)->get();
+        $postlist1 = Post::limit(8)->get();
         $setting = Setting::first();
         $categories = category::all();
+        //$users = User::all();
         return view('home.index', [
             'postlist1'=>$postlist1,
             'setting'=>$setting,
-            'categories'=>$categories
+            'categories'=>$categories,
+            //'users'=>$users,
         ]);
     }
 

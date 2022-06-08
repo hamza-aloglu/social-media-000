@@ -77,13 +77,13 @@ Route::post('/loginadmincheck', [HomeController::class, 'loginadmincheck']) -> n
 
 
 // USER ROUTES ****************************************************************
-Route::prefix('userpanel')->middleware('auth')->name('userpanel.')->
+Route::prefix('userpanel')->name('userpanel.')->
 controller(UserController::class)->group(function () {
-    Route::get('/', 'index') -> name('index');
-    Route::get('/comment', 'comment') -> name('comment');
-    Route::get('/commentDestroy/{id}', 'commentdestroy') -> name('commentdestroy');
-    Route::get('/friend', 'friend') -> name('friend');
-    Route::get('/edit', 'edit') -> name('edit');
+    Route::get('/index/{uid}', 'index') -> name('index');
+    Route::get('/comment/{uid}', 'comment') -> name('comment');
+    Route::get('/commentDestroy/{id}', 'commentdestroy') -> name('commentdestroy') -> middleware('auth');
+    Route::get('/friend', 'friend') -> name('friend') -> middleware('auth');
+    Route::get('/edit', 'edit') -> name('edit') -> middleware('auth');
 });
 
 

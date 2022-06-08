@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use App\Models\Comment;
+use App\Models\Friend;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,24 +15,43 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  int  $uid
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($uid)
     {
-        //\App\Models\User::find(\Illuminate\Support\Facades\Auth::id())->posts
-        $categories = category::all();
-        $postlist1 = User::find(Auth::id())->posts;
+        $categories = category::all(); // for creating post on profile.
+        $user = User::find($uid);
+        $postlist1 = $user->posts;
+        $visitorFlag = 1;
+        if (Auth::check() && $uid == Auth::id())
+        {
+            $visitorFlag = 0;
+        }
+
         return view('home.user.index', [
             'postlist1'=>$postlist1,
             'categories'=>$categories,
+            'visitorFlag'=>$visitorFlag,
+            'user'=>$user,
         ]);
     }
 
-    public function comment()
+
+
+    public function comment($uid)
     {
-        $comments = Comment::where('user_id', '=', Auth::id())->get();
+        $comments = Comment::where('user_id', '=', $uid)->get();
+        $user = User::find($uid);
+        $visitorFlag = 1;
+        if (Auth::check() && $uid == Auth::id())
+        {
+            $visitorFlag = 0;
+        }
         return view('home.user.comments', [
-            'comments' => $comments
+            'comments' => $comments,
+            'user' => $user,
+            'visitorFlag' => $visitorFlag,
         ]);
     }
 
@@ -40,6 +60,11 @@ class UserController extends Controller
         $data = Comment::find($id);
         $data->delete();
         return redirect(route('userpanel.comment'));
+    }
+
+    public function friend()
+    {
+        return view('home.user.friends');
     }
     /**
      * Show the form for creating a new resource.

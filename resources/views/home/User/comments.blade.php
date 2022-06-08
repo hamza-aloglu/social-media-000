@@ -1,6 +1,6 @@
 @extends('layouts.frontbase')
 
-@section('title','posts of '. \Illuminate\Support\Facades\Auth::user()->name)
+@section('title','posts of '. $user->name)
 
 
 @section('content')
@@ -26,10 +26,12 @@
                                 <div class="main-menu-inner header-top-navigation">
                                     <nav>
                                         <ul class="main-menu">
-                                            <li class="active"><a href="#">timeline</a></li>
-                                            <li><a href="{{route('userpanel.comment')}}">comments</a></li>
-                                            <li><a href="{{route('userpanel.friend')}}">friends</a></li>
-                                            <li><a href="{{route('userpanel.edit')}}">edit profile</a></li>
+                                            <li ><a href="{{route('userpanel.index', ['uid'=>$user->id])}}">timeline</a></li>
+                                            <li class="active"><a href="#">comments</a></li>
+                                            @if(!$visitorFlag)
+                                                <li><a href="{{route('userpanel.friend')}}">friends</a></li>
+                                                <li><a href="{{route('userpanel.edit')}}">edit profile</a></li>
+                                            @endif
                                         </ul>
                                     </nav>
                                 </div>
@@ -277,11 +279,13 @@
                                         <td class="">
                                             <span class="label label-info">{{$rs->status}}</span>
                                         </td>
+                                        @if(!$visitorFlag)
                                         <td class="">
                                             <div class="btn-group text-right">
                                                 <a href={{route('userpanel.commentdestroy', ['id' => $rs -> id])}}>Destroy</a>
                                             </div>
                                         </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -307,7 +307,7 @@
                             <!-- profile picture end -->
 
                             <div class="posted-author">
-                                <h6 class="author"><a href="profile.html">{{$rs->user->name}}</a></h6>
+                                <h6 class="author"><a href="{{route('userpanel.index', ['uid'=>$rs->user->id])}}">{{$rs->user->name}}</a></h6>
                                 <span class="post-time">{{$rs->created_at}}</span>
                             </div>
 
@@ -397,14 +397,7 @@
 
                                         <div class="unorder-list-info">
                                             <h3 class="list-title">
-                                                @auth
-                                                    @php
-                                                        $friends = \Illuminate\Support\Facades\Auth::user()->friends()->get();
-                                                    @endphp
-                                                    @foreach($friends as $friend)
-                                                        {{$friend->name}}
-                                                    @endforeach
-                                                @endauth
+
                                             </h3>
                                             <p class="list-subtitle">5 min ago</p>
                                         </div>

@@ -155,10 +155,15 @@
                         <div class="card card-small mb-0 active-profile-wrapper">
                             <div class="active-profiles-wrapper">
                                 <div class="active-profile-carousel slick-row-20 slick-arrow-style">
+                                    @php
+                                        $users = \App\Models\User::all();
+                                    @endphp
+
+                                @foreach($users as $user)
                                     <!-- profile picture end -->
                                     <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="#">
+                                        <div class="">
+                                            <a href="{{route('userpanel.index', ['uid'=>$user->id])}}">
                                                 <figure class="profile-thumb-small">
                                                     <img src="{{asset('assets')}}/images/profile/profile-35x35-1.jpg" alt="profile picture">
                                                 </figure>
@@ -166,150 +171,8 @@
                                         </div>
                                     </div>
                                     <!-- profile picture end -->
+                                @endforeach
 
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-2.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-3.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-4.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-5.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-6.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-7.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-8.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-9.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-10.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-11.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-12.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-13.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
                                 </div>
                             </div>
                         </div>

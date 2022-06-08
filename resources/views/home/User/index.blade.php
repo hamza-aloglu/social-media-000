@@ -1,6 +1,6 @@
 @extends('layouts.frontbase')
 
-@section('title','posts of '. \Illuminate\Support\Facades\Auth::user()->name)
+@section('title','posts of '. $user->name)
 
 
 @section('content')
@@ -27,9 +27,11 @@
                                     <nav>
                                         <ul class="main-menu">
                                             <li class="active"><a href="#">timeline</a></li>
-                                            <li><a href="{{route('userpanel.comment')}}">comments</a></li>
+                                            <li><a href="{{route('userpanel.comment', ['uid'=>$user->id])}}">comments</a></li>
+                                            @if(!$visitorFlag)
                                             <li><a href="{{route('userpanel.friend')}}">friends</a></li>
                                             <li><a href="{{route('userpanel.edit')}}">edit profile</a></li>
+                                            @endif
                                         </ul>
                                     </nav>
                                 </div>
@@ -246,6 +248,7 @@
                     </div>
 
                     <div class="col-lg-6 order-1 order-lg-2">
+                        @if(!$visitorFlag)
                         <!-- share box start -->
                         <div class="card card-small">
                             <div class="share-box-inner">
@@ -258,6 +261,7 @@
                                     </a>
                                 </div>
                                 <!-- profile picture end -->
+
 
                                 <!-- share content box start -->
                                 <div class="share-content-box w-100">
@@ -293,9 +297,9 @@
                                                            onchange="document.getElementById('uploader2').value = this.value;">
                                                     <input type="text" class="gui-input" id="uploader2" placeholder="Select File">
                                                     <input hidden type="text" name="user_id"
-                                                           value="{{\Illuminate\Support\Facades\Auth::id()}}">
+                                                           value="{{$user->id}}">
                                                         <input hidden type="text" name="title"
-                                                               value="{{\App\Models\User::find(\Illuminate\Support\Facades\Auth::id())->name}}">
+                                                               value="{{$user->name}}">
 
 
                                                 </div>
@@ -311,6 +315,7 @@
                             </div>
                         </div>
                         <!-- share box end -->
+                        @endif
 
                         <!-- post status start -->
                         @foreach($postlist1 as $rs)
