@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
@@ -18,9 +19,11 @@ class UserController extends Controller
     public function index()
     {
         //\App\Models\User::find(\Illuminate\Support\Facades\Auth::id())->posts
+        $categories = category::all();
         $postlist1 = User::find(Auth::id())->posts;
         return view('home.user.index', [
-            'postlist1'=>$postlist1
+            'postlist1'=>$postlist1,
+            'categories'=>$categories,
         ]);
     }
 

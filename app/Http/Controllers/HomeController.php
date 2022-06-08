@@ -24,9 +24,11 @@ class HomeController extends Controller
     {
         $postlist1 = Post::limit(6)->get();
         $setting = Setting::first();
+        $categories = category::all();
         return view('home.index', [
             'postlist1'=>$postlist1,
-            'setting'=>$setting
+            'setting'=>$setting,
+            'categories'=>$categories
         ]);
     }
 
@@ -92,6 +94,24 @@ class HomeController extends Controller
 
         return redirect()->route('post', ['id'=>$request -> input('post_id')])->
         with('info', "your comment has been sent.");
+    }
+
+    public function storePost(Request $request)
+    {
+        $data = new post();
+        $data->category_id = $request->category_id;
+        $data->user_id = $request->user_id;
+        $data->title = $request->title;
+        $data->description = $request->description;
+        if($request -> file('image'))
+        {
+            $data->image = $request->file('image')->store('images');
+        }
+        $data->detail = $request->detail;
+        $data->likes = 0;
+
+        $data->save();
+        return redirect()->route('home');
     }
 
 

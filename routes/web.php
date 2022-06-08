@@ -67,6 +67,7 @@ Route::get('/contact', [HomeController::class, 'contact']) -> name('contact');
 Route::post('/storemessage', [HomeController::class, 'storeMessage']) -> name('storemessage');
 Route::get('/faq', [HomeController::class, 'faq']) -> name('faq');
 Route::post('/storecomment', [HomeController::class, 'storeComment']) -> name('storecomment');
+Route::post('/storepost', [HomeController::class, 'storePost']) -> name('storepost');
 
 Route::view('/loginuser', 'home.loginuser') ->name('loginuser');
 Route::get('/logoutuser', [HomeController::class, 'logout']) -> name('logoutuser');

@@ -28,8 +28,8 @@
                                     <!-- profile picture end -->
 
                                     <div class="posted-author">
-                                        <h6 class="author"><a href="profile.html">merry watson</a></h6>
-                                        <span class="post-time">20 min ago</span>
+                                        <h6 class="author"><a href="profile.html">{{$data -> user -> name}}</a></h6>
+                                        <span class="post-time">{{$data -> created_at}}</span>
                                         <span>{{$data -> category -> title}}</span>
                                     </div>
 
@@ -48,9 +48,6 @@
                                 </div>
                                 <!-- post title start -->
                                 <div class="post-content">
-                                    <p class="post-desc bg-light p-2">
-                                        {{ $data->description }}
-                                    </p>
                                     <p class="">
                                         {!! $data->detail !!}
                                     </p>

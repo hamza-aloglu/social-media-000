@@ -263,7 +263,7 @@
                                 <div class="share-content-box w-100">
                                     <form class="share-text-box">
                                         <textarea name="share" class="share-text-field" aria-disabled="true" placeholder="Say Something" data-bs-toggle="modal" data-bs-target="#textbox" id="email"></textarea>
-                                        <button class="btn-share" type="submit">share</button>
+                                        <div data-bs-toggle="modal" data-bs-target="#textbox" class="btn-share">share</div>
                                     </form>
                                 </div>
                                 <!-- share content box end -->
@@ -277,13 +277,33 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body custom-scroll">
-                                                <textarea name="share" class="share-field-big custom-scroll" placeholder="Say Something"></textarea>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="post-share-btn" data-bs-dismiss="modal">cancel</button>
-                                                <button type="button" class="post-share-btn">post</button>
-                                            </div>
+                                            <form class="share-text-box" action="{{route('storepost')}}" enctype="multipart/form-data" method="post">
+                                                @csrf
+                                                <div class="modal-body custom-scroll">
+                                                <textarea name="detail" class="share-field-big custom-scroll"
+                                                          placeholder="Say Something"></textarea>
+                                                    <h5>category</h5>
+                                                    <select hidden name="category_id" class="">
+                                                        @foreach($categories as $rs)
+                                                            <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::
+                                                    getParentsTree($rs, $rs->title)}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <input type="file" class="gui-file" name="image" id="file2"
+                                                           onchange="document.getElementById('uploader2').value = this.value;">
+                                                    <input type="text" class="gui-input" id="uploader2" placeholder="Select File">
+                                                    <input hidden type="text" name="user_id"
+                                                           value="{{\Illuminate\Support\Facades\Auth::id()}}">
+                                                        <input hidden type="text" name="title"
+                                                               value="{{\App\Models\User::find(\Illuminate\Support\Facades\Auth::id())->name}}">
+
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="post-share-btn" data-bs-dismiss="modal">cancel</button>
+                                                    <button type="submit" class="post-share-btn">post</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -330,7 +350,7 @@
                                 <div class="post-content">
                                     <a class="" href="{{route('post', ['id'=>$rs->id])}}" style="color: inherit">
                                         <p class="post-desc">
-                                            {{ $rs->description }}
+                                            {!! $rs->detail !!}
                                         </p>
                                     </a>
                                     @if($rs -> image)
