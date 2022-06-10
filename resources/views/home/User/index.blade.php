@@ -7,7 +7,7 @@
     <main>
 
         <div class="main-wrapper">
-            <div class="profile-banner-large bg-img" data-bg="assets/images/banner/profile-banner.jpg">
+            <div class="profile-banner-large bg-img" data-bg="{{Storage::url($user->background_picture)}}">
             </div>
             <div class="profile-menu-area bg-white">
                 <div class="container">
@@ -15,13 +15,13 @@
                         <div class="col-lg-3 col-md-3">
                             <div class="profile-picture-box">
                                 <figure class="profile-picture">
-                                    <a href="profile.html">
-                                        <img src="../../../public/assets/images/profile/profile-1.jpg" alt="profile picture">
-                                    </a>
+                                    <div href="profile.html">
+                                        <img style="height: 125px; width: 125px;" src="{{Storage::url($user->profile_picture)}}" alt="profile picture">
+                                    </div>
                                 </figure>
                             </div>
                         </div>
-                        <div class="col-lg-9 col-md-6 offset-lg-1">
+                        <div class="col-lg-8 col-md-6 offset-lg-1">
                             <div class="profile-menu-wrapper">
                                 <div class="main-menu-inner header-top-navigation">
                                     <nav>

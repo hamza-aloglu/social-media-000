@@ -165,7 +165,7 @@
                                         <div class="">
                                             <a href="{{route('userpanel.index', ['uid'=>$user->id])}}">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-1.jpg" alt="profile picture">
+                                                    <img src="{{Storage::url($user->profile_picture)}}" alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>

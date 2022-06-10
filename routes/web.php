@@ -156,7 +156,7 @@ Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
         Route::get('/show/{id}', 'show') -> name('show');
         Route::get('destroy/{id}', 'destroy') -> name('destroy');
         Route::post('update/{id}', 'update') -> name('update');
-        Route::post('addrole/{id}', 'addRole') -> name('addrole');
+        Route::post('addroleimage/{id}', 'addRoleImage') -> name('addroleimage');
         Route::get('destroyrole/{uid}/{rid}', 'destroyRole') -> name('destroyrole');
     });
 

@@ -25,9 +25,9 @@ class UserController extends Controller
         $user = User::find($uid);
         $postlist1 = $user->posts;
         $visitorFlag = 1;
+        $isRequested = 0;
         if (Auth::check())
         {
-            $isRequested = 0;
             foreach (Auth::user()->friendsTo as $friend){
                 if ($friend->id == $uid)
                     $isRequested = 1;

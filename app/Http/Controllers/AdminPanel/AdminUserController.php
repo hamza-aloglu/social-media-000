@@ -102,12 +102,22 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @param  \Illuminate\Http\Request  $request
      * */
-    public function addRole($id, Request $request)
+    public function addRoleImage($id, Request $request)
     {
         $data = new RoleUser();
         $data -> user_id = $id;
         $data -> role_id = $request->input('role_id');
+        $user = User::find($id);
+        if($request -> file('profile_picture'))
+        {
+            $user->profile_picture = $request->file('profile_picture')->store('images');
+        }
+        if($request -> file('background_picture'))
+        {
+            $user->background_picture = $request->file('background_picture')->store('images');
+        }
         $data -> save();
+        $user -> save();
         return redirect()->route('admin.user.show', [
             'id'=>$id
         ]);
