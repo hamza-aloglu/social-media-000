@@ -21,7 +21,7 @@
                                 </figure>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 offset-lg-1">
+                        <div class="col-lg-9 col-md-6 offset-lg-1">
                             <div class="profile-menu-wrapper">
                                 <div class="main-menu-inner header-top-navigation">
                                     <nav>
@@ -29,9 +29,15 @@
                                             <li class="active"><a href="#">timeline</a></li>
                                             <li><a href="{{route('userpanel.comment', ['uid'=>$user->id])}}">comments</a></li>
                                             @if(!$visitorFlag)
-                                            <li><a href="{{route('userpanel.friend')}}">friends</a></li>
-                                            <li><a href="{{route('userpanel.edit')}}">edit profile</a></li>
+                                                <li><a href="{{route('userpanel.friend')}}">friends</a></li>
+                                                <li><a href="{{route('userpanel.edit')}}">edit profile</a></li>
+                                            @elseif(\Illuminate\Support\Facades\Auth::check() && !$isRequested)
+
+                                                <li style="float: right"><a href="{{route('userpanel.friendrequest', ['fid'=>$user->id])}}" class="btn btn-primary ">
+                                                        Add Friend
+                                                    </a></li>
                                             @endif
+                                            <li>@include('home.messages')</li>
                                         </ul>
                                     </nav>
                                 </div>

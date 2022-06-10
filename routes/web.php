@@ -84,6 +84,8 @@ controller(UserController::class)->group(function () {
     Route::get('/commentDestroy/{id}', 'commentdestroy') -> name('commentdestroy') -> middleware('auth');
     Route::get('/friend', 'friend') -> name('friend') -> middleware('auth');
     Route::get('/edit', 'edit') -> name('edit') -> middleware('auth');
+    Route::get('/friendrequest/{fid}', 'friendRequest') -> name('friendrequest') -> middleware('auth');
+    Route::get('/friendaccept/{fid}', 'friendAccept') -> name('friendaccept') -> middleware('auth');
 });
 
 

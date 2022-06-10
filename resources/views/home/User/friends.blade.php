@@ -16,7 +16,8 @@
                             <div class="profile-picture-box">
                                 <figure class="profile-picture">
                                     <a href="profile.html">
-                                        <img src="../../../public/assets/images/profile/profile-1.jpg" alt="profile picture">
+                                        <img src="../../../public/assets/images/profile/profile-1.jpg"
+                                             alt="profile picture">
                                     </a>
                                 </figure>
                             </div>
@@ -26,8 +27,12 @@
                                 <div class="main-menu-inner header-top-navigation">
                                     <nav>
                                         <ul class="main-menu">
-                                            <li><a href="{{route('userpanel.index')}}">timeline</a></li>
-                                            <li><a href="{{route('userpanel.comment')}}">comments</a></li>
+                                            <li>
+                                                <a href="{{route('userpanel.index', ['uid'=>\Illuminate\Support\Facades\Auth::id()])}}">timeline</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('userpanel.comment', ['uid'=>\Illuminate\Support\Facades\Auth::id()])}}">comments</a>
+                                            </li>
                                             <li class=""><a href="#">friends</a></li>
                                             <li><a href="{{route('userpanel.edit')}}">edit profile</a></li>
                                         </ul>
@@ -46,25 +51,71 @@
                         <div class="col-12">
                             <div class="content-box friends-zone">
                                 <div class="row mt--20 friends-list">
-                                    @foreach(\Illuminate\Support\Facades\Auth::user()->friends as $friend)
+                                    @foreach(\Illuminate\Support\Facades\Auth::user()->pendingFriendsFrom as $friend)
                                         <div class="col-lg-3 col-sm-6 recently request">
-                                        <div class="friend-list-view">
-                                            <!-- profile picture end -->
-                                            <div class="profile-thumb">
-                                                <a href="#">
-                                                    <figure class="profile-thumb-middle">
-                                                        <img src="../../../public/assets/images/profile/profile-small-1.jpg" alt="profile picture">
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                            <!-- profile picture end -->
+                                            <div class="friend-list-view">
+                                                <!-- profile picture end -->
+                                                <div class="profile-thumb">
+                                                    <a href="#">
+                                                        <figure class="profile-thumb-middle">
+                                                            <img
+                                                                src="../../../public/assets/images/profile/profile-small-1.jpg"
+                                                                alt="profile picture">
+                                                        </figure>
+                                                    </a>
+                                                </div>
+                                                <!-- profile picture end -->
 
-                                            <div class="posted-author">
-                                                <h6 class="author"><a href="profile.html">{{$friend->name}}</a></h6>
-                                                <button class="add-frnd">add friend</button>
+                                                <div class="posted-author">
+                                                    <h6 class="author"><a href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a></h6>
+                                                    <a href="{{route('userpanel.friendaccept', ['fid' => $friend->id])}}" class="add-frnd">accept friend</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
+                                    @foreach(\Illuminate\Support\Facades\Auth::user()->acceptedFriendsFrom as $friend)
+                                        <div class="col-lg-3 col-sm-6 recently request">
+                                            <div class="friend-list-view">
+                                                <!-- profile picture end -->
+                                                <div class="profile-thumb">
+                                                    <a href="#">
+                                                        <figure class="profile-thumb-middle">
+                                                            <img
+                                                                src="../../../public/assets/images/profile/profile-small-1.jpg"
+                                                                alt="profile picture">
+                                                        </figure>
+                                                    </a>
+                                                </div>
+                                                <!-- profile picture end -->
+
+                                                <div class="posted-author">
+                                                    <h6 class="author"><a href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a></h6>
+                                                    <div class="add-friend">friend</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    @foreach(\Illuminate\Support\Facades\Auth::user()->acceptedFriendsTo as $friend)
+                                        <div class="col-lg-3 col-sm-6 recently request">
+                                            <div class="friend-list-view">
+                                                <!-- profile picture end -->
+                                                <div class="profile-thumb">
+                                                    <a href="#">
+                                                        <figure class="profile-thumb-middle">
+                                                            <img
+                                                                src="../../../public/assets/images/profile/profile-small-1.jpg"
+                                                                alt="profile picture">
+                                                        </figure>
+                                                    </a>
+                                                </div>
+                                                <!-- profile picture end -->
+
+                                                <div class="posted-author">
+                                                    <h6 class="author"><a href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a></h6>
+                                                    <div class="add-frnd">friend</div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endforeach
                                 </div>
                             </div>

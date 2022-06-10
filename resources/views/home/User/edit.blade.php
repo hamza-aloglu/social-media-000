@@ -26,8 +26,8 @@
                                 <div class="main-menu-inner header-top-navigation">
                                     <nav>
                                         <ul class="main-menu">
-                                            <li class="active"><a href="{{route('userpanel.index')}}">timeline</a></li>
-                                            <li><a href="{{route('userpanel.comment')}}">comments</a></li>
+                                            <li class="active"><a href="{{route('userpanel.index', ['uid'=>\Illuminate\Support\Facades\Auth::id()])}}">timeline</a></li>
+                                            <li><a href="{{route('userpanel.comment', ['uid'=>\Illuminate\Support\Facades\Auth::id()])}}">comments</a></li>
                                             <li><a href="{{route('userpanel.friend')}}">friends</a></li>
                                             <li><a href="#">edit profile</a></li>
                                         </ul>

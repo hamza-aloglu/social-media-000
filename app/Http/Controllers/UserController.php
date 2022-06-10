@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -24,16 +25,32 @@ class UserController extends Controller
         $user = User::find($uid);
         $postlist1 = $user->posts;
         $visitorFlag = 1;
-        if (Auth::check() && $uid == Auth::id())
+        if (Auth::check())
         {
-            $visitorFlag = 0;
+            $isRequested = 0;
+            foreach (Auth::user()->friendsTo as $friend){
+                if ($friend->id == $uid)
+                    $isRequested = 1;
+            }
+            foreach (Auth::user()->friendsFrom as $friend){
+                if ($friend->id == $uid)
+                    $isRequested = 1;
+            }
+            if($uid == Auth::id())
+            {
+                $visitorFlag = 0;
+            }
+
         }
+
+
 
         return view('home.user.index', [
             'postlist1'=>$postlist1,
             'categories'=>$categories,
             'visitorFlag'=>$visitorFlag,
             'user'=>$user,
+            'isRequested'=>$isRequested,
         ]);
     }
 
@@ -66,6 +83,27 @@ class UserController extends Controller
     {
         return view('home.user.friends');
     }
+
+    public function friendRequest($fid)
+    {
+        $friendship = new Friend();
+        $uid = Auth::id();
+        $friendship->user_id = $uid; $friendship->friend_id = $fid;
+        $friendship->save();
+        /*$friendship2 = new Friend();
+        $friendship2->user_id = $fid; $friendship2->friend_id = $uid; // if x is friend with y, y is friend with x.
+        $friendship2->save();*/
+        return back()->with('info', 'request sent');
+    }
+
+    public function friendAccept($fid)
+    {
+        $friendship = DB::table('friends')->where('friend_id', '=', Auth::id())->
+            where('user_id', '=', $fid)->update(['accepted'=>1]);
+
+        return back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
