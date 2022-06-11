@@ -79,6 +79,13 @@
                     <span class="sb-menu-icon fa fa-file-text-o"></span>
                 </a>
             </li>
+            <li>
+                <a class="" href="{{route('admin.friend.index')}}">
+                    <span class="caret"></span>
+                    <span class="sidebar-title">Friendship</span>
+                    <span class="sb-menu-icon fa fa-user"></span>
+                </a>
+            </li>
             <!-- Sidebar Progress Bars -->
             <li class="sidebar-label pt25 pb20">Stats</li>
             <li class="sidebar-stat">

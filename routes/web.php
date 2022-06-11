@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminPanel\AdminUserController;
 use App\Http\Controllers\AdminPanel\CommentController;
+use App\Http\Controllers\AdminPanel\FriendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
 use App\Http\Controllers\AdminPanel\FaqController as AdminFaqController;
@@ -158,6 +159,15 @@ Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
         Route::post('update/{id}', 'update') -> name('update');
         Route::post('addroleimage/{id}', 'addRoleImage') -> name('addroleimage');
         Route::get('destroyrole/{uid}/{rid}', 'destroyRole') -> name('destroyrole');
+    });
+    // Friend ROUTES ****************************************************************
+    Route::prefix('friend')->name('friend.')->controller(FriendController::class)->
+    group(function () {
+        Route::get('/', 'index') -> name('index');
+        Route::get('/edit/{id}', 'edit') -> name('edit');
+        Route::get('/show/{id}', 'show') -> name('show');
+        Route::get('destroy/{id}', 'destroy') -> name('destroy');
+        Route::post('update/{id}', 'update') -> name('update');
     });
 
     // general routes ****************************************************************
