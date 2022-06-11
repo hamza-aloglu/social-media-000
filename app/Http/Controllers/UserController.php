@@ -44,7 +44,6 @@ class UserController extends Controller
         }
 
 
-
         return view('home.user.index', [
             'postlist1'=>$postlist1,
             'categories'=>$categories,
@@ -77,6 +76,13 @@ class UserController extends Controller
         $data = Comment::find($id);
         $data->delete();
         return redirect(route('userpanel.comment'));
+    }
+
+    public function postDestroy($pid)
+    {
+        $post = Post::find($pid);
+        $post->delete();
+        return back();
     }
 
     public function friend()

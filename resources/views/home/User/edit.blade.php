@@ -7,20 +7,11 @@
     <main>
 
         <div class="main-wrapper">
-            <div class="profile-banner-large bg-img" data-bg="assets/images/banner/profile-banner.jpg">
+            <div class="profile-banner-large bg-img" data-bg="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->background_picture)}}">
             </div>
             <div class="profile-menu-area bg-white">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-lg-3 col-md-3">
-                            <div class="profile-picture-box">
-                                <figure class="profile-picture">
-                                    <a href="profile.html">
-                                        <img src="../../../public/assets/images/profile/profile-1.jpg" alt="profile picture">
-                                    </a>
-                                </figure>
-                            </div>
-                        </div>
                         <div class="col-lg-6 col-md-6 offset-lg-1">
                             <div class="profile-menu-wrapper">
                                 <div class="main-menu-inner header-top-navigation">

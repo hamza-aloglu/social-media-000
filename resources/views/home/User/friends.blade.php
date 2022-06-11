@@ -7,7 +7,8 @@
     <main>
 
         <div class="main-wrapper">
-            <div class="profile-banner-large bg-img" data-bg="assets/images/banner/profile-banner.jpg">
+            <div class="profile-banner-large bg-img"
+                 data-bg="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->background_picture)}}">
             </div>
             <div class="profile-menu-area bg-white">
                 <div class="container">
@@ -15,10 +16,11 @@
                         <div class="col-lg-3 col-md-3">
                             <div class="profile-picture-box">
                                 <figure class="profile-picture">
-                                    <a href="profile.html">
-                                        <img src="../../../public/assets/images/profile/profile-1.jpg"
-                                             alt="profile picture">
-                                    </a>
+                                    <div href="profile.html">
+                                        <img
+                                            src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_picture)}}"
+                                            alt="profile picture" style="height: 125px; width: 125px">
+                                    </div>
                                 </figure>
                             </div>
                         </div>
@@ -33,7 +35,7 @@
                                             <li>
                                                 <a href="{{route('userpanel.comment', ['uid'=>\Illuminate\Support\Facades\Auth::id()])}}">comments</a>
                                             </li>
-                                            <li class=""><a href="#">friends</a></li>
+                                            <li class="active"><a href="#">friends</a></li>
                                             <li><a href="{{route('userpanel.edit')}}">edit profile</a></li>
                                         </ul>
                                     </nav>
@@ -59,7 +61,7 @@
                                                     <a href="#">
                                                         <figure class="profile-thumb-middle">
                                                             <img
-                                                                src="../../../public/assets/images/profile/profile-small-1.jpg"
+                                                                src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_picture)}}"
                                                                 alt="profile picture">
                                                         </figure>
                                                     </a>
@@ -67,8 +69,11 @@
                                                 <!-- profile picture end -->
 
                                                 <div class="posted-author">
-                                                    <h6 class="author"><a href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a></h6>
-                                                    <a href="{{route('userpanel.friendaccept', ['fid' => $friend->id])}}" class="add-frnd">accept friend</a>
+                                                    <h6 class="author"><a
+                                                            href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a>
+                                                    </h6>
+                                                    <a href="{{route('userpanel.friendaccept', ['fid' => $friend->id])}}"
+                                                       class="add-frnd">accept friend</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,7 +86,7 @@
                                                     <a href="#">
                                                         <figure class="profile-thumb-middle">
                                                             <img
-                                                                src="../../../public/assets/images/profile/profile-small-1.jpg"
+                                                                src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_picture)}}"
                                                                 alt="profile picture">
                                                         </figure>
                                                     </a>
@@ -89,7 +94,9 @@
                                                 <!-- profile picture end -->
 
                                                 <div class="posted-author">
-                                                    <h6 class="author"><a href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a></h6>
+                                                    <h6 class="author"><a
+                                                            href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a>
+                                                    </h6>
                                                     <div class="add-friend">friend</div>
                                                 </div>
                                             </div>
@@ -111,7 +118,9 @@
                                                 <!-- profile picture end -->
 
                                                 <div class="posted-author">
-                                                    <h6 class="author"><a href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a></h6>
+                                                    <h6 class="author"><a
+                                                            href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a>
+                                                    </h6>
                                                     <div class="add-frnd">friend</div>
                                                 </div>
                                             </div>

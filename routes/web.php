@@ -83,6 +83,7 @@ controller(UserController::class)->group(function () {
     Route::get('/index/{uid}', 'index') -> name('index');
     Route::get('/comment/{uid}', 'comment') -> name('comment');
     Route::get('/commentDestroy/{id}', 'commentdestroy') -> name('commentdestroy') -> middleware('auth');
+    Route::get('/postDestroy/{pid}', 'postdestroy') -> name('postdestroy') -> middleware('auth');
     Route::get('/friend', 'friend') -> name('friend') -> middleware('auth');
     Route::get('/edit', 'edit') -> name('edit') -> middleware('auth');
     Route::get('/friendrequest/{fid}', 'friendRequest') -> name('friendrequest') -> middleware('auth');

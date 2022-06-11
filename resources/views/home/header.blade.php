@@ -131,22 +131,20 @@
                             <div class="profile-thumb-small">
                                 <a href="javascript:void(0)" class="profile-triger">
                                     <figure>
-                                        <img src="{{asset('assets')}}/images/profile/profile-35x35-1.jpg" alt="profile picture">
+                                        <img src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_picture)}}"
+                                             alt="profile picture">
                                     </figure>
                                 </a>
                                 <div class="profile-dropdown">
                                     <div class="profile-head">
-                                        <h5 class="name"><a href="#">{{\Illuminate\Support\Facades\Auth::user()->name}}</a></h5>
-                                        <a class="mail" href="#">{{\Illuminate\Support\Facades\Auth::user()->email}}</a>
+                                        <h5 class="name"><div href="#">{{\Illuminate\Support\Facades\Auth::user()->name}}</div></h5>
+                                        <div class="mail" href="#">{{\Illuminate\Support\Facades\Auth::user()->email}}</div>
                                     </div>
                                     <div class="profile-body">
                                         <ul>
                                             <li><a href="{{route('userpanel.index', ['uid'=>\Illuminate\Support\Facades\Auth::id()])}}"><i class="flaticon-user"></i>Profile</a></li>
-                                            <li><a href="#"><i class="flaticon-message"></i>Inbox</a></li>
-                                            <li><a href="#"><i class="flaticon-document"></i>Activity</a></li>
                                         </ul>
                                         <ul>
-                                            <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
                                             <li><a href="{{route('logoutuser')}}"><i class="flaticon-unlock"></i>Sign out</a></li>
                                         </ul>
                                     </div>
