@@ -16,7 +16,8 @@
                                 <div class="frnd-search-title">
                                     <button class="frnd-search-icon"><i class="flaticon-settings"></i></button>
                                     <p>search friends</p>
-                                    <button class="close-btn" data-close="friend-search-list"><i class="flaticon-cross-out"></i></button>
+                                    <button class="close-btn" data-close="friend-search-list"><i
+                                            class="flaticon-cross-out"></i></button>
                                 </div>
                                 <div class="frnd-search-inner custom-scroll">
                                     <ul>
@@ -25,7 +26,9 @@
                                             <div class="profile-thumb active">
                                                 <a href="#">
                                                     <figure class="profile-thumb-small">
-                                                        <img src="{{asset('assets')}}/images/profile/profile-35x35-1.jpg" alt="profile picture">
+                                                        <img
+                                                            src="{{asset('assets')}}/images/profile/profile-35x35-1.jpg"
+                                                            alt="profile picture">
                                                     </figure>
                                                 </a>
                                             </div>
@@ -41,7 +44,9 @@
                                             <div class="profile-thumb active">
                                                 <a href="#">
                                                     <figure class="profile-thumb-small">
-                                                        <img src="{{asset('assets')}}/images/profile/profile-35x35-2.jpg" alt="profile picture">
+                                                        <img
+                                                            src="{{asset('assets')}}/images/profile/profile-35x35-2.jpg"
+                                                            alt="profile picture">
                                                     </figure>
                                                 </a>
                                             </div>
@@ -57,7 +62,9 @@
                                             <div class="profile-thumb active">
                                                 <a href="#">
                                                     <figure class="profile-thumb-small">
-                                                        <img src="{{asset('assets')}}/images/profile/profile-35x35-3.jpg" alt="profile picture">
+                                                        <img
+                                                            src="{{asset('assets')}}/images/profile/profile-35x35-3.jpg"
+                                                            alt="profile picture">
                                                     </figure>
                                                 </a>
                                             </div>
@@ -73,7 +80,9 @@
                                             <div class="profile-thumb active">
                                                 <a href="#">
                                                     <figure class="profile-thumb-small">
-                                                        <img src="{{asset('assets')}}/images/profile/profile-35x35-4.jpg" alt="profile picture">
+                                                        <img
+                                                            src="{{asset('assets')}}/images/profile/profile-35x35-4.jpg"
+                                                            alt="profile picture">
                                                     </figure>
                                                 </a>
                                             </div>
@@ -89,7 +98,9 @@
                                             <div class="profile-thumb active">
                                                 <a href="#">
                                                     <figure class="profile-thumb-small">
-                                                        <img src="{{asset('assets')}}/images/profile/profile-35x35-6.jpg" alt="profile picture">
+                                                        <img
+                                                            src="{{asset('assets')}}/images/profile/profile-35x35-6.jpg"
+                                                            alt="profile picture">
                                                     </figure>
                                                 </a>
                                             </div>
@@ -105,7 +116,9 @@
                                             <div class="profile-thumb active">
                                                 <a href="#">
                                                     <figure class="profile-thumb-small">
-                                                        <img src="{{asset('assets')}}/images/profile/profile-35x35-7.jpg" alt="profile picture">
+                                                        <img
+                                                            src="{{asset('assets')}}/images/profile/profile-35x35-7.jpg"
+                                                            alt="profile picture">
                                                     </figure>
                                                 </a>
                                             </div>
@@ -121,7 +134,9 @@
                                             <div class="profile-thumb active">
                                                 <a href="#">
                                                     <figure class="profile-thumb-small">
-                                                        <img src="{{asset('assets')}}/images/profile/profile-35x35-8.jpg" alt="profile picture">
+                                                        <img
+                                                            src="{{asset('assets')}}/images/profile/profile-35x35-8.jpg"
+                                                            alt="profile picture">
                                                     </figure>
                                                 </a>
                                             </div>
@@ -137,7 +152,9 @@
                                             <div class="profile-thumb active">
                                                 <a href="#">
                                                     <figure class="profile-thumb-small">
-                                                        <img src="{{asset('assets')}}/images/profile/profile-35x35-9.jpg" alt="profile picture">
+                                                        <img
+                                                            src="{{asset('assets')}}/images/profile/profile-35x35-9.jpg"
+                                                            alt="profile picture">
                                                     </figure>
                                                 </a>
                                             </div>
@@ -155,23 +172,24 @@
                         <div class="card card-small mb-0 active-profile-wrapper">
                             <div class="active-profiles-wrapper">
                                 <div class="active-profile-carousel slick-row-20 slick-arrow-style">
-                                    @php
-                                        $users = \App\Models\User::all();
-                                    @endphp
+                                @php
+                                    $users = \App\Models\User::all();
+                                @endphp
 
                                 @foreach($users as $user)
                                     <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="">
-                                            <a href="{{route('userpanel.index', ['uid'=>$user->id])}}">
-                                                <figure class="profile-thumb-small">
-                                                    <img src="{{Storage::url($user->profile_picture)}}" alt="profile picture">
-                                                </figure>
-                                            </a>
+                                        <div class="single-slide">
+                                            <div class="">
+                                                <a href="{{route('userpanel.index', ['uid'=>$user->id])}}">
+                                                    <figure class="profile-thumb-small">
+                                                        <img src="{{Storage::url($user->profile_picture)}}"
+                                                             alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- profile picture end -->
-                                @endforeach
+                                        <!-- profile picture end -->
+                                    @endforeach
 
                                 </div>
                             </div>
@@ -179,7 +197,8 @@
                         <div class="footer-card position-relative">
                             <div class="live-chat-inner">
                                 <div class="chat-text-field">
-                                    <textarea class="live-chat-field custom-scroll" placeholder="Text Message"></textarea>
+                                    <textarea class="live-chat-field custom-scroll"
+                                              placeholder="Text Message"></textarea>
                                     <button class="chat-message-send" type="submit" value="submit">
                                         <img src="{{asset('assets')}}/images/icons/plane.png" alt="">
                                     </button>
@@ -190,7 +209,8 @@
                                         <div class="profile-thumb active">
                                             <a href="#">
                                                 <figure class="profile-thumb-small">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-13.jpg" alt="profile picture">
+                                                    <img src="{{asset('assets')}}/images/profile/profile-35x35-13.jpg"
+                                                         alt="profile picture">
                                                 </figure>
                                             </a>
                                         </div>
@@ -201,13 +221,15 @@
                                         </div>
                                         <div class="live-chat-settings ms-auto">
                                             <button class="chat-settings"><i class="flaticon-settings"></i></button>
-                                            <button class="close-btn" data-close="chat-output-box"><i class="flaticon-cross-out"></i></button>
+                                            <button class="close-btn" data-close="chat-output-box"><i
+                                                    class="flaticon-cross-out"></i></button>
                                         </div>
                                     </div>
                                     <div class="message-list-inner">
                                         <ul class="message-list custom-scroll">
                                             <li class="text-friends">
-                                                <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
+                                                <p>Many desktop publishing packages and web page editors now use Lorem
+                                                    Ipsum as their default model text</p>
                                                 <div class="message-time">10 minute ago</div>
                                             </li>
                                             <li class="text-author">
@@ -219,7 +241,8 @@
                                                 <div class="message-time">2 minute ago</div>
                                             </li>
                                             <li class="text-friends">
-                                                <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>
+                                                <p>Many desktop publishing packages and web page editors now use Lorem
+                                                    Ipsum as their default model text</p>
                                                 <div class="message-time">10 minute ago</div>
                                             </li>
                                             <li class="text-author">
@@ -242,7 +265,7 @@
     </div>
 </footer>
 <!-- footer area end -->
-<!-- footer area start -->
+<!-- MOBILE footer area start -->
 <footer class="d-block d-lg-none">
     <div class="footer-area reveal-footer">
         <div class="container">
@@ -260,89 +283,25 @@
                         <div class="card card-small mb-0 active-profile-mob-wrapper">
                             <div class="active-profiles-mob-wrapper slick-row-10">
                                 <div class="active-profile-mobile">
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="#">
-                                                <figure class="profile-thumb-small profile-active">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-small-1.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
+                                @php
+                                    $users = \App\Models\User::all();
+                                @endphp
 
+                                @foreach($users as $user)
                                     <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small profile-active">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-small-8.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
+                                        <div class="single-slide">
+                                            <div class="">
+                                                <a href="{{route('userpanel.index', ['uid'=>$user->id])}}">
+                                                    <figure class="profile-thumb-small">
+                                                        <img src="{{Storage::url($user->profile_picture)}}"
+                                                             alt="profile picture">
+                                                    </figure>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- profile picture end -->
+                                        <!-- profile picture end -->
+                                    @endforeach
 
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small profile-active">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-small-2.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small profile-active">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-small-3.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small profile-active">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-small-4.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small profile-active">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-small-5.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
-
-                                    <!-- profile picture end -->
-                                    <div class="single-slide">
-                                        <div class="profile-thumb active profile-active">
-                                            <a href="javascript:void(0)">
-                                                <figure class="profile-thumb-small profile-active">
-                                                    <img src="{{asset('assets')}}/images/profile/profile-small-9.jpg" alt="profile picture">
-                                                </figure>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- profile picture end -->
                                 </div>
                             </div>
                         </div>
@@ -352,7 +311,7 @@
         </div>
     </div>
 </footer>
-<!-- footer area end -->
+<!-- MOBILE footer area end -->
 
 <!-- JS
 ============================================ -->

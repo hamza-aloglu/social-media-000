@@ -19,31 +19,18 @@
                                 <div class="post-title d-flex align-items-center">
                                     <!-- profile picture end -->
                                     <div class="profile-thumb">
-                                        <a href="#">
+                                        <a href="{{route('userpanel.index', ['uid'=>$data->user->id])}}">
                                             <figure class="profile-thumb-middle">
-                                                <img src="{{asset('assets')}}/images/profile/profile-small-1.jpg" alt="profile picture">
+                                                <img src="{{\Illuminate\Support\Facades\Storage::url($data->user->profile_picture)}}" alt="profile picture">
                                             </figure>
                                         </a>
                                     </div>
                                     <!-- profile picture end -->
 
                                     <div class="posted-author">
-                                        <h6 class="author"><a href="profile.html">{{$data -> user -> name}}</a></h6>
+                                        <h6 class="author"><a href="{{route('userpanel.index', ['uid'=>$data->user->id])}}">{{$data -> user -> name}}</a></h6>
                                         <span class="post-time">{{$data -> created_at}}</span>
                                         <span>{{$data -> category -> title}}</span>
-                                    </div>
-
-                                    <div class="post-settings-bar">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <div class="post-settings arrow-shape">
-                                            <ul>
-                                                <li><button>copy link to adda</button></li>
-                                                <li><button>edit post</button></li>
-                                                <li><button>embed adda</button></li>
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                                 <!-- post title start -->
@@ -100,16 +87,16 @@
                             </div>
                         <!-- post status end -->
                     </div>
-
-                    <div class="col-lg-8 order-1 order-lg-2">
+                    @auth
+                        <div class="col-lg-8 order-1 order-lg-2">
                         @include('home.messages')
                         <div class="card card-small">
                             <div class="share-box-inner">
                                 <!-- profile picture end -->
                                 <div class="profile-thumb">
-                                    <a href="#">
+                                    <a href="{{route('userpanel.index', ['uid'=>\Illuminate\Support\Facades\Auth::id()])}}">
                                         <figure class="profile-thumb-middle">
-                                            <img src="{{asset('assets')}}/images/profile/profile-small-37.jpg"
+                                            <img src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_picture)}}"
                                                  alt="profile picture">
                                         </figure>
                                     </a>
@@ -125,7 +112,8 @@
                                                   placeholder="Say Something..." data-bs-toggle="modal"
                                                   data-bs-target="#textbox" id="email"></textarea>
                                         @auth
-                                            <button class="btn-share" type="submit">comment</button>
+                                            <div data-bs-toggle="modal"
+                                                    data-bs-target="#textbox" class="btn-share">comment</div>
                                         @else
                                             <a href="/login" class="btn-share">comment</a>
                                         @endauth
@@ -174,7 +162,7 @@
                             </div>
                         </div>
                     </div>
-
+                    @endauth
                     <div class="col-lg-7 order-1 order-lg-2 border-top border-5">
                         <!-- post status start -->
                         @foreach($comments as $rs)
@@ -183,39 +171,26 @@
                                 <div class="post-title d-flex align-items-center">
                                     <!-- profile picture end -->
                                     <div class="profile-thumb">
-                                        <a href="#">
+                                        <a href="{{route('userpanel.index', ['uid'=>$rs->user->id])}}">
                                             <figure class="profile-thumb-middle">
-                                                <img src="{{asset('assets')}}/images/profile/profile-small-1.jpg" alt="profile picture">
+                                                <img src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_picture)}}" alt="profile picture">
                                             </figure>
                                         </a>
                                     </div>
                                     <!-- profile picture end -->
 
                                     <div class="posted-author">
-                                        <h6 class="author"><a href="profile.html">{{$rs->user->name}}</a></h6>
+                                        <h6 class="author"><a href="{{route('userpanel.index', ['uid'=>$rs->user->id])}}">{{$rs->user->name}}</a></h6>
                                         <span class="post-time">{{$rs->created_at}}</span>
-                                    </div>
-
-                                    <div class="post-settings-bar">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <div class="post-settings arrow-shape">
-                                            <ul>
-                                                <li><button>copy link to adda</button></li>
-                                                <li><button>edit comment</button></li>
-                                                <li><button>embed adda</button></li>
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                                 <!-- post title start -->
                                 <div class="post-content">
-                                    <a class="" href="{{route('post', ['id'=>$rs->id])}}" style="color: inherit">
+                                    <div class="" style="color: inherit">
                                         <p class="post-desc">
                                             {{ $rs->comment }}
                                         </p>
-                                    </a>
+                                    </div>
                                     <div class="post-meta">
                                         <button class="post-meta-like">
                                             <i class="bi bi-heart-beat"></i>

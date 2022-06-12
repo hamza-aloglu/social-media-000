@@ -39,10 +39,6 @@
 </head>
 <body>
 @include('home.header')
-
-@section('slider')
-
-@show
 @yield('content')
 
 @include('home.backtotop')

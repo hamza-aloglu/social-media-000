@@ -5,10 +5,6 @@
 @section('description', $setting -> description)
 @section('icon', \Illuminate\Support\Facades\Storage::url($setting->icon))
 
-@section('slider')
-    @include('home.slider')
-@endsection
-
 @section('content')
     <main>
         <div class="main-wrapper pt-80">

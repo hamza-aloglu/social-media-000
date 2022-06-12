@@ -17,7 +17,7 @@ class HomeController extends Controller
 {
     public static function maincategorylist()
     {
-        return category::where('parentid', '=', 0) -> with('children') -> get();
+        return category::where('parentid', '=', 0)->with('children')->get();
     }
 
 
@@ -28,9 +28,9 @@ class HomeController extends Controller
         $categories = category::all();
         //$users = User::all();
         return view('home.index', [
-            'postlist1'=>$postlist1,
-            'setting'=>$setting,
-            'categories'=>$categories,
+            'postlist1' => $postlist1,
+            'setting' => $setting,
+            'categories' => $categories,
             //'users'=>$users,
         ]);
     }
@@ -39,7 +39,7 @@ class HomeController extends Controller
     {
         $setting = Setting::first();
         return view('home.about', [
-            'setting'=>$setting
+            'setting' => $setting
         ]);
     }
 
@@ -47,7 +47,7 @@ class HomeController extends Controller
     {
         $setting = Setting::first();
         return view('home.references', [
-            'setting'=>$setting
+            'setting' => $setting
         ]);
     }
 
@@ -55,7 +55,7 @@ class HomeController extends Controller
     {
         $setting = Setting::first();
         return view('home.contact', [
-            'setting'=>$setting
+            'setting' => $setting
         ]);
     }
 
@@ -64,21 +64,21 @@ class HomeController extends Controller
         $setting = Setting::first();
         $datalist = faq::all();
         return view('home.faq', [
-            'datalist'=>$datalist,
-            'setting'=>$setting
+            'datalist' => $datalist,
+            'setting' => $setting
         ]);
     }
 
     public function storeMessage(Request $request)
     {
         $data = new Message();
-        $data -> name = $request -> input('name');
-        $data -> email = $request -> input('email');
-        $data -> subject = $request -> input('subject');
-        $data -> phone = $request -> input('phone');
-        $data -> message = $request -> input('message');
-        $data -> ip = request()->ip();
-        $data -> save();
+        $data->name = $request->input('name');
+        $data->email = $request->input('email');
+        $data->subject = $request->input('subject');
+        $data->phone = $request->input('phone');
+        $data->message = $request->input('message');
+        $data->ip = request()->ip();
+        $data->save();
 
         return redirect()->route('contact')->with('info', "your message has been sent.");
     }
@@ -88,14 +88,14 @@ class HomeController extends Controller
         // dd($request); //checking values.
 
         $data = new Comment();
-        $data -> user_id = Auth::id();
-        $data -> post_id = $request -> input('post_id');
-        $data -> comment = $request -> input('comment');
-        $data -> rate = $request->input('rate');
-        $data -> ip = request()->ip();
-        $data -> save();
+        $data->user_id = Auth::id();
+        $data->post_id = $request->input('post_id');
+        $data->comment = $request->input('comment');
+        $data->rate = $request->input('rate');
+        $data->ip = request()->ip();
+        $data->save();
 
-        return redirect()->route('post', ['id'=>$request -> input('post_id')])->
+        return redirect()->route('post', ['id' => $request->input('post_id')])->
         with('info', "your comment has been sent.");
     }
 
@@ -106,8 +106,7 @@ class HomeController extends Controller
         $data->user_id = $request->user_id;
         $data->title = $request->title;
         $data->description = $request->description;
-        if($request -> file('image'))
-        {
+        if ($request->file('image')) {
             $data->image = $request->file('image')->store('images');
         }
         $data->detail = $request->detail;
@@ -123,9 +122,9 @@ class HomeController extends Controller
         $data = Post::find($id);
 
         $comments = Comment::where('post_id', $id)->where('status', 'true')->get(); // This one uses model of laravel, so we are able to
-                                                           // use relationships of that model
+        // use relationships of that model
         //$comments = DB::table('comments')->where('post_id', $id)->get(); // This one does not use model. It
-                                                                           // fetches from mysql directly.
+        // fetches from mysql directly.
 
         // $images = DB::table('images')->where('post_id', $id)->get();
         $images = DB::select('SELECT * FROM images WHERE post_id = ?', [$id]); // could be problematic.
@@ -139,10 +138,11 @@ class HomeController extends Controller
     public function postcategory($cid, $slug)
     {
         $category = category::find($cid);
-        $posts = DB::table('posts')->where('category_id', $cid)->get();
+        $posts = Post::all()->where('category_id', '=', $cid);
+        //$posts = DB::table('posts')->where('category_id', $cid)->get(); if you use this line of code, you will not be able to reach user of the post because this method does not use eloquent model
         return view('home.categoryposts', [
-            'category'=>$category,
-            'posts'=>$posts
+            'category' => $category,
+            'posts' => $posts,
         ]);
     }
 
@@ -184,12 +184,11 @@ class HomeController extends Controller
     public function loginadmincheck(Request $request)
     {
         $credentials = $request->validate([
-            'email'=>['required', 'email'],
-            'password'=>['required'],
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        if(Auth::attempt($credentials))
-        {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('/admin');
         }
