@@ -88,7 +88,10 @@ controller(UserController::class)->group(function () {
     Route::get('/edit', 'edit') -> name('edit') -> middleware('auth');
     Route::get('/friendrequest/{fid}', 'friendRequest') -> name('friendrequest') -> middleware('auth');
     Route::get('/friendaccept/{fid}', 'friendAccept') -> name('friendaccept') -> middleware('auth');
+    Route::get('/frienddelete/{fid}', 'friendDelete') -> name('frienddelete') -> middleware('auth');
+    Route::post('/editpictures', 'editPictures') -> name('editpictures') -> middleware('auth');
 });
+Route::get('/searchuser', [UserController::class, 'searchUser'])->name('searchuser');
 
 
 // ADMIN ROUTES ****************************************************************

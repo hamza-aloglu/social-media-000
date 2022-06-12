@@ -1,6 +1,8 @@
 @extends('layouts.frontbase')
 
 @section('title', $category -> title)
+@section('keywords', $category -> keywords)
+@section('description', $category -> description)
 
 @section('head')
 @endsection

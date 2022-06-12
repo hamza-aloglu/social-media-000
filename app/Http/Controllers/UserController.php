@@ -6,6 +6,7 @@ use App\Models\category;
 use App\Models\Comment;
 use App\Models\Friend;
 use App\Models\Post;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,7 @@ class UserController extends Controller
      */
     public function index($uid)
     {
+        $setting = Setting::first();
         $categories = category::all(); // for creating post on profile.
         $user = User::find($uid);
         $postlist1 = $user->posts;
@@ -50,6 +52,7 @@ class UserController extends Controller
             'visitorFlag'=>$visitorFlag,
             'user'=>$user,
             'isRequested'=>$isRequested,
+            'setting'=>$setting,
         ]);
     }
 
@@ -104,10 +107,47 @@ class UserController extends Controller
 
     public function friendAccept($fid)
     {
-        $friendship = DB::table('friends')->where('friend_id', '=', Auth::id())->
+        DB::table('friends')->where('friend_id', '=', Auth::id())->
             where('user_id', '=', $fid)->update(['accepted'=>1]);
 
         return back();
+    }
+
+    public function friendDelete($fid)
+    {
+        DB::table('friends')->where('friend_id', '=', Auth::id())->
+        where('user_id', '=', $fid)->delete();
+
+        return back();
+    }
+
+    public function searchUser(Request $request)
+    {
+        $result = $request->query('query');
+
+        if ($result)
+        {
+            $users = User::where('name', 'LIKE', "%{$result}%")->get();
+        }
+        else
+            $users = null;
+
+        return view('home.user.searchuser', [
+            'users'=>$users,
+        ]);
+    }
+
+    public function editPictures(Request $request)
+    {
+        $user = User::find(Auth::id());
+        if ($request->file('profile_picture')) {
+            $user->profile_picture = $request->file('profile_picture')->store('images');
+        }
+        if ($request->file('background_picture')) {
+            $user->background_picture = $request->file('background_picture')->store('images');
+        }
+        $user->save();
+        return redirect()->route('userpanel.index', ['uid'=>Auth::id()]);
     }
 
     /**

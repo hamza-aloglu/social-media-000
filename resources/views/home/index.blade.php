@@ -6,6 +6,7 @@
 @section('icon', \Illuminate\Support\Facades\Storage::url($setting->icon))
 
 @section('content')
+
     <main>
         <div class="main-wrapper pt-80">
             <div class="container">
@@ -17,11 +18,12 @@
                                 <div class="card card-profile widget-item p-0">
                                     <div class="profile-banner">
                                         <figure class="profile-banner-small">
-                                            <div href="profile.html">
+                                            <div class="profile-thumb-1">
                                                 <img
                                                     src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->background_picture)}}"
                                                     alt="">
                                             </div>
+
                                             <div href="profile.html" class="profile-thumb-2">
                                                 <img
                                                     src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_picture)}}"
@@ -36,12 +38,14 @@
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda
                                                 culpa eos laborum magni repellendus?</p>
                                         </div>
+
                                     </div>
                                 </div>
                                 <!-- widget single item start -->
                             @endauth
 
                         </aside>
+
                     </div>
 
                     <div class="col-lg-6 order-1 order-lg-2">
@@ -104,7 +108,7 @@
                                                     @auth
                                                         <button type="submit" class="post-share-btn">post</button>
                                                     @else
-                                                        <a href="/login" class="post-share-btn">comment</a>
+                                                        <a href="/login" class="post-share-btn">post</a>
                                                     @endauth
                                                 </div>
                                             </form>
@@ -188,7 +192,6 @@
                             </div>
                     @endforeach
                     <!-- post status end -->
-
                     </div>
 
                     <div class="col-lg-3 order-3">
@@ -203,7 +206,7 @@
                                                 <li class="unorder-list">
                                                     <!-- profile picture end -->
                                                     <div class="profile-thumb">
-                                                        <a href="#">
+                                                        <a href="{{route('userpanel.index', ['uid'=>$friend->id])}}">
                                                             <figure class="profile-thumb-small">
                                                                 <img
                                                                     src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_picture)}}"
@@ -225,7 +228,7 @@
                                                 <li class="unorder-list">
                                                     <!-- profile picture end -->
                                                     <div class="profile-thumb">
-                                                        <a href="#">
+                                                        <a href="{{route('userpanel.index', ['uid'=>$friend->id])}}">
                                                             <figure class="profile-thumb-small">
                                                                 <img
                                                                     src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_picture)}}"

@@ -1,6 +1,8 @@
 @extends('layouts.frontbase')
 
 @section('title', $data -> title)
+@section('keywords', $data -> keywords)
+@section('description', $data -> description)
 
 @section('head')
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">

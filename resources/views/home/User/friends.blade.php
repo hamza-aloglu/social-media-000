@@ -97,7 +97,8 @@
                                                     <h6 class="author"><a
                                                             href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a>
                                                     </h6>
-                                                    <div class="add-friend">friend</div>
+                                                    <a href="{{route('userpanel.frienddelete', ['fid' => $friend->id])}}"
+                                                       class="add-frnd">delete friend</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -110,7 +111,7 @@
                                                     <a href="#">
                                                         <figure class="profile-thumb-middle">
                                                             <img
-                                                                src="../../../public/assets/images/profile/profile-small-1.jpg"
+                                                                src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_picture)}}"
                                                                 alt="profile picture">
                                                         </figure>
                                                     </a>
@@ -121,8 +122,8 @@
                                                     <h6 class="author"><a
                                                             href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a>
                                                     </h6>
-                                                    <div class="add-frnd">friend</div>
-                                                </div>
+                                                    <a href="{{route('userpanel.frienddelete', ['fid' => $friend->id])}}"
+                                                       class="add-frnd">delete friend</a>                                                </div>
                                             </div>
                                         </div>
                                     @endforeach

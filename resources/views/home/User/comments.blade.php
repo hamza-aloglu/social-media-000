@@ -44,7 +44,7 @@
                                 <thead>
                                 <tr class="">
                                     <th class="">Id</th>
-                                    <th class="">Post id</th>
+                                    <th class="">Post</th>
                                     <th class="">Comment</th>
                                     <th class="">Rate</th>
                                     <th class="">Status</th>
