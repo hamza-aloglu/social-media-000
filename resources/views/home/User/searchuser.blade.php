@@ -1,6 +1,6 @@
 @extends('layouts.frontbase')
 
-@section('title', 'stfup')
+@section('title', 'Adda social media')
 @section('head')
     <style>
         .cardd {
