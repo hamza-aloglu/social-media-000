@@ -44,7 +44,7 @@
                                     </div>
                                 </li>
                                 @php
-                                    $mainCategories = \App\Http\Controllers\HomeController::maincategorylist();
+                                    $mainCategories = \App\Http\Controllers\HomePanel\HomeController::maincategorylist();
                                 @endphp
                                 <li class="notification-trigger"><a class="msg-trigger-btn" href="#b">Category</a>
                                     <div class="message-dropdown" id="b">

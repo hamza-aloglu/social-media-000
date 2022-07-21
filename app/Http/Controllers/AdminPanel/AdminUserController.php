@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\RoleUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminUserController extends Controller
 {
@@ -110,11 +111,11 @@ class AdminUserController extends Controller
         $user = User::find($id);
         if($request -> file('profile_picture'))
         {
-            $user->profile_picture = $request->file('profile_picture')->store('images');
+            $user->profile_picture = $request->file('profile_picture')->store('public/images');
         }
         if($request -> file('background_picture'))
         {
-            $user->background_picture = $request->file('background_picture')->store('images');
+            $user->background_picture = $request->file('background_picture')->store('public/images');
         }
         $data -> save();
         $user -> save();
@@ -130,6 +131,21 @@ class AdminUserController extends Controller
         return redirect()->route('admin.user.show', [
             'id'=>$uid
         ]);
+    }
+
+    public function loginadmincheck(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/admin');
+        }
+
+        return redirect()->route('loginadmin')->with('error', "Check your inputs");
     }
 
 }

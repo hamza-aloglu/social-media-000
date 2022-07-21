@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\HomePanel;
 
+use App\Http\Controllers\Controller;
 use App\Models\category;
 use App\Models\Comment;
 use App\Models\Friend;
@@ -11,6 +12,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use function back;
+use function redirect;
+use function view;
 
 class UserController extends Controller
 {
@@ -141,10 +145,10 @@ class UserController extends Controller
     {
         $user = User::find(Auth::id());
         if ($request->file('profile_picture')) {
-            $user->profile_picture = $request->file('profile_picture')->store('images');
+            $user->profile_picture = $request->file('profile_picture')->store('public/images');
         }
         if ($request->file('background_picture')) {
-            $user->background_picture = $request->file('background_picture')->store('images');
+            $user->background_picture = $request->file('background_picture')->store('public/images');
         }
         $user->save();
         return redirect()->route('userpanel.index', ['uid'=>Auth::id()]);

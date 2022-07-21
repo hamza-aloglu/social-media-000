@@ -48,7 +48,7 @@ class ImageController extends Controller
         $data -> title = $request -> title;
         if($request -> file('image'))
         {
-            $data->image = $request->file('image')->store('images');
+            $data->image = $request->file('image')->store('public/images');
         }
         $data -> save();
         return redirect() -> route('admin.image.index', ['pid'=>$pid]);

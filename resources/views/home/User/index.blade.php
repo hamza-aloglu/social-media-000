@@ -29,6 +29,8 @@
                                         <ul class="main-menu">
                                             <li class="active"><a href="#">timeline</a></li>
                                             <li>
+                                                <?php var_dump(\Illuminate\Support\Facades\Storage::url($user->background_picture)); ?>
+
                                                 <a href="{{route('userpanel.comment', ['uid'=>$user->id])}}">comments</a>
                                             </li>
                                             @if(!$visitorFlag)

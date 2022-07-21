@@ -1,17 +1,18 @@
 <?php
 
 use App\Http\Controllers\AdminPanel\AdminUserController;
-use App\Http\Controllers\AdminPanel\CommentController;
-use App\Http\Controllers\AdminPanel\FriendController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
-use App\Http\Controllers\AdminPanel\FaqController as AdminFaqController;
 use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController;
-use App\Http\Controllers\AdminPanel\PostController as AdminPostController;
+use App\Http\Controllers\AdminPanel\CommentController;
+use App\Http\Controllers\AdminPanel\FaqController as AdminFaqController;
+use App\Http\Controllers\AdminPanel\FriendController;
+use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
 use App\Http\Controllers\AdminPanel\ImageController as AdminImageController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminPanel\MessageController as MessageController;
+use App\Http\Controllers\AdminPanel\PostController as AdminPostController;
+use App\Http\Controllers\HomePanel\HomeController;
+use App\Http\Controllers\HomePanel\SettingsController;
+use App\Http\Controllers\HomePanel\UserController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\AdminPanel\MessageController as MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,32 +25,8 @@ use \App\Http\Controllers\AdminPanel\MessageController as MessageController;
 |
 */
 Route::get('home', function () {
-    return view('home.index');
+    return view('home.main-page.index');
 });
-
-
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
-// routing to view
-Route::get('/greetings', function () {
-    return 'Hello World';
-});
-
-// routing to controller
-Route::get('/', [HomeController::class, 'index']);
-
-// routing -> controller -> view
-Route::get('/test', [HomeController::class, 'test']);
-
-// routing with parameter
-Route::get('/param/{id}/{number}', [HomeController::class, 'param']);
-Route::get('/show/{id}/{name}', [HomeController::class, 'showView']);
-
-//
-Route::post('/save', [HomeController::class, 'save']);
-
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -62,20 +39,21 @@ Route::get('/', [HomeController::class, 'index']) -> name('home');
 Route::get('/post/{id}', [HomeController::class, 'post']) -> name('post');
 Route::get('/postcategory/{id}/{slug}', [HomeController::class, 'postcategory']) ->
     name('postcategory');
-Route::get('/about', [HomeController::class, 'about']) -> name('about');
-Route::get('/references', [HomeController::class, 'references']) -> name('references');
-Route::get('/contact', [HomeController::class, 'contact']) -> name('contact');
-Route::post('/storemessage', [HomeController::class, 'storeMessage']) -> name('storemessage');
-Route::get('/faq', [HomeController::class, 'faq']) -> name('faq');
 Route::post('/storecomment', [HomeController::class, 'storeComment']) -> name('storecomment');
 Route::post('/storepost', [HomeController::class, 'storePost']) -> name('storepost');
 
-Route::view('/loginuser', 'home.loginuser') ->name('loginuser');
+Route::view('/loginuser', 'home.main-page.loginuser') ->name('loginuser');
 Route::get('/logoutuser', [HomeController::class, 'logout']) -> name('logoutuser');
 
 Route::view('/loginadmin', 'admin.login') ->name('loginadmin');
-Route::post('/loginadmincheck', [HomeController::class, 'loginadmincheck']) -> name('loginadmincheck');
+Route::post('/loginadmincheck', [AdminUserController::class, 'loginadmincheck']) -> name('loginadmincheck');
 
+// SETTINGS ROUTES ****************************************************************
+Route::get('/about', [SettingsController::class, 'about']) -> name('about');
+Route::get('/references', [SettingsController::class, 'references']) -> name('references');
+Route::get('/contact', [SettingsController::class, 'contact']) -> name('contact');
+Route::post('/storemessage', [SettingsController::class, 'storeMessage']) -> name('storemessage');
+Route::get('/faq', [SettingsController::class, 'faq']) -> name('faq');
 
 // USER ROUTES ****************************************************************
 Route::prefix('userpanel')->name('userpanel.')->

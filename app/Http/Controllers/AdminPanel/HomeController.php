@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        return view('admin.main-page.index');
     }
 
     public function setting()
@@ -25,7 +25,7 @@ class HomeController extends Controller
             $data = Setting::first();
         }
 
-        return view('admin.setting', [
+        return view('admin.settings.setting', [
             'data'=>$data
         ]);
     }
@@ -60,7 +60,7 @@ class HomeController extends Controller
         $data -> references = $request -> input('references');
         if ($request->file('icon'))
         {
-            $data -> icon = $request -> file('icon') -> store('images');
+            $data -> icon = $request -> file('icon') -> store('public/images');
         }
         $data -> status = $request -> input('status');
 
