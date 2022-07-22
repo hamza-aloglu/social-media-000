@@ -24,9 +24,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('home', function () {
-    return view('home.main-page.index');
-});
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -35,25 +32,26 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 // HOME ROUTES ****************************************************************
-Route::get('/', [HomeController::class, 'index']) -> name('home');
-Route::get('/post/{id}', [HomeController::class, 'post']) -> name('post');
-Route::get('/postcategory/{id}/{slug}', [HomeController::class, 'postcategory']) ->
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'index') -> name('home');
+    Route::get('/post/{id}', 'post') -> name('post');
+    Route::get('/postcategory/{id}/{slug}', 'postcategory') ->
     name('postcategory');
-Route::post('/storecomment', [HomeController::class, 'storeComment']) -> name('storecomment');
-Route::post('/storepost', [HomeController::class, 'storePost']) -> name('storepost');
-
+    Route::post('/storecomment', 'storeComment') -> name('storecomment');
+    Route::post('/storepost', 'storePost') -> name('storepost');
+    Route::get('/logoutuser', 'logout') -> name('logoutuser');
+});
 Route::view('/loginuser', 'home.main-page.loginuser') ->name('loginuser');
-Route::get('/logoutuser', [HomeController::class, 'logout']) -> name('logoutuser');
-
-Route::view('/loginadmin', 'admin.login') ->name('loginadmin');
-Route::post('/loginadmincheck', [AdminUserController::class, 'loginadmincheck']) -> name('loginadmincheck');
 
 // SETTINGS ROUTES ****************************************************************
-Route::get('/about', [SettingsController::class, 'about']) -> name('about');
-Route::get('/references', [SettingsController::class, 'references']) -> name('references');
-Route::get('/contact', [SettingsController::class, 'contact']) -> name('contact');
-Route::post('/storemessage', [SettingsController::class, 'storeMessage']) -> name('storemessage');
-Route::get('/faq', [SettingsController::class, 'faq']) -> name('faq');
+Route::controller(SettingsController::class)->group(function () {
+    Route::get('/about', 'about') -> name('about');
+    Route::get('/references', 'references') -> name('references');
+    Route::get('/contact', 'contact') -> name('contact');
+    Route::post('/storemessage', 'storeMessage') -> name('storemessage');
+    Route::get('/faq', 'faq') -> name('faq');
+});
+
 
 // USER ROUTES ****************************************************************
 Route::prefix('userpanel')->name('userpanel.')->
@@ -72,6 +70,8 @@ controller(UserController::class)->group(function () {
 Route::get('/searchuser', [UserController::class, 'searchUser'])->name('searchuser');
 
 
+Route::view('/loginadmin', 'admin.login') ->name('loginadmin');
+Route::post('/loginadmincheck', [AdminUserController::class, 'loginadmincheck']) -> name('loginadmincheck');
 // ADMIN ROUTES ****************************************************************
 Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index']) -> name('index');
