@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
-use App\Models\category;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
-    protected $appends = [
+    protected array $appends = [
         'getParentsTree'
     ];
 
@@ -17,14 +18,14 @@ class CategoryController extends Controller
     {
         if ($category -> parentid == 0)
             return $title;
-        $parent = category::find($category->parentid);
+        $parent = Category::find($category->parentid);
         $title = $parent->title .'>'.$title;
         return CategoryController::getParentsTree($parent, $title);
     }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -37,7 +38,7 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -51,30 +52,35 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
-        $data = new category();
-        $data->parentid = $request->parentid;
-        $data->title = $request->title;
-        $data->keywords = $request->keywords;
-        $data->description = $request->description;
+        $validated = $request->validate([
+           'parentid' => ['required', 'int'],
+           'title' => ['required', 'max:255'],
+            'keywords' => ['max:255'],
+            'description' => ['max:255'],
+            'image' => ['image'],
+            'status' => ['string'],
+        ]);
+
+
         if($request -> file('image'))
         {
-            $data->image = $request->file('image')->store('public/images');
+            $validated['image'] = $request->file('image')->store('public/images');
+            $validated['image'] = str_replace('public/', "",  $validated['image']);
         }
-        $data->status = $request->status;
 
-        $data->save();
-        return redirect('admin/category');
+        Category::create($validated);
+        return \response(redirect(route('admin.category.index')));
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\category  $category
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(category $category, $id)
     {
@@ -88,7 +94,7 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\category  $category
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(category $category, $id)
     {
@@ -105,36 +111,45 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\category  $category
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, category $category, $id)
     {
         $data = category::find($id);
-        $data->parentid = $request->parentid;
-        $data->title = $request->title;
-        $data->keywords = $request->keywords;
-        $data->description = $request->description;
+        $validated = $request->validate([
+            'parentid' => ['required', 'int'],
+            'title' => ['required', 'max:255'],
+            'keywords' => ['max:255'],
+            'description' => ['max:255'],
+            'image' => ['image'],
+            'status' => ['string'],
+        ]);
         if($request -> file('image'))
         {
-            $data->image = $request->file('image')->store('public/images');
-        }
-        $data->status = $request->status;
+            if ($data->image)
+                Storage::disk('public')->delete($data->image);
 
-        $data->save();
-        return redirect('admin/category');
+            $validated['image'] = $request->file('image')->store('public/images');
+            $validated['image'] = str_replace('public/', "",  $validated['image']);
+        }
+
+        Category::create($validated);
+        return redirect(route('admin.category.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\category  $category
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(category $category, $id)
     {
         $data = category::find($id);
         if($data -> image && Storage::disk('public') -> exists($data->image))
-            Storage::delete($data->image);
+        {
+            Storage::disk('public')->delete($data->image);
+        }
         $data->delete();
         return redirect('/admin/category');
     }

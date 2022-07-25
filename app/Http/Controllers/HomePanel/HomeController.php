@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\HomePanel;
 
 use App\Http\Controllers\Controller;
-use App\Models\category;
+use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Image;
 use App\Models\Post;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class HomeController extends Controller
 {
     public static function maincategorylist()
     {
-        return category::where('parentid', '=', 0)->with('children')->get();
+        return Category::where('parentid', 0)->with('children')->get();
     }
 
     public function index()
@@ -37,13 +38,15 @@ class HomeController extends Controller
 
     public function storeComment(Request $request)
     {
-        $data = new Comment();
-        $data->user_id = Auth::id();
-        $data->post_id = $request->input('post_id');
-        $data->comment = $request->input('comment');
-        $data->rate = $request->input('rate');
-        $data->ip = request()->ip();
-        $data->save();
+        $validated = $request->validate([
+            'user_id' => ['integer'],
+            'post_id' => ['integer'],
+            'comment' => ['string', 'max:255'],
+            'rate' => ['Integer'],
+        ]);
+
+
+        Comment::create($validated);
 
         return redirect()->route('post', ['id' => $request->input('post_id')])->
         with('info', "your comment has been sent.");
@@ -51,18 +54,24 @@ class HomeController extends Controller
 
     public function storePost(Request $request)
     {
-        $data = new post();
-        $data->category_id = $request->category_id;
-        $data->user_id = $request->user_id;
-        $data->title = $request->title;
-        $data->description = $request->description;
-        if ($request->file('image')) {
-            $data->image = $request->file('image')->store('public/images');
-        }
-        $data->detail = $request->detail;
-        $data->likes = 0;
+        $validated = $request->validate([
+            'category_id' => ['required', 'integer'],
+            'user_id' => ['required', 'integer'],
+            'title' => ['required', 'max:255'],
+            'keywords' => ['max:255'],
+            'description' => ['max:255'],
+            'image' => ['image'],
+            'detail' => ['string'],
+            'status' => ['string'],
+        ]);
 
-        $data->save();
+        if($request -> file('image'))
+        {
+            $validated['image'] = $request->file('image')->store('public/images');
+            $validated['image'] = str_replace('public/', "", $validated['image']);
+        }
+
+        Post::create($validated);
         return redirect()->route('home');
     }
 
@@ -72,17 +81,12 @@ class HomeController extends Controller
         $data = Post::find($id);
 
         $comments = Comment::where('post_id', $id)->where('status', 'true')->get(); // This one uses model of laravel, so we are able to
-        // use relationships of that model
 
-        //$comments = DB::table('comments')->where('post_id', $id)->get(); // This one does not use model. It
-        // fetches from mysql directly.
-
-        // $images = DB::table('images')->where('post_id', $id)->get();
-        $images = DB::select('SELECT * FROM images WHERE post_id = ?', [$id]); // could be problematic.
+        $images = Image::where('post_id', $id)->get();
         return view('home.main-page.post', [
             'data' => $data,
             'images' => $images,
-            'comments' => $comments
+            'comments' => $comments,
         ]);
     }
 

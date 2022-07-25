@@ -32,6 +32,16 @@
     <form action={{route('admin.category.store')}} method="post" enctype="multipart/form-data" style="margin: 0px 10px 5px; padding: 10px 100px;);
     font-family: 'Open Sans',Helvetica,Arial,sans-serif;; background-color: rgb(247, 252, 251)">
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         @csrf
         <div class="row mn mln15" style="position: relative; right: 50px;">
 
@@ -80,7 +90,7 @@
                 <div class="section">
                     <h3>Status</h3>
                     <select id="country" name="status" style="width: 100%; padding: 5px">
-                        <option value="" selected disabled>Select status</option>
+                        <option value="Enabled" selected disabled>Select status</option>
                         <option value="Enabled">Enabled</option>
                         <option value="Disabled">Disabled</option>
                     </select>
@@ -89,7 +99,7 @@
             </div>
 
         </div>
-        <input type="submit" class="button btn-info" style="display: block;padding: 5px 15px; margin: 10px 0;
+        <input type="submit" class="btn btn-info" style="display: block;padding: 5px 15px; margin: 10px 0;
                                 border: 1px solid gray; position: relative; right: 43px" value="save">
     </form>
 @endsection

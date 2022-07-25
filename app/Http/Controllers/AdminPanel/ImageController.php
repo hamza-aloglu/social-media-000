@@ -49,6 +49,7 @@ class ImageController extends Controller
         if($request -> file('image'))
         {
             $data->image = $request->file('image')->store('public/images');
+            $data->image = str_replace('public/', "", $data->image);
         }
         $data -> save();
         return redirect() -> route('admin.image.index', ['pid'=>$pid]);
@@ -98,7 +99,9 @@ class ImageController extends Controller
     {
         $data = Image::find($id);
         if($data -> image && Storage::disk('public') -> exists($data->image))
-            Storage::delete($data->image);
+        {
+            Storage::disk('public')->delete($data->image);
+        }
         $data->delete();
         return redirect() -> route('admin.image.index', ['pid'=>$pid]);
     }

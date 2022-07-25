@@ -29,8 +29,6 @@
                                         <ul class="main-menu">
                                             <li class="active"><a href="#">timeline</a></li>
                                             <li>
-                                                <?php var_dump(\Illuminate\Support\Facades\Storage::url($user->background_picture)); ?>
-
                                                 <a href="{{route('userpanel.comment', ['uid'=>$user->id])}}">comments</a>
                                             </li>
                                             @if(!$visitorFlag)
@@ -82,6 +80,17 @@
                                 <div class="widget-body">
                                     <form action="{{route('userpanel.editpictures')}}" method="post"
                                           enctype="multipart/form-data">
+
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+
                                         @csrf
                                         <div class="section">
                                             <h3>Profile Image</h3>
@@ -143,8 +152,9 @@
                                                       enctype="multipart/form-data" method="post">
                                                     @csrf
                                                     <div class="modal-body custom-scroll">
-                                                <textarea name="detail" class="share-field-big custom-scroll"
-                                                          placeholder="Say Something"></textarea>
+                                                    <textarea name="detail" class="share-field-big custom-scroll"
+                                                          placeholder="Say Something">
+                                                    </textarea>
                                                         <h5>category</h5>
                                                         <select hidden name="category_id" class="">
                                                             @foreach($categories as $rs)

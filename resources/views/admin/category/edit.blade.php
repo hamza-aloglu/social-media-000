@@ -20,6 +20,17 @@
     <form action={{route('admin.category.update', ['id' => $data -> id])}} method="post" enctype="multipart/form-data"
           style="margin: 0px 10px 5px; padding: 10px 100px;);
     font-family: 'Open Sans',Helvetica,Arial,sans-serif;; background-color: rgb(247, 252, 251)">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         @csrf
         <div class="row mn mln15" style="position: relative; right: 50px;">
             <div class="col-md-12 ">

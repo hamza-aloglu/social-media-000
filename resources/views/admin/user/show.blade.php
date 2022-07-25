@@ -48,15 +48,6 @@
                             <option value="{{$role->id}}">{{$role -> name}}</option>
                         @endforeach
                     </select>
-                    <br>
-                    <input type="file" class="gui-file" name="profile_picture" id="file2" onchange="document.getElementById('uploader2').value = this.value;">
-                    <input type="text" class="gui-input" id="uploader2" placeholder="Profile File">
-                    <i class="fa fa-upload"></i>
-
-                    <input type="file" class="gui-file" name="background_picture" id="file3" onchange="document.getElementById('uploader3').value = this.value;">
-                    <input type="text" class="gui-input" id="uploader3" placeholder="Background File">
-                    <i class="fa fa-upload"></i>
-                    <br>
                     <button type="submit" class="btn btn-primary my-3 p-2">Save</button>
                 </form>
             </td>

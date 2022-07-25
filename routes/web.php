@@ -97,6 +97,8 @@ Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
         Route::get('delete/{id}', 'destroy') -> name('delete');
     });
     // Post ROUTES ****************************************************************
+    // Route::resource('post', AdminPostController::class);
+
     Route::prefix('post')->name('post.')->controller(AdminPostController::class)->
     group(function () {
         Route::get('/', 'index') -> name('index');

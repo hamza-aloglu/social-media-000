@@ -42,9 +42,9 @@ class FaqController extends Controller
     public function store(Request $request)
     {
         $data = new faq();
-        $data->question = $request->question;
-        $data->answer = $request->answer;
-        $data->status = $request->status;
+        $data->question = $request->input('question');
+        $data->answer = $request->input('answer');
+        $data->status = $request->input('status');
 
         $data->save();
         return redirect('admin/faq');
@@ -88,9 +88,9 @@ class FaqController extends Controller
     public function update(Request $request, faq $faq, $id)
     {
         $data = faq::find($id);
-        $data->question = $request->question;
-        $data->answer = $request->answer;
-        $data->status = $request->status;
+        $data->question = $request->input('question');
+        $data->answer = $request->input('answer');
+        $data->status = $request->input('status');
 
         $data->save();
         return redirect('admin/faq');

@@ -9,6 +9,12 @@ class Friend extends Model
 {
     use HasFactory;
 
+    /**
+     * @var int|mixed|string|null
+     */
+    public int $user_id;
+    public int $friend_id;
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

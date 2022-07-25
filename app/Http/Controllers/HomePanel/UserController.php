@@ -9,9 +9,11 @@ use App\Models\Friend;
 use App\Models\Post;
 use App\Models\Setting;
 use App\Models\User;
+use DataTables\Editor\Validate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use function back;
 use function redirect;
 use function view;
@@ -34,11 +36,12 @@ class UserController extends Controller
         $isRequested = 0;
         if (Auth::check())
         {
-            foreach (Auth::user()->friendsTo as $friend){
+            $onlineUser = Auth::user();
+            foreach ($onlineUser->friendsTo as $friend){
                 if ($friend->id == $uid)
                     $isRequested = 1;
             }
-            foreach (Auth::user()->friendsFrom as $friend){
+            foreach ($onlineUser->friendsFrom as $friend){
                 if ($friend->id == $uid)
                     $isRequested = 1;
             }
@@ -64,7 +67,7 @@ class UserController extends Controller
 
     public function comment($uid)
     {
-        $comments = Comment::where('user_id', '=', $uid)->get();
+        $comments = Comment::where('user_id', $uid)->get();
         $user = User::find($uid);
         $visitorFlag = 1;
         if (Auth::check() && $uid == Auth::id())
@@ -87,8 +90,14 @@ class UserController extends Controller
 
     public function postDestroy($pid)
     {
-        $post = Post::find($pid);
-        $post->delete();
+        $data = Post::find($pid);
+
+        if($data -> image && Storage::disk('public') -> exists($data->image))
+        {
+            Storage::disk('public')->delete($data->image);
+        }
+
+        $data->delete();
         return back();
     }
 
@@ -101,11 +110,11 @@ class UserController extends Controller
     {
         $friendship = new Friend();
         $uid = Auth::id();
-        $friendship->user_id = $uid; $friendship->friend_id = $fid;
+
+        $friendship->user_id = $uid;
+        $friendship->friend_id = $fid;
+
         $friendship->save();
-        /*$friendship2 = new Friend();
-        $friendship2->user_id = $fid; $friendship2->friend_id = $uid; // if x is friend with y, y is friend with x.
-        $friendship2->save();*/
         return back()->with('info', 'request sent');
     }
 
@@ -144,11 +153,30 @@ class UserController extends Controller
     public function editPictures(Request $request)
     {
         $user = User::find(Auth::id());
-        if ($request->file('profile_picture')) {
+
+        if($request -> file('profile_picture'))
+        {
+            $request->validate([
+                'profile_picture' => 'image',
+            ]);
+
+            if ($user->profile_picture)
+                Storage::disk('public')->delete($user->profile_picture);
+
             $user->profile_picture = $request->file('profile_picture')->store('public/images');
+            $user->profile_picture = str_replace('public/', "", $user->profile_picture);
         }
-        if ($request->file('background_picture')) {
+        if($request -> file('background_picture'))
+        {
+            $request->validate([
+                'background_picture' => 'image',
+            ]);
+
+            if ($user->background_picture)
+                Storage::disk('public')->delete($user->background_picture);
+
             $user->background_picture = $request->file('background_picture')->store('public/images');
+            $user->background_picture = str_replace('public/', "", $user->background_picture);
         }
         $user->save();
         return redirect()->route('userpanel.index', ['uid'=>Auth::id()]);

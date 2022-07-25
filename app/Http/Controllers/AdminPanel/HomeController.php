@@ -5,15 +5,16 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
-        return view('admin.main-page.index');
+        return \response(view('admin.main-page.index'));
     }
 
+    // Settings uçacak ...
     public function setting()
     {
         $data = Setting::first();
