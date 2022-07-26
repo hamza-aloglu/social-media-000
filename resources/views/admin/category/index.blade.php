@@ -21,7 +21,7 @@
             </div>
             <div class="panel-body pn mt20">
                 <div class="table-responsive">
-                    <table class="table allcp-form theme-warning tc-checkbox-1 table-style-2 btn-gradient-grey fs13">
+                    <table class="table theme-warning tc-checkbox-1 table-style-2 btn-gradient-grey fs13">
                         <thead>
                         <tr class="">
                             <th class="">Id</th>
@@ -60,13 +60,17 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <a href={{route('admin.category.edit', ['id' => $rs -> id])}}>Edit</a>
+                                                <a href={{route('admin.category.edit', ['category' => $rs -> id])}}>Edit</a>
                                             </li>
                                             <li>
-                                                <a href={{route('admin.category.delete', ['id' => $rs -> id])}}>Delete</a>
+                                                <form action="{{route('admin.category.destroy', ['category' => $rs -> id])}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit">Delete</button>
+                                                </form>
                                             </li>
                                             <li>
-                                                <a href={{route('admin.category.show', ['id' => $rs -> id])}}>Show</a>
+                                                <a href={{route('admin.category.show', ['category' => $rs -> id])}}>Show</a>
                                             </li>
                                         </ul>
                                     </div>

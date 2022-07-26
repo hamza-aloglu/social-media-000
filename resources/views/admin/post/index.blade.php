@@ -21,7 +21,7 @@
             </div>
             <div class="panel-body pn mt20">
                 <div class="table-responsive">
-                    <table class="table allcp-form theme-warning tc-checkbox-1 table-style-2 btn-gradient-grey fs13">
+                    <table class="table theme-warning tc-checkbox-1 table-style-2 btn-gradient-grey fs13">
                         <thead>
                         <tr class="">
                             <th class="">Id</th>
@@ -71,13 +71,17 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <a href={{route('admin.post.edit', ['id' => $rs -> id])}}>Edit</a>
+                                                <a href={{route('admin.post.edit', ['post' => $rs -> id])}}>Edit</a>
                                             </li>
                                             <li>
-                                                <a href={{route('admin.post.delete', ['id' => $rs -> id])}}>Delete</a>
+                                                <form style="background-color: black" action="{{route('admin.post.destroy', ['post' => $rs -> id])}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" style="background-color: black; color: white">Delete</button>
+                                                </form>
                                             </li>
                                             <li>
-                                                <a href={{route('admin.post.show', ['id' => $rs -> id])}}>Show</a>
+                                                <a href={{route('admin.post.show', ['post' => $rs -> id])}}>Show</a>
                                             </li>
                                         </ul>
                                     </div>

@@ -19,9 +19,10 @@
 
 @section('content')
     <h1 style="text-align: center;">Edit faq</h1>
-    <form action="{{route('admin.faq.update', ['id' => $data -> id])}}" method="post" enctype="multipart/form-data" style="margin: 0px 10px 5px; padding: 10px 100px;);
+    <form action="{{route('admin.faq.update', ['faq' => $data -> id])}}" method="post" enctype="multipart/form-data" style="margin: 0px 10px 5px; padding: 10px 100px;);
     font-family: 'Open Sans',Helvetica,Arial,sans-serif;; background-color: rgb(247, 252, 251)">
         @csrf
+        @method('PUT')
         <div class="col-md-12 ">
             <div class="section">
                 <h3>Question</h3>

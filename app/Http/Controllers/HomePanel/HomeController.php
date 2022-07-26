@@ -80,9 +80,9 @@ class HomeController extends Controller
     {
         $data = Post::find($id);
 
-        $comments = Comment::where('post_id', $id)->where('status', 'true')->get(); // This one uses model of laravel, so we are able to
-
+        $comments = Comment::where('post_id', $id)->get();
         $images = Image::where('post_id', $id)->get();
+
         return view('home.main-page.post', [
             'data' => $data,
             'images' => $images,

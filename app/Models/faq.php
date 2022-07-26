@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class faq extends Model
 {
     use HasFactory;
-
-    public string $question;
-    public string $answer;
-    public string $status;
 }

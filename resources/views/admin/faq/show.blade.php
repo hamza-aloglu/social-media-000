@@ -48,12 +48,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="/admin/faq/edit/{{$data->id}}" style="display: block; margin: 30px 0">
-                                    <button class="button btn-info">Edit faq</button>
-                                </a>
-                                <a href="/admin/faq/destroy/{{$data->id}}" onclick="return confirm('are you sure')">
-                                    <button class="button btn-info">Delete faq</button>
-                                </a>
                             </div>
                         </div>
                     </div>

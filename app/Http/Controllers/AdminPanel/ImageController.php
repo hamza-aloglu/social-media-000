@@ -1,5 +1,11 @@
 <?php
 
+
+// Bura komple uçacak
+
+
+
+
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
@@ -11,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *

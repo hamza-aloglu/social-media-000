@@ -50,16 +50,7 @@
             <td class="table-secondary w-25 fw-bold">updated_at</td>
             <td class="table-secondary">{{$data -> updated_at}}</td>
         </tr>
-        <tr class="table-primary">
-            <td class="table-secondary w-25 fw-bold">Admin' note</td>
-            <td class="table-secondary">
-                <form action="{{route('admin.message.update', ['id'=>$data -> id])}}" method="post">
-                    @csrf
-                    <textarea name="note" id="note" cols="30" rows="10">{{$data -> note}}</textarea>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </form>
-            </td>
-        </tr>
+
 
 
         <!-- On cells (`td` or `th`) -->

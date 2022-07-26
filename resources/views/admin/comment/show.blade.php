@@ -32,17 +32,7 @@
         </tr>
         <tr class="table-primary">
             <td class="table-secondary w-25 fw-bold">status</td>
-            <td class="table-secondary">
-                <form action="{{route('admin.comment.update', ['id'=>$data->id])}}" method="post">
-                    @csrf
-                    <select name="status" id="">
-                        <option value="{{$data->status}}" selected>{{$data->status}}</option>
-                        <option value="true">true</option>
-                        <option value="false">false</option>
-                    </select>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </form>
-            </td>
+            <td class="table-secondary">{{$data -> status}}</td>
         </tr>
         <tr class="table-primary">
             <td class="table-primary w-25 fw-bold">created_at</td>

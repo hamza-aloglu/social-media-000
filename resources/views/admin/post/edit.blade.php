@@ -20,9 +20,11 @@
     <!-- Basic -->
     <h3 style="background-color: rgba(50, 17, 237, 0.8); color: white; padding: 7px; margin: 0px 0px 0px 5px;
          border-radius: 9px;">Edit post</h3>
-    <form action={{route('admin.post.update', ['id' => $data -> id])}} method="post" enctype="multipart/form-data"
+    <form action={{route('admin.post.update', ['post' => $data -> id])}} method="post" enctype="multipart/form-data"
           style="margin: 0px 10px 5px; padding: 10px 100px;);
     font-family: 'Open Sans',Helvetica,Arial,sans-serif;; background-color: rgb(247, 252, 251)">
+        @csrf
+        @method('PUT')
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -32,7 +34,6 @@
                 </ul>
             </div>
         @endif
-        @csrf
         <div class="row mn mln15" style="position: relative; right: 50px;">
             <div class="col-md-12 ">
                 <div class="section">

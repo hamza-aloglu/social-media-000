@@ -5,7 +5,6 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\Models\Friend;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class FriendController extends Controller
@@ -17,57 +16,34 @@ class FriendController extends Controller
      */
     public function index(): Response
     {
-        $data = Friend::all();
+        $friends = Friend::all();
         return \response(view('admin.friends.index', [
-            'data'=>$data,
+            'data'=>$friends,
         ]));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Friend $friend
      * @return Response
      */
-    public function show(int $id): Response
+    public function show(Friend $friend): Response
     {
-        $data = Friend::find($id);
         return response()->view('admin.friends.show', [
-            'data' => $data,
+            'data' => $friend,
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Friend $friend
      * @return RedirectResponse
      */
-    public function destroy(int $id): RedirectResponse
+    public function destroy(Friend $friend): RedirectResponse
     {
-        $data = Friend::find($id);
-        $data -> delete();
+        $friend -> delete();
         return response()->redirectTo(route('admin.friend.index'));
     }
 }

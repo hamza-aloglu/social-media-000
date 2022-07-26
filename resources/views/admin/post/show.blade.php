@@ -101,12 +101,6 @@
                     <div class="table-content">{{$data -> updated_at}}</div>
                 </div>
                 <br>
-                <a href={{route('admin.post.edit', ['id' => $data -> id])}}) style="margin: 0 20px">
-                <button class="button btn-info" style="padding: 0px 20px">Edit</button>
-                </a>
-                <a href={{route('admin.post.delete', ['id' => $data -> id])}}) style="margin: 0 20px">
-                    <button class="button btn-info" style="padding: 0px 20px">Delete</button>
-                </a>
                 <footer id="content-footer" class="footer-light" style="margin-top: 100px">
                     <div class="row">
                         <div class="col-xs-12 text-center">

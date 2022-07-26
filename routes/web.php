@@ -75,40 +75,15 @@ Route::post('/loginadmincheck', [AdminUserController::class, 'loginadmincheck'])
 // ADMIN ROUTES ****************************************************************
 Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index']) -> name('index');
-    // FAQ ROUTES ****************************************************************
-    Route::prefix('faq')->name('faq.')->controller(AdminFaqController::class)->group(function () {
-        Route::get('/', 'index') -> name('index');
-        Route::get('/create', 'create') -> name('create');
-        Route::post('/store', 'store') -> name('store');
-        Route::get('/edit/{id}', 'edit') -> name('edit');
-        Route::post('/update/{id}', 'update') -> name('update');
-        Route::get('/show/{id}', 'show') -> name('show');
-        Route::get('delete/{id}', 'destroy') -> name('delete');
-    });
-    // CATEGORY ROUTES ****************************************************************
-    Route::prefix('category')->name('category.')->controller(AdminCategoryController::class)->
-    group(function () {
-        Route::get('/', 'index') -> name('index');
-        Route::get('/create', 'create') -> name('create');
-        Route::post('/store', 'store') -> name('store');
-        Route::get('/edit/{id}', 'edit') -> name('edit');
-        Route::post('/update/{id}', 'update') -> name('update');
-        Route::get('/show/{id}', 'show') -> name('show');
-        Route::get('delete/{id}', 'destroy') -> name('delete');
-    });
-    // Post ROUTES ****************************************************************
-    // Route::resource('post', AdminPostController::class);
 
-    Route::prefix('post')->name('post.')->controller(AdminPostController::class)->
-    group(function () {
-        Route::get('/', 'index') -> name('index');
-        Route::get('/create', 'create') -> name('create');
-        Route::post('/store', 'store') -> name('store');
-        Route::get('/edit/{id}', 'edit') -> name('edit');
-        Route::post('/update/{id}', 'update') -> name('update');
-        Route::get('/show/{id}', 'show') -> name('show');
-        Route::get('delete/{id}', 'destroy') -> name('delete');
-    });
+
+    Route::resource('faq', AdminFaqController::class);
+
+    Route::resource('category', AdminCategoryController::class);
+
+     Route::resource('post', AdminPostController::class);
+
+     //Image uçacak
     // Image ROUTES ****************************************************************
     Route::prefix('image')->name('image.')->controller(AdminImageController::class)->
     group(function () {
@@ -117,42 +92,23 @@ Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
         Route::post('/update/{pid}/{id}', 'update') -> name('update');
         Route::get('delete/{pid}/{id}', 'destroy') -> name('delete');
     });
-    // Message ROUTES ****************************************************************
-    Route::prefix('message')->name('message.')->controller(MessageController::class)->
-    group(function () {
-        Route::get('/', 'index') -> name('index');
-        Route::get('/show/{id}', 'show') -> name('show');
-        Route::get('destroy/{id}', 'destroy') -> name('destroy');
-        Route::post('update/{id}', 'update') -> name('update');
-    });
-    // Comment ROUTES ****************************************************************
-    Route::prefix('comment')->name('comment.')->controller(CommentController::class)->
-    group(function () {
-        Route::get('/', 'index') -> name('index');
-        Route::get('/show/{id}', 'show') -> name('show');
-        Route::get('destroy/{id}', 'destroy') -> name('destroy');
-        Route::post('update/{id}', 'update') -> name('update');
-    });
+
+    Route::resource('message', MessageController::class)->only(['index', 'show', 'destroy']);
+
+    Route::resource('comment', CommentController::class)->only(['index', 'show', 'destroy']);
+
+
     // User ROUTES ****************************************************************
     Route::prefix('user')->name('user.')->controller(AdminUserController::class)->
     group(function () {
         Route::get('/', 'index') -> name('index');
-        Route::get('/edit/{id}', 'edit') -> name('edit');
-        Route::get('/show/{id}', 'show') -> name('show');
-        Route::get('destroy/{id}', 'destroy') -> name('destroy');
-        Route::post('update/{id}', 'update') -> name('update');
-        Route::post('addroleimage/{id}', 'addRoleImage') -> name('addroleimage');
-        Route::get('destroyrole/{uid}/{rid}', 'destroyRole') -> name('destroyrole');
+        Route::get('/show/{user}', 'show') -> name('show');
+        Route::get('destroy/{user}', 'destroy') -> name('destroy');
+        Route::post('addroleimage/{uid}', 'addRoleImage') -> name('addroleimage');
+        Route::get('destroyrole/{user}/{rid}', 'destroyRole') -> name('destroyrole');
     });
-    // Friend ROUTES ****************************************************************
-    Route::prefix('friend')->name('friend.')->controller(FriendController::class)->
-    group(function () {
-        Route::get('/', 'index') -> name('index');
-        Route::get('/edit/{id}', 'edit') -> name('edit');
-        Route::get('/show/{id}', 'show') -> name('show');
-        Route::get('destroy/{id}', 'destroy') -> name('destroy');
-        Route::post('update/{id}', 'update') -> name('update');
-    });
+
+    Route::resource('friend', FriendController::class)->only(['index', 'show', 'destroy']);
 
     // general routes ****************************************************************
     Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');

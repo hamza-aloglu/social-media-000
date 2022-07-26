@@ -18,9 +18,9 @@ class PostController extends Controller
      */
     public function index(): Response
     {
-        $data = Post::all();
+        $posts = Post::all();
         return \response(view('admin.post.index', [
-            'data' => $data,
+            'data' => $posts,
         ]), 200);
     }
 
@@ -31,9 +31,9 @@ class PostController extends Controller
      */
     public function create(): Response
     {
-        $data = Category::all();
+        $categories = Category::all();
         return \response(view('admin.post.create', [
-            'data' => $data
+            'data' => $categories,
         ]));
     }
 
@@ -56,8 +56,7 @@ class PostController extends Controller
             'status' => ['string'],
         ]);
 
-        if($request -> file('image'))
-        {
+        if ($request->file('image')) {
             $validated['image'] = $request->file('image')->store('public/images');
             $validated['image'] = str_replace('public/', "", $validated['image']);
         }
@@ -71,14 +70,12 @@ class PostController extends Controller
      * Display the specified resource.
      *
      * @param \App\Models\post $post
-     * @param $id
      * @return Response
      */
-    public function show(Post $post, $id): Response
+    public function show(Post $post): Response
     {
-        $data = Post::find($id);
         return \response(view('admin.post.show', [
-            'data' => $data
+            'data' => $post
         ]));
     }
 
@@ -86,15 +83,13 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param \App\Models\post $post
-     * @param $id
      * @return Response
      */
-    public function edit(Post $post, $id): Response
+    public function edit(Post $post): Response
     {
-        $data = Post::find($id);
         $datalist = category::all();
         return \response(view('admin.post.edit', [
-            'data' => $data,
+            'data' => $post,
             'datalist' => $datalist
         ]));
     }
@@ -103,12 +98,11 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  \App\Models\post  $post
+     * @param \App\Models\post $post
      * @return Response
      */
-    public function update(Request $request, post $post, $id): Response
+    public function update(Request $request, post $post): Response
     {
-        $data = Post::find($id);
         $validated = $request->validate([
             'category_id' => ['required', 'integer'],
             'user_id' => ['required', 'integer'],
@@ -119,33 +113,34 @@ class PostController extends Controller
             'detail' => ['string'],
             'status' => ['string'],
         ]);
-        if($request -> file('image'))
-        {
-            if ($data->image)
-                Storage::disk('public')->delete($data->image);
+        $oldImage = $post->getAttribute('image');
+        if ($newImage = $request->file('image')) {
+            if ($oldImage) {
+                Storage::disk('public')->delete($oldImage);
+            }
 
-            $validated['image'] = $request->file('image')->store('public/images');
-            $validated['image'] = str_replace('public/', "", $validated['image']);
+            $newImage = $newImage->store('public/images');
+            $validated['image'] = str_replace('public/', "", $newImage);
         }
 
-        $data->update($validated);
+        $post->update($validated);
         return \response(redirect(route('admin.post.index')));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\post  $post
+     * @param \App\Models\post $post
      * @return Response
      */
-    public function destroy(post $post, $id)
+    public function destroy(post $post): Response
     {
-        $data = Post::find($id);
-        if($data -> image && Storage::disk('public') -> exists($data->image))
-        {
-            Storage::disk('public')->delete($data->image);
+        $image = $post->getAttribute('image');
+
+        if ($image && Storage::disk('public')->exists($image)) {
+            Storage::disk('public')->delete($image);
         }
-        $data->delete();
+        $post->delete();
         return \response(redirect(route('admin.post.index')));
     }
 }

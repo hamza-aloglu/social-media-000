@@ -21,7 +21,7 @@
             </div>
             <div class="panel-body pn mt20">
                 <div class="table-responsive">
-                    <table class="table allcp-form theme-warning tc-checkbox-1 table-style-2 btn-gradient-grey fs13">
+                    <table class="table theme-warning tc-checkbox-1 table-style-2 btn-gradient-grey fs13">
                         <thead>
                         <tr class="">
                             <th class="">Id</th>
@@ -61,10 +61,14 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <a href={{route('admin.message.destroy', ['id' => $rs -> id])}}>Destroy</a>
+                                                <form action="{{route('admin.message.destroy', ['message' => $rs -> id])}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button style="background-color: black; color: white" type="submit">Destroy</button>
+                                                </form>
                                             </li>
                                             <li>
-                                                <a href={{route('admin.message.show', ['id' => $rs -> id])}}
+                                                <a href={{route('admin.message.show', ['message' => $rs -> id])}}
                                                    onclick="return !window.open(this.href, '', 'top=50 left=100 width=1100, height = 700')">
                                                             show
                                                 </a>

@@ -27,12 +27,12 @@ class CategoryController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
-        $data = category::all();
-        return view('admin.category.index', [
-            'data' => $data
-        ]);
+        $categories = category::all();
+        return \response(view('admin.category.index', [
+            'data' => $categories,
+        ]));
     }
 
     /**
@@ -40,21 +40,21 @@ class CategoryController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
-        $data = category::all();
-        return view('admin.category.create', [
-            'data' => $data
-        ]);
+        $categories = category::all();
+        return \response(view('admin.category.create', [
+            'data' => $categories,
+        ]));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request): Response
     {
         $validated = $request->validate([
            'parentid' => ['required', 'int'],
@@ -79,43 +79,40 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\category  $category
+     * @param  Category  $category
      * @return Response
      */
-    public function show(category $category, $id)
+    public function show(category $category): Response
     {
-        $data = category::find($id);
-        return view('admin.category.show', [
-            'data' => $data
-        ]);
+        return \response(view('admin.category.show', [
+            'data' => $category,
+        ]));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\category  $category
+     * @param Category $category
      * @return Response
      */
-    public function edit(category $category, $id)
+    public function edit(category $category): Response
     {
-        $data = category::find($id);
         $datalist = category::all();
-        return view('admin.category.edit', [
-            'data' => $data,
+        return \response(view('admin.category.edit', [
+            'data' => $category,
             'datalist' => $datalist
-        ]);
+        ]));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\category  $category
+     * @param Request $request
+     * @param Category $category
      * @return Response
      */
-    public function update(Request $request, category $category, $id)
+    public function update(Request $request, category $category): Response
     {
-        $data = category::find($id);
         $validated = $request->validate([
             'parentid' => ['required', 'int'],
             'title' => ['required', 'max:255'],
@@ -124,33 +121,36 @@ class CategoryController extends Controller
             'image' => ['image'],
             'status' => ['string'],
         ]);
-        if($request -> file('image'))
-        {
-            if ($data->image)
-                Storage::disk('public')->delete($data->image);
 
-            $validated['image'] = $request->file('image')->store('public/images');
-            $validated['image'] = str_replace('public/', "",  $validated['image']);
+        $oldImage = $category->getAttribute('image');
+        if($newImage = $request -> file('image'))
+        {
+            if ($oldImage)
+                Storage::disk('public')->delete($oldImage);
+
+            $newImage = $request->file('image')->store('public/images');
+            $validated['image'] = str_replace('public/', "",  $newImage);
         }
 
-        Category::create($validated);
-        return redirect(route('admin.category.index'));
+        $category->update($validated);
+
+        return \response(redirect(route('admin.category.index')));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\category  $category
+     * @param Category $category
      * @return Response
      */
-    public function destroy(category $category, $id)
+    public function destroy(category $category): Response
     {
-        $data = category::find($id);
-        if($data -> image && Storage::disk('public') -> exists($data->image))
+        $categoryImage = $category->getAttribute('image');
+        if($categoryImage && Storage::disk('public') -> exists($categoryImage))
         {
-            Storage::disk('public')->delete($data->image);
+            Storage::disk('public')->delete($categoryImage);
         }
-        $data->delete();
-        return redirect('/admin/category');
+        $category->delete();
+        return \response(redirect('/admin/category'));
     }
 }
