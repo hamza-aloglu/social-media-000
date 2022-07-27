@@ -61,7 +61,7 @@ controller(UserController::class)->group(function () {
     Route::get('/commentDestroy/{comment}', 'commentdestroy')->name('commentdestroy')->middleware('auth');
     Route::get('/postDestroy/{post}', 'postdestroy')->name('postdestroy')->middleware('auth');
     Route::get('/edit', 'edit')->name('edit')->middleware('auth');
-    Route::post('/editpictures', 'editPictures')->name('editpictures')->middleware('auth');
+    Route::post('/updatepictures', 'updatePictures')->name('updatepictures')->middleware('auth');
 });
 
 // FRIEND ROUTES **************************************************
@@ -74,7 +74,7 @@ Route::prefix('userpanel')->name('userpanel.')
 });
 
 
-Route::get('/searchuser', [UserController::class, 'searchUser'])->name('searchuser');
+Route::get('/searchuser', [UserController::class, 'searchUsers'])->name('searchuser');
 
 
 Route::view('/loginadmin', 'admin.login')->name('loginadmin');

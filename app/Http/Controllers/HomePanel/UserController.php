@@ -88,7 +88,7 @@ class UserController extends Controller
         return back();
     }
 
-    public function searchUser(Request $request)
+    public function searchUsers(Request $request)
     {
         $result = $request->query('query');
 
@@ -104,7 +104,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function editPictures(Request $request)
+    public function updatePictures(Request $request)
     {
         $user = User::find(Auth::id());
 
@@ -133,7 +133,7 @@ class UserController extends Controller
             $user->background_picture = str_replace('public/', "", $user->background_picture);
         }
         $user->save();
-        return redirect()->route('userpanel.index', ['uid'=>Auth::id()]);
+        return redirect()->route('userpanel.index', ['user'=>Auth::id()]);
     }
 
     public function edit()

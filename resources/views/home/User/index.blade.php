@@ -78,7 +78,7 @@
                         @if(!$visitorFlag)
                             <div class="mt-3 card widget-item">
                                 <div class="widget-body">
-                                    <form action="{{route('userpanel.editpictures')}}" method="post"
+                                    <form action="{{route('userpanel.updatepictures')}}" method="post"
                                           enctype="multipart/form-data">
 
                                         @if ($errors->any())
