@@ -78,7 +78,7 @@ Route::get('/searchuser', [UserController::class, 'searchUsers'])->name('searchu
 
 
 Route::view('/loginadmin', 'admin.login')->name('loginadmin');
-Route::post('/loginadmincheck', [UserController::class, 'loginadmincheck'])->name('loginadmincheck');
+Route::post('/loginadmincheck', [AdminUserController::class, 'loginadmincheck'])->name('loginadmincheck');
 // ADMIN ROUTES ****************************************************************
 Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('index');

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorAndUpdateRequestCategory;
 use App\Models\Category;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
@@ -54,23 +56,11 @@ class CategoryController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request): Response
+    public function store(StorAndUpdateRequestCategory $request): Response
     {
-        $validated = $request->validate([
-           'parentid' => ['required', 'int'],
-           'title' => ['required', 'max:255'],
-            'keywords' => ['max:255'],
-            'description' => ['max:255'],
-            'image' => ['image'],
-            'status' => ['string'],
-        ]);
+        $validated = $request->validated();
 
-
-        if($request -> file('image'))
-        {
-            $validated['image'] = $request->file('image')->store('public/images');
-            $validated['image'] = str_replace('public/', "",  $validated['image']);
-        }
+        $validated['image'] = ImageController::storeFileToPublicStorage($request);
 
         Category::create($validated);
         return \response(redirect(route('admin.category.index')));
@@ -107,30 +97,14 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param StorAndUpdateRequestCategory $request
      * @param Category $category
      * @return Response
      */
-    public function update(Request $request, category $category): Response
+    public function update(StorAndUpdateRequestCategory $request, category $category): Response
     {
-        $validated = $request->validate([
-            'parentid' => ['required', 'int'],
-            'title' => ['required', 'max:255'],
-            'keywords' => ['max:255'],
-            'description' => ['max:255'],
-            'image' => ['image'],
-            'status' => ['string'],
-        ]);
-
-        $oldImage = $category->getAttribute('image');
-        if($newImage = $request -> file('image'))
-        {
-            if ($oldImage)
-                Storage::disk('public')->delete($oldImage);
-
-            $newImage = $request->file('image')->store('public/images');
-            $validated['image'] = str_replace('public/', "",  $newImage);
-        }
+        $validated = $request->validated();
+        $validated['image'] = ImageController::updateFileFromPublicStorage($request, $category->getAttribute('image'));
 
         $category->update($validated);
 

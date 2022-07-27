@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\HomePanel;
 
+use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAndUpdateRequestPost;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Image;
@@ -50,24 +52,10 @@ class HomeController extends Controller
         with('info', "your comment has been sent.");
     }
 
-    public function storePost(Request $request)
+    public function storePost(StoreAndUpdateRequestPost $request)
     {
-        $validated = $request->validate([
-            'category_id' => ['required', 'integer'],
-            'user_id' => ['required', 'integer'],
-            'title' => ['required', 'max:255'],
-            'keywords' => ['max:255'],
-            'description' => ['max:255'],
-            'image' => ['image'],
-            'detail' => ['string'],
-            'status' => ['string'],
-        ]);
-
-        if($request -> file('image'))
-        {
-            $validated['image'] = $request->file('image')->store('public/images');
-            $validated['image'] = str_replace('public/', "", $validated['image']);
-        }
+        $validated = $request->validated();
+        $validated['image'] = ImageController::storeFileToPublicStorage($request);
 
         Post::create($validated);
         return redirect()->route('home');
@@ -92,7 +80,6 @@ class HomeController extends Controller
     {
         $cid = $category->getAttribute('id');
         $posts = Post::all()->where('category_id', '=', $cid);
-        //$posts = DB::table('posts')->where('category_id', $cid)->get(); if you use this line of code, you will not be able to reach user of the post because this method does not use eloquent model
         return view('home.main-page.categoryposts', [
             'category' => $category,
             'posts' => $posts,

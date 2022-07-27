@@ -64,20 +64,20 @@
             <div class="col-md-12 ">
                 <div class="section">
                     <h3>Title</h3>
-                    <input type="text" name="title" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Title">
+                    <input type="text" name="title" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Title" value="{{old('title')}}">
 
                 </div>
             </div>
             <div class="col-md-12 ">
                 <div class="section">
                     <h3>Keywords</h3>
-                    <input type="text" name="keywords" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Keywords">
+                    <input type="text" name="keywords" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Keywords" value="{{old('keywords')}}">
                 </div>
             </div>
             <div class="col-md-12 ">
                 <div class="section">
                     <h3>Description</h3>
-                    <input type="text" name="description" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Description">
+                    <input type="text" name="description" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Description" value="{{old('description')}}">
                 </div>
             </div>
             <div class="col-md-6 prn hidden-xs">
@@ -88,10 +88,10 @@
                     <i class="fa fa-upload"></i>
                 </div>
             </div>
-            <div class="col-md-12 ">
+            <div class="col-md-12">
                 <div class="section">
                     <h3>Detail</h3>
-                    <textarea id="detail" name="detail"></textarea>
+                    <textarea id="detail" name="detail">{{old('detail')}}</textarea>
                     <script>
                         ClassicEditor
                             .create( document.querySelector( '#detail' ) )

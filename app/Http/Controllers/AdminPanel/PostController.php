@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAndUpdateRequestPost;
 use App\Models\Post;
 use App\Models\category;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
@@ -40,26 +40,13 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param StoreAndUpdateRequestPost $request
      * @return Response
      */
-    public function store(Request $request): Response
+    public function store(StoreAndUpdateRequestPost $request): Response
     {
-        $validated = $request->validate([
-            'category_id' => ['required', 'integer'],
-            'user_id' => ['required', 'integer'],
-            'title' => ['required', 'max:255'],
-            'keywords' => ['max:255'],
-            'description' => ['max:255'],
-            'image' => ['image'],
-            'detail' => ['string'],
-            'status' => ['string'],
-        ]);
-
-        if ($request->file('image')) {
-            $validated['image'] = $request->file('image')->store('public/images');
-            $validated['image'] = str_replace('public/', "", $validated['image']);
-        }
+        $validated = $request->validated();
+        $validated['image'] = ImageController::storeFileToPublicStorage($request);
 
         Post::create($validated);
 
@@ -97,31 +84,15 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param StoreAndUpdateRequestPost $request
      * @param \App\Models\post $post
      * @return Response
      */
-    public function update(Request $request, post $post): Response
+    public function update(StoreAndUpdateRequestPost $request, post $post): Response
     {
-        $validated = $request->validate([
-            'category_id' => ['required', 'integer'],
-            'user_id' => ['required', 'integer'],
-            'title' => ['required', 'max:255'],
-            'keywords' => ['max:255'],
-            'description' => ['max:255'],
-            'image' => ['image'],
-            'detail' => ['string'],
-            'status' => ['string'],
-        ]);
-        $oldImage = $post->getAttribute('image');
-        if ($newImage = $request->file('image')) {
-            if ($oldImage) {
-                Storage::disk('public')->delete($oldImage);
-            }
+        $validated = $request->validated();
 
-            $newImage = $newImage->store('public/images');
-            $validated['image'] = str_replace('public/', "", $newImage);
-        }
+        $validated['image'] = ImageController::updateFileFromPublicStorage($request, $post->getAttribute('image'));
 
         $post->update($validated);
         return \response(redirect(route('admin.post.index')));
