@@ -14,7 +14,4 @@ class RoleUser extends Model
     ];
 
     public $timestamps = false;
-    public int $role_id;
-    public int $user_id;
-
 }

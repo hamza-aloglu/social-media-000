@@ -35,7 +35,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // HOME ROUTES ****************************************************************
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
-    Route::get('/post/{post}', 'getPost')->name('post');
+    Route::get('/post/{post}', 'getPostPage')->name('post');
     Route::get('/postcategory/{category}', 'postCategory')->name('postcategory');
     Route::post('/storecomment', 'storeComment')->name('storecomment');
     Route::post('/storepost', 'storePost')->name('storepost');

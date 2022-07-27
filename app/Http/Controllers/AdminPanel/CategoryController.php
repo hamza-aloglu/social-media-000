@@ -119,11 +119,8 @@ class CategoryController extends Controller
      */
     public function destroy(category $category): Response
     {
-        $categoryImage = $category->getAttribute('image');
-        if($categoryImage && Storage::disk('public') -> exists($categoryImage))
-        {
-            Storage::disk('public')->delete($categoryImage);
-        }
+        ImageController::destroyFileFromPublicStorage($category->getAttribute('image'));
+
         $category->delete();
         return \response(redirect('/admin/category'));
     }

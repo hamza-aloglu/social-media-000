@@ -106,11 +106,8 @@ class PostController extends Controller
      */
     public function destroy(post $post): Response
     {
-        $image = $post->getAttribute('image');
+        ImageController::destroyFileFromPublicStorage($post->getAttribute('image'));
 
-        if ($image && Storage::disk('public')->exists($image)) {
-            Storage::disk('public')->delete($image);
-        }
         $post->delete();
         return \response(redirect(route('admin.post.index')));
     }

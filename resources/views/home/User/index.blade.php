@@ -80,7 +80,6 @@
                                 <div class="widget-body">
                                     <form action="{{route('userpanel.updatepictures')}}" method="post"
                                           enctype="multipart/form-data">
-
                                         @if ($errors->any())
                                             <div class="alert alert-danger">
                                                 <ul>
@@ -90,7 +89,6 @@
                                                 </ul>
                                             </div>
                                         @endif
-
                                         @csrf
                                         <div class="section">
                                             <h3>Profile Image</h3>

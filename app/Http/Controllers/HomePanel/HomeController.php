@@ -62,7 +62,7 @@ class HomeController extends Controller
     }
 
 
-    public function getPost(Post $post)
+    public function getPostPage(Post $post)
     {
         $pid = $post->getAttribute('id');
 

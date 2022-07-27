@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\HomePanel;
 
+use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\Controller;
 use App\Models\category;
 use App\Models\Comment;
@@ -26,31 +27,29 @@ class UserController extends Controller
         $isRequested = 0;
 
         $uid = $user->getAttribute('id');
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $onlineUser = Auth::user();
-            foreach ($onlineUser->friendsTo as $friend){
+            foreach ($onlineUser->friendsTo as $friend) {
                 if ($friend->id == $uid)
                     $isRequested = 1;
             }
-            foreach ($onlineUser->friendsFrom as $friend){
+            foreach ($onlineUser->friendsFrom as $friend) {
                 if ($friend->id == $uid)
                     $isRequested = 1;
             }
-            if($uid == Auth::id())
-            {
+            if ($uid == Auth::id()) {
                 $visitorFlag = 0;
             }
 
         }
 
         return view('home.user.index', [
-            'postlist1'=>$postlist1,
-            'categories'=>$categories,
-            'visitorFlag'=>$visitorFlag,
-            'user'=>$user,
-            'isRequested'=>$isRequested,
-            'setting'=>$setting,
+            'postlist1' => $postlist1,
+            'categories' => $categories,
+            'visitorFlag' => $visitorFlag,
+            'user' => $user,
+            'isRequested' => $isRequested,
+            'setting' => $setting,
         ]);
     }
 
@@ -59,8 +58,7 @@ class UserController extends Controller
         $uid = $user->getAttribute('id');
         $comments = Comment::where('user_id', $uid)->get();
         $visitorFlag = 1;
-        if (Auth::check() && $uid == Auth::id())
-        {
+        if (Auth::check() && $uid == Auth::id()) {
             $visitorFlag = 0;
         }
         return view('home.user.comments', [
@@ -78,11 +76,7 @@ class UserController extends Controller
 
     public function postDestroy(Post $post)
     {
-        $postImage = $post->getAttribute('image');
-        if($postImage && Storage::disk('public') -> exists($postImage))
-        {
-            Storage::disk('public')->delete($postImage);
-        }
+        ImageController::destroyFileFromPublicStorage($post->getAttribute('image'));
 
         $post->delete();
         return back();
@@ -92,15 +86,13 @@ class UserController extends Controller
     {
         $result = $request->query('query');
 
-        if ($result)
-        {
+        if ($result) {
             $users = User::where('name', 'LIKE', "%{$result}%")->get();
-        }
-        else
+        } else
             $users = null;
 
         return view('home.user.searchuser', [
-            'users'=>$users,
+            'users' => $users,
         ]);
     }
 
@@ -108,32 +100,24 @@ class UserController extends Controller
     {
         $user = User::find(Auth::id());
 
-        if($request -> file('profile_picture'))
-        {
-            $request->validate([
-                'profile_picture' => 'image',
-            ]);
+        $request->validate([
+            'profile_picture' => ['image'],
+        ]);
+        $user->profile_picture = ImageController::updateFileFromPublicStorage(
+            $request,
+            $user->profile_picture,
+            'profile_picture');
 
-            if ($user->profile_picture)
-                Storage::disk('public')->delete($user->profile_picture);
+        $request->validate([
+            'background_picture' => 'image',
+        ]);
+        $user->background_picture = ImageController::updateFileFromPublicStorage(
+            $request,
+            $user->background_picture,
+            'background_picture');
 
-            $user->profile_picture = $request->file('profile_picture')->store('public/images');
-            $user->profile_picture = str_replace('public/', "", $user->profile_picture);
-        }
-        if($request -> file('background_picture'))
-        {
-            $request->validate([
-                'background_picture' => 'image',
-            ]);
-
-            if ($user->background_picture)
-                Storage::disk('public')->delete($user->background_picture);
-
-            $user->background_picture = $request->file('background_picture')->store('public/images');
-            $user->background_picture = str_replace('public/', "", $user->background_picture);
-        }
         $user->save();
-        return redirect()->route('userpanel.index', ['user'=>Auth::id()]);
+        return redirect()->route('userpanel.index', ['user' => Auth::id()]);
     }
 
     public function edit()
