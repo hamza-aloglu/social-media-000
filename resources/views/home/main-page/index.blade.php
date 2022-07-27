@@ -127,7 +127,7 @@
                                 <div class="post-title d-flex align-items-center">
                                     <!-- profile picture end -->
                                     <div class="profile-thumb">
-                                        <a href="{{route('userpanel.index', ['uid'=>$rs->user->id])}}">
+                                        <a href="{{route('userpanel.index', ['user'=>$rs->user->id])}}">
                                             <figure class="profile-thumb-middle">
                                                 <img
                                                     src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_picture)}}"
@@ -138,14 +138,14 @@
                                     <!-- profile picture end -->
                                     <div class="posted-author">
                                         <h6 class="author"><a
-                                                href="{{route('userpanel.index', ['uid'=>$rs->user->id])}}">{{$rs->user->name}}</a>
+                                                href="{{route('userpanel.index', ['user'=>$rs->user->id])}}">{{$rs->user->name}}</a>
                                         </h6>
                                         <span class="post-time">{{$rs->created_at->format('H:m:s - F')}}</span>
                                     </div>
                                 </div>
                                 <!-- post title start -->
                                 <div class="post-content">
-                                    <a class="" href="{{route('post', ['id'=>$rs->id])}}" style="color: inherit">
+                                    <a class="" href="{{route('post', ['post'=>$rs->id])}}" style="color: inherit">
                                         <p class="post-desc">
                                             {!! $rs->detail !!}
                                         </p>
@@ -153,7 +153,7 @@
                                     @if($rs -> image)
                                         <div class="post-thumb-gallery img-gallery">
                                             <figure class="post-thumb">
-                                                <a class="" href="{{route('post', ['id'=>$rs->id])}}">
+                                                <a class="" href="{{route('post', ['post'=>$rs->id])}}">
                                                     <img src="{{Storage::url($rs->image)}}" alt="post image">
                                                 </a>
                                             </figure>
@@ -180,7 +180,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <a href="{{route('post', ['id'=>$rs->id])}}" class="post-comment">
+                                                <a href="{{route('post', ['post'=>$rs->id])}}" class="post-comment">
                                                     <i class="bi bi-chat-bubble"></i>
                                                     <span>{{$rs -> comments -> count('id')}}</span>
                                                 </a>
@@ -206,7 +206,7 @@
                                                 <li class="unorder-list">
                                                     <!-- profile picture end -->
                                                     <div class="profile-thumb">
-                                                        <a href="{{route('userpanel.index', ['uid'=>$friend->id])}}">
+                                                        <a href="{{route('userpanel.index', ['user'=>$friend->id])}}">
                                                             <figure class="profile-thumb-small">
                                                                 <img
                                                                     src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_picture)}}"
@@ -228,7 +228,7 @@
                                                 <li class="unorder-list">
                                                     <!-- profile picture end -->
                                                     <div class="profile-thumb">
-                                                        <a href="{{route('userpanel.index', ['uid'=>$friend->id])}}">
+                                                        <a href="{{route('userpanel.index', ['user'=>$friend->id])}}">
                                                             <figure class="profile-thumb-small">
                                                                 <img
                                                                     src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_picture)}}"

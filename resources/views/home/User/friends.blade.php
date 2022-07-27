@@ -30,10 +30,10 @@
                                     <nav>
                                         <ul class="main-menu">
                                             <li>
-                                                <a href="{{route('userpanel.index', ['uid'=>\Illuminate\Support\Facades\Auth::id()])}}">timeline</a>
+                                                <a href="{{route('userpanel.index', ['user'=>\Illuminate\Support\Facades\Auth::id()])}}">timeline</a>
                                             </li>
                                             <li>
-                                                <a href="{{route('userpanel.comment', ['uid'=>\Illuminate\Support\Facades\Auth::id()])}}">comments</a>
+                                                <a href="{{route('userpanel.comment', ['user'=>\Illuminate\Support\Facades\Auth::id()])}}">comments</a>
                                             </li>
                                             <li class="active"><a href="#">friends</a></li>
                                             <li><a href="{{route('userpanel.edit')}}">edit profile</a></li>
@@ -70,7 +70,7 @@
 
                                                 <div class="posted-author">
                                                     <h6 class="author"><a
-                                                            href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a>
+                                                            href="{{route('userpanel.index', ['user'=>$friend->id])}}">{{$friend->name}}</a>
                                                     </h6>
                                                     <a href="{{route('userpanel.friendaccept', ['fid' => $friend->id])}}"
                                                        class="add-frnd">accept friend</a>
@@ -95,7 +95,7 @@
 
                                                 <div class="posted-author">
                                                     <h6 class="author"><a
-                                                            href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a>
+                                                            href="{{route('userpanel.index', ['user'=>$friend->id])}}">{{$friend->name}}</a>
                                                     </h6>
                                                     <a href="{{route('userpanel.frienddelete', ['fid' => $friend->id])}}"
                                                        class="add-frnd">delete friend</a>
@@ -120,7 +120,7 @@
 
                                                 <div class="posted-author">
                                                     <h6 class="author"><a
-                                                            href="{{route('userpanel.index', ['uid'=>$friend->id])}}">{{$friend->name}}</a>
+                                                            href="{{route('userpanel.index', ['user'=>$friend->id])}}">{{$friend->name}}</a>
                                                     </h6>
                                                     <a href="{{route('userpanel.frienddelete', ['fid' => $friend->id])}}"
                                                        class="add-frnd">delete friend</a>                                                </div>

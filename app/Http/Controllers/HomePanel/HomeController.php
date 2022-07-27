@@ -10,9 +10,7 @@ use App\Models\Post;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use function redirect;
-use function request;
 use function view;
 
 class HomeController extends Controller
@@ -76,23 +74,23 @@ class HomeController extends Controller
     }
 
 
-    public function post($id)
+    public function getPost(Post $post)
     {
-        $data = Post::find($id);
+        $pid = $post->getAttribute('id');
 
-        $comments = Comment::where('post_id', $id)->get();
-        $images = Image::where('post_id', $id)->get();
+        $comments = Comment::where('post_id', $pid)->get();
+        $images = Image::where('post_id', $pid)->get();
 
         return view('home.main-page.post', [
-            'data' => $data,
+            'data' => $post,
             'images' => $images,
             'comments' => $comments,
         ]);
     }
 
-    public function postcategory($cid, $slug)
+    public function postCategory(Category $category)
     {
-        $category = category::find($cid);
+        $cid = $category->getAttribute('id');
         $posts = Post::all()->where('category_id', '=', $cid);
         //$posts = DB::table('posts')->where('category_id', $cid)->get(); if you use this line of code, you will not be able to reach user of the post because this method does not use eloquent model
         return view('home.main-page.categoryposts', [

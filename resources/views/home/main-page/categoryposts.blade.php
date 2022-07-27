@@ -20,7 +20,7 @@
                                 <div class="post-title d-flex align-items-center">
                                     <!-- profile picture end -->
                                     <div class="profile-thumb">
-                                        <a href="{{route('userpanel.index', ['uid'=>$rs->user->id])}}">
+                                        <a href="{{route('userpanel.index', ['user'=>$rs->user->id])}}">
                                             <figure class="profile-thumb-middle">
                                                 <img src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_picture)}}" alt="profile picture">
                                             </figure>
@@ -29,7 +29,7 @@
                                     <!-- profile picture end -->
 
                                     <div class="posted-author">
-                                        <h6 class="author"><a href="{{route('userpanel.index', ['uid'=>$rs->user->id])}}">{{$rs->user->name}}</a></h6>
+                                        <h6 class="author"><a href="{{route('userpanel.index', ['user'=>$rs->user->id])}}">{{$rs->user->name}}</a></h6>
                                         <span class="post-time">{{$rs->created_at}}</span>
                                         <span>{{$category -> title}}</span>
                                     </div>
@@ -42,7 +42,7 @@
                                     @if($rs -> image)
                                         <div class="post-thumb-gallery img-gallery">
                                             <figure class="post-thumb">
-                                                <a class="" href="{{route('post', ['id'=>$rs->id])}}">
+                                                <a class="" href="{{route('post', ['post'=>$rs->id])}}">
                                                     <img src="{{Storage::url($rs->image)}}" alt="post image">
                                                 </a>
                                             </figure>
@@ -69,11 +69,12 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <a href="{{route('post', ['id'=>$rs->id])}}" class="post-comment">
+                                                <a href="{{route('post', ['post'=>$rs->id])}}" class="post-comment">
                                                     <i class="bi bi-chat-bubble"></i>
                                                     <span>{{$rs -> comments -> count('id')}}</span>
                                                 </a>
                                             </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

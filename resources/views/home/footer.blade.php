@@ -31,7 +31,7 @@
                                     <!-- profile picture end -->
                                         <div class="single-slide">
                                             <div class="">
-                                                <a href="{{route('userpanel.index', ['uid'=>$user->id])}}">
+                                                <a href="{{route('userpanel.index', ['user'=>$user->id])}}">
                                                     <figure class="profile-thumb-small">
                                                         <img src="{{Storage::url($user->profile_picture)}}"
                                                              alt="profile picture">
@@ -80,7 +80,7 @@
                                     <!-- profile picture end -->
                                         <div class="single-slide">
                                             <div class="">
-                                                <a href="{{route('userpanel.index', ['uid'=>$user->id])}}">
+                                                <a href="{{route('userpanel.index', ['user'=>$user->id])}}">
                                                     <figure class="profile-thumb-small">
                                                         <img src="{{Storage::url($user->profile_picture)}}"
                                                              alt="profile picture">

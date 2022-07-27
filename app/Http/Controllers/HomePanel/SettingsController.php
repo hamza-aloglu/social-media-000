@@ -1,5 +1,7 @@
 <?php
 
+// çoğu uçacak.
+
 namespace App\Http\Controllers\HomePanel;
 
 use App\Http\Controllers\Controller;

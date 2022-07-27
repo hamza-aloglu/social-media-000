@@ -72,7 +72,7 @@
 
                                                 <!-- message content start -->
                                                 <div class="msg-content notification-content">
-                                                    <a href="{{route('postcategory', ['id' => $rs -> id, 'slug' => $rs -> title])}}">{{$rs -> title}}</a>
+                                                    <a href="{{route('postcategory', ['category'=>$rs -> id])}}">{{$rs -> title}}</a>
                                                     <p>{{$rs -> keywords}}</p>
 
                                                     @if(count($rs->children))
@@ -142,7 +142,7 @@
                                     </div>
                                     <div class="profile-body">
                                         <ul>
-                                            <li><a href="{{route('userpanel.index', ['uid'=>\Illuminate\Support\Facades\Auth::id()])}}"><i class="flaticon-user"></i>Profile</a></li>
+                                            <li><a href="{{route('userpanel.index', ['user'=>\Illuminate\Support\Facades\Auth::id()])}}"><i class="flaticon-user"></i>Profile</a></li>
                                         </ul>
                                         <ul>
                                             <li><a href="{{route('logoutuser')}}"><i class="flaticon-unlock"></i>Sign out</a></li>
@@ -250,7 +250,7 @@
                                     </div>
                                     <div class="profile-body">
                                         <ul>
-                                            <li><a href="{{route('userpanel.index', ['uid'=>\Illuminate\Support\Facades\Auth::id()])}}"><i class="flaticon-user"></i>Profile</a></li>
+                                            <li><a href="{{route('userpanel.index', ['user'=>\Illuminate\Support\Facades\Auth::id()])}}"><i class="flaticon-user"></i>Profile</a></li>
                                         </ul>
                                         <ul>
                                             <li><a href="{{route('logoutuser')}}"><i class="flaticon-unlock"></i>Sign out</a></li>

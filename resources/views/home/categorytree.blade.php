@@ -33,7 +33,7 @@
 
                         <!-- message content start -->
                         <div class="msg-content notification-content">
-                            <a href="{{route('postcategory', ['id' => $subcategory -> id, 'slug' => $rs -> title])}}">{{$subcategory -> title}}</a>,
+                            <a href="{{route('postcategory', ['category' => $subcategory -> id])}}">{{$subcategory -> title}}</a>,
                             <p>{{$subcategory -> keywords}}</p>
 
                             @if(count($subcategory->children))

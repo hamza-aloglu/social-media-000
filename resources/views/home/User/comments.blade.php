@@ -18,7 +18,7 @@
                                 <div class="main-menu-inner header-top-navigation">
                                     <nav>
                                         <ul class="main-menu">
-                                            <li><a href="{{route('userpanel.index', ['uid'=>$user->id])}}">timeline</a>
+                                            <li><a href="{{route('userpanel.index', ['user'=>$user->id])}}">timeline</a>
                                             </li>
                                             <li class="active"><a href="#">comments</a></li>
                                             @if(!$visitorFlag)
@@ -73,7 +73,7 @@
                                         @if(!$visitorFlag)
                                             <td class="">
                                                 <div class="btn-group text-right">
-                                                    <a href={{route('userpanel.commentdestroy', ['id' => $rs -> id])}}>Destroy</a>
+                                                    <a href={{route('userpanel.commentdestroy', ['comment' => $rs -> id])}}>Destroy</a>
                                                 </div>
                                             </td>
                                         @endif

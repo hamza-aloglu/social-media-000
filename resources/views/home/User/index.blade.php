@@ -29,7 +29,7 @@
                                         <ul class="main-menu">
                                             <li class="active"><a href="#">timeline</a></li>
                                             <li>
-                                                <a href="{{route('userpanel.comment', ['uid'=>$user->id])}}">comments</a>
+                                                <a href="{{route('userpanel.comments', ['user'=>$user->id])}}">comments</a>
                                             </li>
                                             @if(!$visitorFlag)
                                                 <li><a href="{{route('userpanel.friend')}}">friends</a></li>
@@ -217,7 +217,7 @@
                                             <span></span>
                                             <div class="post-settings arrow-shape">
                                                 <ul>
-                                                    <li><a href="{{route('userpanel.postdestroy', ['pid'=>$rs->id])}}">Delete
+                                                    <li><a href="{{route('userpanel.postdestroy', ['post'=>$rs->id])}}">Delete
                                                             post</a></li>
                                                 </ul>
                                             </div>
@@ -226,7 +226,7 @@
                                 </div>
                                 <!-- post title start -->
                                 <div class="post-content">
-                                    <a class="" href="{{route('post', ['id'=>$rs->id])}}" style="color: inherit">
+                                    <a class="" href="{{route('post', ['post'=>$rs->id])}}" style="color: inherit">
                                         <p class="post-desc">
                                             {!! $rs->detail !!}
                                         </p>
@@ -234,7 +234,7 @@
                                     @if($rs -> image)
                                         <div class="post-thumb-gallery img-gallery">
                                             <figure class="post-thumb">
-                                                <a class="" href="{{route('post', ['id'=>$rs->id])}}">
+                                                <a class="" href="{{route('post', ['post'=>$rs->id])}}">
                                                     <img src="{{Storage::url($rs->image)}}" alt="post image">
                                                 </a>
                                             </figure>
@@ -261,7 +261,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <a href="{{route('post', ['id'=>$rs->id])}}" class="post-comment">
+                                                <a href="{{route('post', ['post'=>$rs->id])}}" class="post-comment">
                                                     <i class="bi bi-chat-bubble"></i>
                                                     <span>{{$rs -> comments -> count('id')}}</span>
                                                 </a>
