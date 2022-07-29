@@ -38,9 +38,6 @@
                                                 <br>
                                                 <br>
                                                 <br>
-                                                Status: {{$data->status}}
-                                                <br>
-                                                <br>
                                                 Create Date: {{$data->created_at}}
                                                 <br>
                                                 Update Date: {{$data->update_at}}

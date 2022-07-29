@@ -8,7 +8,7 @@
 
         <div class="main-wrapper">
             <div class="profile-banner-large bg-img"
-                 data-bg="{{\Illuminate\Support\Facades\Storage::url($user->background_picture)}}">
+                 data-bg="{{\Illuminate\Support\Facades\Storage::url($user->background_photo_path)}}">
             </div>
             <div class="profile-menu-area bg-white">
                 <div class="container">
@@ -46,7 +46,6 @@
                                     <th class="">Id</th>
                                     <th class="">Post</th>
                                     <th class="">Comment</th>
-                                    <th class="">Rate</th>
                                     <th class="">Status</th>
                                     <th class="">Action</th>
                                 </tr>
@@ -63,9 +62,6 @@
                                         </td>
                                         <td class="">
                                             <span>{{$rs -> comment}}</span>
-                                        </td>
-                                        <td class="">
-                                            <span>{{$rs -> rate}}</span>
                                         </td>
                                         <td class="">
                                             <span class="label label-info">{{$rs->status}}</span>

@@ -1,9 +1,5 @@
 @extends('layouts.frontbase')
 
-@section('title', $data -> title)
-@section('keywords', $data -> keywords)
-@section('description', $data -> description)
-
 @section('head')
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 @endsection
@@ -24,7 +20,7 @@
                                     <a href="{{route('userpanel.index', ['user'=>$data->user->id])}}">
                                         <figure class="profile-thumb-middle">
                                             <img
-                                                src="{{\Illuminate\Support\Facades\Storage::url($data->user->profile_picture)}}"
+                                                src="{{\Illuminate\Support\Facades\Storage::url($data->user->profile_photo_path)}}"
                                                 alt="profile picture">
                                         </figure>
                                     </a>
@@ -49,9 +45,6 @@
                                         <div class="gallery-toggle">
                                             <div class="d-none product-thumb-large-view">
                                                 <img src="{{Storage::url($data->image)}}" alt="Photo Gallery">
-                                                @foreach($images as $img)
-                                                    <img src="{{Storage::url($img->image)}}" alt="Photo Gallery">
-                                                @endforeach
                                             </div>
                                             <div class="gallery-overlay">
                                                 <img src="{{Storage::url($data->image)}}" alt="Photo Gallery">
@@ -63,30 +56,16 @@
                                 <div class="post-meta">
                                     <button class="post-meta-like">
                                         <i class="bi bi-heart-beat"></i>
-                                        <span>{{$data -> likes}}</span>
+                                        <span>0</span>
                                         <strong>201</strong>
                                     </button>
-                                    @php
-                                        $average = $data->comments->average('rate')
-                                    @endphp
                                     <ul class="comment-share-meta">
-                                        <li>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="ratings">
-                                                    @for($i = 0; $i < $average; $i++)
-                                                        <i class="fa fa-star rating-color"></i>
-                                                    @endfor
-                                                    <span>{{number_format($average, 0)}}</span>
-                                                </div>
-                                            </div>
-                                        </li>
                                         <li>
                                             <button class="post-comment">
                                                 <i class="bi bi-chat-bubble"></i>
                                                 <span>{{$data -> comments -> count('id')}}</span>
                                             </button>
                                         </li>
-
                                     </ul>
                                 </div>
                             </div>
@@ -103,7 +82,7 @@
                                         <a href="{{route('userpanel.index', ['user'=>\Illuminate\Support\Facades\Auth::id()])}}">
                                             <figure class="profile-thumb-middle">
                                                 <img
-                                                    src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_picture)}}"
+                                                    src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path)}}"
                                                     alt="profile picture">
                                             </figure>
                                         </a>
@@ -140,15 +119,6 @@
                                                     <div class="modal-body custom-scroll">
                                                     <textarea name="comment" class="share-field-big custom-scroll"
                                                               placeholder="Say Something"></textarea>
-                                                        <select name="rate" class="form-select form-select-lg mb-3 px-5"
-                                                                aria-label=".form-select-lg example">
-                                                            <option value="1" selected disabled>Rate Post</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-                                                            <option value="4">Four</option>
-                                                            <option value="3">Five</option>
-                                                        </select>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="post-share-btn"
@@ -183,7 +153,7 @@
                                         <a href="{{route('userpanel.index', ['user'=>$rs->user->id])}}">
                                             <figure class="profile-thumb-middle">
                                                 <img
-                                                    src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_picture)}}"
+                                                    src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_photo_path)}}"
                                                     alt="profile picture">
                                             </figure>
                                         </a>
@@ -214,10 +184,6 @@
                                             <li>
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div class="ratings">
-                                                        rated:
-                                                        @for($i = 0; $i < $rs->rate; $i++)
-                                                            <i class="fa fa-star rating-color"></i>
-                                                        @endfor
                                                     </div>
                                                 </div>
                                             </li>

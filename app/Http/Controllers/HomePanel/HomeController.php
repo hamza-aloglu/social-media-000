@@ -19,20 +19,18 @@ class HomeController extends Controller
 {
     public static function maincategorylist()
     {
-        return Category::where('parentid', 0)->with('children')->get();
+        return Category::where('parentid', null)->with('children')->get();
     }
 
     public function index()
     {
         $postlist1 = Post::limit(8)->get();
         $setting = Setting::first();
-        $categories = category::all();
-        //$users = User::all();
+        $categories = Category::all();
         return view('home.main-page.index', [
             'postlist1' => $postlist1,
             'setting' => $setting,
             'categories' => $categories,
-            //'users'=>$users,
         ]);
     }
 
@@ -42,13 +40,11 @@ class HomeController extends Controller
             'user_id' => ['integer'],
             'post_id' => ['integer'],
             'comment' => ['string', 'max:255'],
-            'rate' => ['Integer'],
         ]);
-
 
         Comment::create($validated);
 
-        return redirect()->route('post', ['id' => $request->input('post_id')])->
+        return redirect()->route('post', ['post' => $request->input('post_id')])->
         with('info', "your comment has been sent.");
     }
 
@@ -67,11 +63,9 @@ class HomeController extends Controller
         $pid = $post->getAttribute('id');
 
         $comments = Comment::where('post_id', $pid)->get();
-        $images = Image::where('post_id', $pid)->get();
 
         return view('home.main-page.post', [
             'data' => $post,
-            'images' => $images,
             'comments' => $comments,
         ]);
     }

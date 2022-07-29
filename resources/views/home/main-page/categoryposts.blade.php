@@ -1,8 +1,6 @@
 @extends('layouts.frontbase')
 
 @section('title', $category -> title)
-@section('keywords', $category -> keywords)
-@section('description', $category -> description)
 
 @section('head')
 @endsection
@@ -22,7 +20,7 @@
                                     <div class="profile-thumb">
                                         <a href="{{route('userpanel.index', ['user'=>$rs->user->id])}}">
                                             <figure class="profile-thumb-middle">
-                                                <img src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_picture)}}" alt="profile picture">
+                                                <img src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_photo_path)}}" alt="profile picture">
                                             </figure>
                                         </a>
                                     </div>
@@ -51,23 +49,11 @@
                                     <div class="post-meta">
                                         <button class="post-meta-like">
                                             <i class="bi bi-heart-beat"></i>
-                                            <span>{{$rs -> likes}}</span>
+                                            <span>0</span>
                                             <strong>201</strong>
                                         </button>
-                                        @php
-                                            $average = $rs->comments->average('rate')
-                                        @endphp
+
                                         <ul class="comment-share-meta">
-                                            <li>
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div class="ratings">
-                                                        @for($i = 0; $i < $average; $i++)
-                                                            <i class="fa fa-star rating-color"></i>
-                                                        @endfor
-                                                        <span>{{number_format($average, 0)}}</span>
-                                                    </div>
-                                                </div>
-                                            </li>
                                             <li>
                                                 <a href="{{route('post', ['post'=>$rs->id])}}" class="post-comment">
                                                     <i class="bi bi-chat-bubble"></i>

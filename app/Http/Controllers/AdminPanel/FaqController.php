@@ -43,7 +43,6 @@ class FaqController extends Controller
         $faq = new faq();
         $faq->setAttribute('question', $request->input('question'));
         $faq->setAttribute('answer', $request->input('answer'));
-        $faq->setAttribute('status', $request->input('status'));
 
         $faq->save();
         return \response(redirect('admin/faq'));
@@ -86,7 +85,6 @@ class FaqController extends Controller
     {
         $faq->setAttribute('question', $request->input('question'));
         $faq->setAttribute('answer', $request->input('answer'));
-        $faq->setAttribute('status', $request->input('status'));
 
         $faq->save();
         return \response(redirect('admin/faq'));

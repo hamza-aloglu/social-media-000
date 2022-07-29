@@ -30,7 +30,7 @@
         <li class="dropdown dropdown-fuse navbar-user">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img class="btn-hover-effects"
-                     src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_picture)}}"
+                     src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path)}}"
                      alt="avatar">
                 <span class="hidden-xs">
                         <span class="name">{{Auth::user()->name}}</span>

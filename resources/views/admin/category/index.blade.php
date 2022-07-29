@@ -28,7 +28,6 @@
                             <th class="">Parent</th>
                             <th class="">Title</th>
                             <th class="">Image</th>
-                            <th class="">Status</th>
                             <th class="">Action</th>
                         </tr>
                         </thead>
@@ -49,9 +48,6 @@
                                     @if($rs -> image)
                                         <img src="{{Storage::url($rs -> image)}}" alt="{{$rs->title}}" style="height: 50px">
                                     @endif
-                                </td>
-                                <td>
-                                    <span class="label label-info">{{$rs->status}}</span>
                                 </td>
                                 <td class="">
                                     <div class="btn-group text-right">

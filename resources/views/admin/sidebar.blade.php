@@ -21,7 +21,7 @@
         <ul class="nav sidebar-menu">
             <li class="sidebar-label pt30">Navigation</li>
             <li>
-                <a class="" href="/admin">
+                <a class="" href="{{route('admin.index')}}">
                     <span class="caret"></span>
                     <span class="sidebar-title">Home</span>
                     <span class="sb-menu-icon fa fa-home"></span>
@@ -52,14 +52,14 @@
                 <!-- You can add subfiles to users from template.   -->
             </li>
             <li>
-                <a class="" href="/admin/setting">
+                <a class="" href="{{route('admin.setting')}}">
                     <span class="caret"></span>
                     <span class="sidebar-title">Settings</span>
                     <span class="sb-menu-icon fa fa-wrench"></span>
                 </a>
             </li>
             <li>
-                <a class="" href="/admin/comment">
+                <a class="" href="{{route('admin.comment.index')}}">
                     <span class="caret"></span>
                     <span class="sidebar-title">Comments</span>
                     <span class="sb-menu-icon fa fa-list-ul"></span>
@@ -73,7 +73,7 @@
                 </a>
             </li>
             <li>
-                <a class="" href="/admin/faq">
+                <a class="" href="{{route('admin.faq.index')}}">
                     <span class="caret"></span>
                     <span class="sidebar-title">FAQ</span>
                     <span class="sb-menu-icon fa fa-file-text-o"></span>

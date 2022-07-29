@@ -8,7 +8,7 @@
 
         <div class="main-wrapper">
             <div class="profile-banner-large bg-img"
-                 data-bg="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->background_picture)}}">
+                 data-bg="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->background_photo_path)}}">
             </div>
             <div class="profile-menu-area bg-white">
                 <div class="container">
@@ -18,7 +18,7 @@
                                 <figure class="profile-picture">
                                     <div href="profile.html">
                                         <img
-                                            src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_picture)}}"
+                                            src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path)}}"
                                             alt="profile picture" style="height: 125px; width: 125px">
                                     </div>
                                 </figure>
@@ -33,7 +33,7 @@
                                                 <a href="{{route('userpanel.index', ['user'=>\Illuminate\Support\Facades\Auth::id()])}}">timeline</a>
                                             </li>
                                             <li>
-                                                <a href="{{route('userpanel.comment', ['user'=>\Illuminate\Support\Facades\Auth::id()])}}">comments</a>
+                                                <a href="{{route('userpanel.comments', ['user'=>\Illuminate\Support\Facades\Auth::id()])}}">comments</a>
                                             </li>
                                             <li class="active"><a href="#">friends</a></li>
                                             <li><a href="{{route('userpanel.edit')}}">edit profile</a></li>
@@ -61,7 +61,7 @@
                                                     <a href="#">
                                                         <figure class="profile-thumb-middle">
                                                             <img
-                                                                src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_picture)}}"
+                                                                src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_photo_path)}}"
                                                                 alt="profile picture">
                                                         </figure>
                                                     </a>
@@ -86,7 +86,7 @@
                                                     <a href="#">
                                                         <figure class="profile-thumb-middle">
                                                             <img
-                                                                src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_picture)}}"
+                                                                src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_photo_path)}}"
                                                                 alt="profile picture">
                                                         </figure>
                                                     </a>
@@ -111,7 +111,7 @@
                                                     <a href="#">
                                                         <figure class="profile-thumb-middle">
                                                             <img
-                                                                src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_picture)}}"
+                                                                src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_photo_path)}}"
                                                                 alt="profile picture">
                                                         </figure>
                                                     </a>

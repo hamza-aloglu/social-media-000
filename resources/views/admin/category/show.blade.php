@@ -64,24 +64,12 @@
             <div class="table-content">{{$data -> title}}</div>
         </div>
         <div class="table-row">
-            <div class="table-header">Keywords:</div>
-            <div class="table-content">{{$data -> keywords}}</div>
-        </div>
-        <div class="table-row">
-            <div class="table-header">Description:</div>
-            <div class="table-content">{{$data -> description}}</div>
-        </div>
-        <div class="table-row">
             <div class="table-header">Image:</div>
             <div class="table-content">{{$data -> image}}</div>
         </div>
         <div class="table-row">
             <div class="table-header">parent id:</div>
             <div class="table-content">{{$data -> parentid}}</div>
-        </div>
-        <div class="table-row">
-            <div class="table-header">Status:</div>
-            <div class="table-content">{{$data -> status}}</div>
         </div>
         <div class="table-row">
             <div class="table-header">Created at:</div>

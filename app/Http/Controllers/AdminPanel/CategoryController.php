@@ -18,7 +18,7 @@ class CategoryController extends Controller
 
     public static function getParentsTree($category, $title)
     {
-        if ($category -> parentid == 0)
+        if ($category -> parentid == null)
             return $title;
         $parent = Category::find($category->parentid);
         $title = $parent->title .'>'.$title;
@@ -31,7 +31,7 @@ class CategoryController extends Controller
      */
     public function index(): Response
     {
-        $categories = category::all();
+        $categories = Category::all();
         return \response(view('admin.category.index', [
             'data' => $categories,
         ]));
@@ -44,7 +44,7 @@ class CategoryController extends Controller
      */
     public function create(): Response
     {
-        $categories = category::all();
+        $categories = Category::all();
         return \response(view('admin.category.create', [
             'data' => $categories,
         ]));
@@ -72,7 +72,7 @@ class CategoryController extends Controller
      * @param  Category  $category
      * @return Response
      */
-    public function show(category $category): Response
+    public function show(Category $category): Response
     {
         return \response(view('admin.category.show', [
             'data' => $category,
@@ -87,7 +87,7 @@ class CategoryController extends Controller
      */
     public function edit(category $category): Response
     {
-        $datalist = category::all();
+        $datalist = Category::all();
         return \response(view('admin.category.edit', [
             'data' => $category,
             'datalist' => $datalist
@@ -117,7 +117,7 @@ class CategoryController extends Controller
      * @param Category $category
      * @return Response
      */
-    public function destroy(category $category): Response
+    public function destroy(Category $category): Response
     {
         ImageController::destroyFileFromPublicStorage($category->getAttribute('image'));
 

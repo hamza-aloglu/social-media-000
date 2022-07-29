@@ -26,11 +26,7 @@
                         <tr class="">
                             <th class="">Id</th>
                             <th class="">Category</th>
-                            <th class="">Title</th>
-                            <th class="">Likes</th>
                             <th class="">Image</th>
-                            <th class="">Image Gallery</th>
-                            <th class="">Status</th>
                             <th class="">Action</th>
                         </tr>
                         </thead>
@@ -45,24 +41,9 @@
                                     getParentsTree($rs -> category, $rs->category->title)}}</span>
                                 </td>
                                 <td class="">
-                                    <span>{{$rs -> title}}</span>
-                                </td>
-                                <td class="">
-                                    <span>{{$rs -> likes}}</span>
-                                </td>
-                                <td class="">
                                     @if($rs -> image)
                                         <img src="{{Storage::url($rs -> image)}}" alt="{{$rs->title}}" style="height: 50px">
                                     @endif
-                                </td>
-                                <td class="" style="">
-                                    <a href="{{route('admin.image.index', ['pid' => $rs -> id])}}"
-                                    onclick="return !window.open(this.href, '', 'top=50 left=100 width=1100, height = 700')">
-                                        <img src="{{asset('assets-admin')}}/img/gallery-icon.jpg" alt="gallery icon" style="height: 50px;">
-                                    </a>
-                                </td>
-                                <td class="">
-                                    <span class="label label-info">{{$rs->status}}</span>
                                 </td>
                                 <td class="">
                                     <div class="btn-group text-right">

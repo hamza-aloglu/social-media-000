@@ -42,12 +42,6 @@
             <td class="table-secondary w-25 fw-bold">updated_at</td>
             <td class="table-secondary">{{$data -> updated_at}}</td>
         </tr>
-        <tr class="table-secondary">
-            <td class="table-primary w-25 fw-bold">rate</td>
-            <td class="table-primary">{{$data -> rate}}</td>
-        </tr>
-
-
         <!-- On cells (`td` or `th`) -->
     </table>
     </div>

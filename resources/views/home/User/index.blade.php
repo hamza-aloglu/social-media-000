@@ -1,16 +1,13 @@
 @extends('layouts.frontbase')
 
 @section('title','posts of '. $user->name)
-@section('keywords', $setting -> keywords)
-@section('description', $setting -> description)
-@section('icon', \Illuminate\Support\Facades\Storage::url($setting->icon))
 
 
 @section('content')
     <main>
 
         <div class="main-wrapper">
-            <div class="profile-banner-large bg-img" data-bg="{{Storage::url($user->background_picture)}}"></div>
+            <div class="profile-banner-large bg-img" data-bg="{{Storage::url($user->background_photo_path)}}"></div>
             <div class="profile-menu-area bg-white">
                 <div class="container">
                     <div class="row align-items-center">
@@ -18,7 +15,7 @@
                             <div class="profile-picture-box">
                                 <figure class="profile-picture">
                                     <img style="height: 125px; width: 125px;"
-                                         src="{{Storage::url($user->profile_picture)}}" alt="profile picture">
+                                         src="{{Storage::url($user->profile_photo_path)}}" alt="profile picture">
                                 </figure>
                             </div>
                         </div>
@@ -34,7 +31,7 @@
                                             @if(!$visitorFlag)
                                                 <li><a href="{{route('userpanel.friend')}}">friends</a></li>
                                                 <li><a href="{{route('userpanel.edit')}}">edit profile</a></li>
-                                            @elseif(\Illuminate\Support\Facades\Auth::check() && !$isRequested)
+                                            @elseif(\Illuminate\Support\Facades\Auth::check() && !$isFriendRequestSent)
 
                                                 <li style="float: right"><a
                                                         href="{{route('userpanel.friendrequest', ['fid'=>$user->id])}}"
@@ -92,7 +89,7 @@
                                         @csrf
                                         <div class="section">
                                             <h3>Profile Image</h3>
-                                            <input type="file" class="gui-file" name="profile_picture" id="file2"
+                                            <input type="file" class="gui-file" name="profile_photo_path" id="file2"
                                                    onchange="document.getElementById('uploader2').value = this.value;">
                                             <input type="text" class="gui-input" id="uploader2"
                                                    placeholder="Select File">
@@ -102,7 +99,7 @@
                                         <br>
                                         <div class="section">
                                             <h3>Background Image</h3>
-                                            <input type="file" class="gui-file" name="background_picture" id="file3"
+                                            <input type="file" class="gui-file" name="background_photo_path" id="file3"
                                                    onchange="document.getElementById('uploader3').value = this.value;">
                                             <input type="text" class="gui-input" id="uploader3"
                                                    placeholder="Select File">
@@ -166,8 +163,6 @@
                                                                placeholder="Select File">
                                                         <input hidden type="text" name="user_id"
                                                                value="{{$user->id}}">
-                                                        <input hidden type="text" name="title"
-                                                               value="{{$user->name}}">
 
 
                                                     </div>
@@ -197,7 +192,7 @@
                                         <a href="#">
                                             <figure class="profile-thumb-middle">
                                                 <img
-                                                    src="{{\Illuminate\Support\Facades\Storage::url($user->profile_picture)}}"
+                                                    src="{{\Illuminate\Support\Facades\Storage::url($user->profile_photo_path)}}"
                                                     alt="profile picture">
                                             </figure>
                                         </a>
@@ -241,23 +236,10 @@
                                     <div class="post-meta">
                                         <button class="post-meta-like">
                                             <i class="bi bi-heart-beat"></i>
-                                            <span>{{$rs -> likes}}</span>
+                                            <span>0</span>
                                             <strong>201</strong>
                                         </button>
-                                        @php
-                                            $average = $rs->comments->average('rate')
-                                        @endphp
                                         <ul class="comment-share-meta">
-                                            <li>
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div class="ratings">
-                                                        @for($i = 0; $i < $average; $i++)
-                                                            <i class="fa fa-star rating-color"></i>
-                                                        @endfor
-                                                        <span>{{number_format($average, 0)}}</span>
-                                                    </div>
-                                                </div>
-                                            </li>
                                             <li>
                                                 <a href="{{route('post', ['post'=>$rs->id])}}" class="post-comment">
                                                     <i class="bi bi-chat-bubble"></i>

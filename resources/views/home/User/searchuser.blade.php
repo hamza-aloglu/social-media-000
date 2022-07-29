@@ -31,7 +31,7 @@
 
                             <div class="cardd">
                                 <a href="{{route('userpanel.index', ['user'=>$user->id])}}">
-                                    <img src="{{\Illuminate\Support\Facades\Storage::url($user->profile_picture)}}" alt="Avatar" style="width:100px; height: 75px">
+                                    <img src="{{\Illuminate\Support\Facades\Storage::url($user->profile_photo_path)}}" alt="Avatar" style="width:100px; height: 75px">
                                     <b class="fs-6">{{$user->name}}</b>
                                 </a>
                                 <div class="containerr">

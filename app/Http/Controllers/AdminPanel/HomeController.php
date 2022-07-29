@@ -14,64 +14,31 @@ class HomeController extends Controller
         return \response(view('admin.main-page.index'));
     }
 
-    // Settings uçacak ...
     public function setting()
     {
-        $data = Setting::first();
-        if($data===null)
+        $setting = Setting::first();
+        if($setting===null)
         {
-            $data = new Setting();
-            $data->title = "default title";
-            $data->save();
-            $data = Setting::first();
+            $setting = new Setting();
+            $setting->save();
+            $setting = Setting::first();
         }
 
         return view('admin.settings.setting', [
-            'data'=>$data
+            'data'=>$setting
         ]);
     }
 
     public function updateSetting(Request $request)
     {
-        $data = Setting::find($request -> input('id'));
+        $setting = Setting::first();
 
-        $data -> title = $request -> input('title');
-        $data -> keywords = $request -> input('keywords');
-        $data -> description = $request -> input('description');
-        $data -> company = $request -> input('company');
-        $data -> address = $request -> input('address');
-        $data -> phone = $request -> input('phone');
-        $data -> fax = $request -> input('fax');
-        $data -> email = $request -> input('email');
-
-        $data -> smtpserver = $request -> input('smtpserver');
-        $data -> smtpemail = $request -> input('smtpemail');
-        $data -> smtppassword = $request -> input('smtppassword');
-        $data -> smtpport = $request -> input('smtpport');
-        $data -> smtpemail = $request -> input('smtpemail');
-        $data -> smtpemail = $request -> input('smtpemail');
-
-        $data -> facebook = $request -> input('facebook');
-        $data -> instagram = $request -> input('instagram');
-        $data -> twitter = $request -> input('twitter');
-        $data -> youtube = $request -> input('youtube');
-
-        $data -> aboutus = $request -> input('aboutus');
-        $data -> contact = $request -> input('contact');
-        $data -> references = $request -> input('references');
-        if ($request->file('icon'))
-        {
-            $data -> icon = $request -> file('icon') -> store('public/images');
-        }
-        $data -> status = $request -> input('status');
-
-        $data->save();
+        $setting->setAttribute('contact', $request->input('contact'));
+        $setting->save();
 
         return redirect()->route('admin.setting', [
-            'data' => $data
+            'data' => $setting,
         ]);
 
     }
-
-
 }

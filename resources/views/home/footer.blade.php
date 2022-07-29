@@ -33,7 +33,7 @@
                                             <div class="">
                                                 <a href="{{route('userpanel.index', ['user'=>$user->id])}}">
                                                     <figure class="profile-thumb-small">
-                                                        <img src="{{Storage::url($user->profile_picture)}}"
+                                                        <img src="{{Storage::url($user->profile_photo_path)}}"
                                                              alt="profile picture">
                                                     </figure>
                                                 </a>
@@ -82,7 +82,7 @@
                                             <div class="">
                                                 <a href="{{route('userpanel.index', ['user'=>$user->id])}}">
                                                     <figure class="profile-thumb-small">
-                                                        <img src="{{Storage::url($user->profile_picture)}}"
+                                                        <img src="{{Storage::url($user->profile_photo_path)}}"
                                                              alt="profile picture">
                                                     </figure>
                                                 </a>

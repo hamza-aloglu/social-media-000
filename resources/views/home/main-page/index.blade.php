@@ -1,10 +1,5 @@
 @extends('layouts.frontbase')
 
-@section('title', $setting -> title)
-@section('keywords', $setting -> keywords)
-@section('description', $setting -> description)
-@section('icon', \Illuminate\Support\Facades\Storage::url($setting->icon))
-
 @section('content')
 
     <main>
@@ -20,13 +15,13 @@
                                         <figure class="profile-banner-small">
                                             <div class="profile-thumb-1">
                                                 <img
-                                                    src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->background_picture)}}"
+                                                    src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->background_photo_path)}}"
                                                     alt="">
                                             </div>
 
                                             <div href="profile.html" class="profile-thumb-2">
                                                 <img
-                                                    src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_picture)}}"
+                                                    src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path)}}"
                                                     alt="">
                                             </div>
                                         </figure>
@@ -95,8 +90,6 @@
                                                     @auth
                                                         <input hidden type="text" name="user_id"
                                                                value="{{\Illuminate\Support\Facades\Auth::id()}}">
-                                                        <input hidden type="text" name="title"
-                                                               value="{{\App\Models\User::find(\Illuminate\Support\Facades\Auth::id())->name}}">
                                                     @endauth
 
 
@@ -130,7 +123,7 @@
                                         <a href="{{route('userpanel.index', ['user'=>$rs->user->id])}}">
                                             <figure class="profile-thumb-middle">
                                                 <img
-                                                    src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_picture)}}"
+                                                    src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_photo_path)}}"
                                                     alt="profile picture">
                                             </figure>
                                         </a>
@@ -162,23 +155,11 @@
                                     <div class="post-meta">
                                         <button class="post-meta-like">
                                             <i class="bi bi-heart-beat"></i>
-                                            <span>{{$rs -> likes}}</span>
+                                            <span>0</span>
                                             <strong>201</strong>
                                         </button>
-                                        @php
-                                            $average = $rs->comments->average('rate')
-                                        @endphp
+
                                         <ul class="comment-share-meta">
-                                            <li>
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div class="ratings">
-                                                        @for($i = 0; $i < $average; $i++)
-                                                            <i class="fa fa-star rating-color"></i>
-                                                        @endfor
-                                                        <span>{{number_format($average, 0)}}</span>
-                                                    </div>
-                                                </div>
-                                            </li>
                                             <li>
                                                 <a href="{{route('post', ['post'=>$rs->id])}}" class="post-comment">
                                                     <i class="bi bi-chat-bubble"></i>
@@ -209,7 +190,7 @@
                                                         <a href="{{route('userpanel.index', ['user'=>$friend->id])}}">
                                                             <figure class="profile-thumb-small">
                                                                 <img
-                                                                    src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_picture)}}"
+                                                                    src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_photo_path)}}"
                                                                     alt="profile picture">
                                                             </figure>
                                                         </a>
@@ -231,7 +212,7 @@
                                                         <a href="{{route('userpanel.index', ['user'=>$friend->id])}}">
                                                             <figure class="profile-thumb-small">
                                                                 <img
-                                                                    src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_picture)}}"
+                                                                    src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_photo_path)}}"
                                                                     alt="profile picture">
                                                             </figure>
                                                         </a>

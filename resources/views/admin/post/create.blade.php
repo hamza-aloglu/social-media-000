@@ -61,25 +61,6 @@
             <!-- user_id... -->
             <input hidden name="user_id" type="text" value="{{\Illuminate\Support\Facades\Auth::id()}}">
 
-            <div class="col-md-12 ">
-                <div class="section">
-                    <h3>Title</h3>
-                    <input type="text" name="title" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Title" value="{{old('title')}}">
-
-                </div>
-            </div>
-            <div class="col-md-12 ">
-                <div class="section">
-                    <h3>Keywords</h3>
-                    <input type="text" name="keywords" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Keywords" value="{{old('keywords')}}">
-                </div>
-            </div>
-            <div class="col-md-12 ">
-                <div class="section">
-                    <h3>Description</h3>
-                    <input type="text" name="description" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Description" value="{{old('description')}}">
-                </div>
-            </div>
             <div class="col-md-6 prn hidden-xs">
                 <div class="section">
                     <h3>Image</h3>
@@ -104,18 +85,6 @@
                     </script>
                 </div>
             </div>
-            <div class="col-md-12 ">
-                <div class="section">
-                    <h3>Status</h3>
-                    <select id="country" name="status" style="width: 100%; padding: 5px">
-                        <option value="" selected disabled>Select status</option>
-                        <option value="Enabled">Enabled</option>
-                        <option value="Disabled">Disabled</option>
-                    </select>
-                    <i class="arrow"></i>
-                </div>
-            </div>
-
         </div>
         <input type="submit" class="button btn-info" style="display: block;padding: 5px 15px; margin: 10px 0;
                                 border: 1px solid gray; position: relative; right: 43px" value="save">

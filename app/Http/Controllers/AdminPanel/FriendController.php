@@ -30,20 +30,20 @@ class FriendController extends Controller
      */
     public function show(Friend $friend): Response
     {
-        return response()->view('admin.friends.show', [
+        return \response(view('admin.friends.show', [
             'data' => $friend,
-        ]);
+        ]));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param Friend $friend
-     * @return RedirectResponse
+     * @return Response
      */
-    public function destroy(Friend $friend): RedirectResponse
+    public function destroy(Friend $friend): Response
     {
         $friend -> delete();
-        return response()->redirectTo(route('admin.friend.index'));
+        return \response(redirect(route('admin.friend.index')));
     }
 }

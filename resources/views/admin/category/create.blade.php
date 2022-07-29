@@ -49,7 +49,7 @@
                 <div class="section">
                     <h3>parent id</h3>
                     <select id="country" name="parentid" style="width: 100%; padding: 5px">
-                        <option value="0" selected>Main Category</option>
+                        <option value="{{null}}" selected>Main Category</option>
                         @foreach($data as $rs)
                             <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::
                                 getParentsTree($rs, $rs->title)}}</option>
@@ -58,24 +58,11 @@
                     <i class="arrow"></i>
                 </div>
             </div>
-
             <div class="col-md-12 ">
                 <div class="section">
                     <h3>Title</h3>
                     <input type="text" name="title" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Title">
 
-                </div>
-            </div>
-            <div class="col-md-12 ">
-                <div class="section">
-                    <h3>Keywords</h3>
-                    <input type="text" name="keywords" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Keywords">
-                </div>
-            </div>
-            <div class="col-md-12 ">
-                <div class="section">
-                    <h3>Description</h3>
-                    <input type="text" name="description" id="from" class="gui-input" style="width: 100%; padding: 5px" placeholder="Description">
                 </div>
             </div>
             <div class="col-md-6 prn hidden-xs">
@@ -84,17 +71,6 @@
                     <input type="file" class="gui-file" name="image" id="file2" onchange="document.getElementById('uploader2').value = this.value;">
                     <input type="text" class="gui-input" id="uploader2" placeholder="Select File">
                     <i class="fa fa-upload"></i>
-                </div>
-            </div>
-            <div class="col-md-12 ">
-                <div class="section">
-                    <h3>Status</h3>
-                    <select id="country" name="status" style="width: 100%; padding: 5px">
-                        <option value="Enabled" selected disabled>Select status</option>
-                        <option value="Enabled">Enabled</option>
-                        <option value="Disabled">Disabled</option>
-                    </select>
-                    <i class="arrow"></i>
                 </div>
             </div>
 

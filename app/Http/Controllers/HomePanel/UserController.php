@@ -20,27 +20,25 @@ class UserController extends Controller
 {
     public function index(User $user)
     {
-        $setting = Setting::first();
         $categories = category::all(); // categories are taken for creating post on profile.
         $postlist1 = $user->posts;
-        $visitorFlag = 1;
-        $isRequested = 0;
 
+        $visitorFlag = 1;
+        $isFriendRequestSent = 0;
         $uid = $user->getAttribute('id');
         if (Auth::check()) {
             $onlineUser = Auth::user();
             foreach ($onlineUser->friendsTo as $friend) {
                 if ($friend->id == $uid)
-                    $isRequested = 1;
+                    $isFriendRequestSent = 1;
             }
             foreach ($onlineUser->friendsFrom as $friend) {
                 if ($friend->id == $uid)
-                    $isRequested = 1;
+                    $isFriendRequestSent = 1;
             }
             if ($uid == Auth::id()) {
                 $visitorFlag = 0;
             }
-
         }
 
         return view('home.user.index', [
@@ -48,8 +46,7 @@ class UserController extends Controller
             'categories' => $categories,
             'visitorFlag' => $visitorFlag,
             'user' => $user,
-            'isRequested' => $isRequested,
-            'setting' => $setting,
+            'isFriendRequestSent' => $isFriendRequestSent,
         ]);
     }
 
@@ -101,20 +98,21 @@ class UserController extends Controller
         $user = User::find(Auth::id());
 
         $request->validate([
-            'profile_picture' => ['image'],
+            'profile_photo_path' => 'image',
         ]);
-        $user->profile_picture = ImageController::updateFileFromPublicStorage(
+        $user->profile_photo_path = ImageController::updateFileFromPublicStorage(
             $request,
-            $user->profile_picture,
-            'profile_picture');
+            $user->profile_photo_path,
+            'profile_photo_path');
+
 
         $request->validate([
-            'background_picture' => 'image',
+            'background_photo_path' => 'image',
         ]);
-        $user->background_picture = ImageController::updateFileFromPublicStorage(
+        $user->background_photo_path = ImageController::updateFileFromPublicStorage(
             $request,
-            $user->background_picture,
-            'background_picture');
+            $user->background_photo_path,
+            'background_photo_path');
 
         $user->save();
         return redirect()->route('userpanel.index', ['user' => Auth::id()]);

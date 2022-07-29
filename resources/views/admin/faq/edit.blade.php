@@ -27,7 +27,7 @@
             <div class="section">
                 <h3>Question</h3>
                 <input type="text" name="question" id="from" class="gui-input" style="width: 100%; padding: 5px"
-                       placeholder="{{$data -> question}}">
+                       value="{{$data -> question}}">
             </div>
         </div>
 
@@ -47,14 +47,6 @@
                 </script>
             </div>
         </div>
-
-        <h2>Status</h2>
-        <select name="status" style="width: 90%">
-            <option value="choose" disabled selected>Choose status</option>
-            <option>Enabled</option>
-            <option>Disabled</option>
-        </select>
-
         <input type="submit" class="button btn-info" style="display: block; margin: 30px 0" value="update">
     </form>
 @endsection

@@ -61,23 +61,6 @@
                         getParentsTree($data -> category, $data->category->title)}}</div>
                 </div>
                 <div class="table-row">
-                    <div class="table-header">Title:</div>
-                    <div class="table-content">{{$data -> title}}</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-header">Keywords:</div>
-                    <div class="table-content">{{$data -> keywords}}</div>
-                </div>
-                <div class="table-row">
-                    <div class="table-header">Likes:</div>
-                    <div class="table-content">{{$data -> likes}}</div>
-                </div>
-
-                <div class="table-row">
-                    <div class="table-header">Description:</div>
-                    <div class="table-content">{{$data -> description}}</div>
-                </div>
-                <div class="table-row">
                     <div class="table-header">Detail:</div>
                     <div class="table-content">{!! $data -> detail !!}</div>
                 </div>
@@ -87,10 +70,6 @@
                     @if($data -> image)
                         <img src="{{Storage::url($data -> image)}}" alt="{{$data->title}}" style="height: 200px">
                     @endif
-                </div>
-                <div class="table-row">
-                    <div class="table-header">Status:</div>
-                    <div class="table-content">{{$data -> status}}</div>
                 </div>
                 <div class="table-row">
                     <div class="table-header">Created at:</div>

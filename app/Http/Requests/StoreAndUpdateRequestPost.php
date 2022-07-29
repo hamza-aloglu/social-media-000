@@ -26,12 +26,8 @@ class StoreAndUpdateRequestPost extends FormRequest
         return [
             'category_id' => ['required', 'integer'],
             'user_id' => ['required', 'integer'],
-            'title' => ['required', 'max:255'],
-            'keywords' => ['max:255'],
-            'description' => ['max:255'],
             'image' => ['image'],
             'detail' => ['string'],
-            'status' => ['string'],
         ];
     }
 }

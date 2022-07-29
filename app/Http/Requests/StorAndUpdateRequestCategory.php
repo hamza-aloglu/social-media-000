@@ -24,12 +24,9 @@ class StorAndUpdateRequestCategory extends FormRequest
     public function rules()
     {
         return [
-            'parentid' => ['required', 'int'],
+            'parentid' => ['nullable', 'int'],
             'title' => ['required', 'max:255'],
-            'keywords' => ['max:255'],
-            'description' => ['max:255'],
             'image' => ['image'],
-            'status' => ['string'],
         ];
     }
 }

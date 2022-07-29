@@ -1,5 +1,6 @@
 @extends('layouts.adminbase')
 
+
 @section('title', 'message list')
 @section('topbar')
     @include('admin.topbar')
@@ -68,7 +69,7 @@
                                                 </form>
                                             </li>
                                             <li>
-                                                <a href={{route('admin.message.show', ['message' => $rs -> id])}}
+                                                <a href="{{route('admin.message.show', ['message' => $rs -> id])}}"
                                                    onclick="return !window.open(this.href, '', 'top=50 left=100 width=1100, height = 700')">
                                                             show
                                                 </a>

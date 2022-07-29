@@ -1,10 +1,5 @@
 @extends('layouts.frontbase')
 
-@section('title', $setting -> title)
-@section('keywords', $setting -> keywords)
-@section('description', $setting -> description)
-@section('icon', \Illuminate\Support\Facades\Storage::url($setting->icon))
-
 @section('content')
     <main>
     <div class="main-wrapper pt-80">
@@ -14,6 +9,15 @@
                     <form action="{{route('storemessage')}}" method="post" style="margin: 0px 10px 5px; padding: 10px;);
     font-family: 'Open Sans',Helvetica,Arial,sans-serif;; background-color: rgb(247, 252, 251)">
                         @csrf
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="row mn mln15 g-4">
                             <div class="col-md-12 ">
                                 <div class="section">
@@ -31,7 +35,7 @@
                             <div class="col-md-12 ">
                                 <div class="section">
                                     <h3>Phone</h3>
-                                    <input type="tel" name="phone" id="from" class="gui-input" style="width: 100%; padding: 5px">
+                                    <input type="number" name="phone" id="from" class="gui-input" style="width: 100%; padding: 5px">
                                 </div>
                             </div>
                             <div class="col-md-12 ">

@@ -26,7 +26,6 @@
                         <tr class="">
                             <th class="">Id</th>
                             <th class="">Question</th>
-                            <th class="">Status</th>
                             <th class="">Action</th>
                         </tr>
                         </thead>
@@ -38,13 +37,6 @@
                                 </td>
                                 <td class="">
                                     <span>{{$rs -> question}}</span>
-                                </td>
-                                <td class="">
-                                    <div class="btn-group text-right">
-                                        <button type="button" class="btn btn-info br2 btn-xs fs10 fw700" data-toggle="dropdown" aria-expanded="false"> {{$rs -> status}}
-                                            <span class="caret"></span>
-                                        </button>
-                                    </div>
                                 </td>
                                 <td class="">
                                     <div class="btn-group text-right">

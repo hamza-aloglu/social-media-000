@@ -48,17 +48,6 @@
             </div>
         </div>
 
-        <div class="col-md-12 ">
-            <div class="section">
-                <h2>Status</h2>
-                <select name="status" style="width: 90%">
-                    <option value="choose" disabled selected>Choose status</option>
-                    <option>Enabled</option>
-                    <option>Disabled</option>
-                </select>
-            </div>
-        </div>
-
         <input type="submit" class="button btn-info" style="display: block; margin: 30px 0" value="save">
     </form>
 @endsection

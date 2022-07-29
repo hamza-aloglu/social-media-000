@@ -15,31 +15,11 @@
                                             <li class="msg-list-item d-flex justify-content-between">
                                                 <!-- message content start -->
                                                 <div class="msg-content">
-                                                    <a href="{{route('about')}}">about</a>
-                                                 </div>
-                                                <!-- message content end -->
-                                            </li>
-                                            <li class="msg-list-item d-flex justify-content-between">
-                                                <!-- message content start -->
-                                                <div class="msg-content">
-                                                    <a href="{{route('references')}}">references</a>
-                                                </div>
-                                                <!-- message content end -->
-                                            </li>
-                                            <li class="msg-list-item d-flex justify-content-between">
-                                                <!-- message content start -->
-                                                <div class="msg-content">
                                                     <a href="{{route('contact')}}">contact</a>
                                                 </div>
                                                 <!-- message content end -->
                                             </li>
-                                            <li class="msg-list-item d-flex justify-content-between">
-                                                <!-- message content start -->
-                                                <div class="msg-content">
-                                                    <a href="{{route('faq')}}">FAQ</a>
-                                                </div>
-                                                <!-- message content end -->
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </li>
@@ -131,7 +111,7 @@
                             <div class="profile-thumb-small">
                                 <a href="javascript:void(0)" class="profile-triger">
                                     <figure>
-                                        <img src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_picture)}}"
+                                        <img src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path)}}"
                                              alt="profile picture">
                                     </figure>
                                 </a>
@@ -179,28 +159,7 @@
                             <li class="msg-list-item d-flex justify-content-between">
                                 <!-- message content start -->
                                 <div class="msg-content">
-                                    <a href="{{route('about')}}">about</a>
-                                </div>
-                                <!-- message content end -->
-                            </li>
-                            <li class="msg-list-item d-flex justify-content-between">
-                                <!-- message content start -->
-                                <div class="msg-content">
-                                    <a href="{{route('references')}}">references</a>
-                                </div>
-                                <!-- message content end -->
-                            </li>
-                            <li class="msg-list-item d-flex justify-content-between">
-                                <!-- message content start -->
-                                <div class="msg-content">
                                     <a href="{{route('contact')}}">contact</a>
-                                </div>
-                                <!-- message content end -->
-                            </li>
-                            <li class="msg-list-item d-flex justify-content-between">
-                                <!-- message content start -->
-                                <div class="msg-content">
-                                    <a href="{{route('faq')}}">FAQ</a>
                                 </div>
                                 <!-- message content end -->
                             </li>
