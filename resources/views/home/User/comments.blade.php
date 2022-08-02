@@ -46,7 +46,6 @@
                                     <th class="">Id</th>
                                     <th class="">Post</th>
                                     <th class="">Comment</th>
-                                    <th class="">Status</th>
                                     <th class="">Action</th>
                                 </tr>
                                 </thead>
@@ -57,14 +56,11 @@
                                             <span>{{$rs -> id}}</span>
                                         </td>
                                         <td class="">
-                                    <span><a href="{{route('post', ['id'=>$rs->post_id])}}">
-                                        {{$rs -> post -> title}}</a> </span>
+                                    <span><a href="{{route('post', ['post'=>$rs->post_id])}}">
+                                        {{$rs -> post -> id}}</a> </span>
                                         </td>
                                         <td class="">
                                             <span>{{$rs -> comment}}</span>
-                                        </td>
-                                        <td class="">
-                                            <span class="label label-info">{{$rs->status}}</span>
                                         </td>
                                         @if(!$visitorFlag)
                                             <td class="">

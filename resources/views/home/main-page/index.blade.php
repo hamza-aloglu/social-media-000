@@ -27,8 +27,7 @@
                                         </figure>
                                         <div class="profile-desc text-center">
                                             <h6 class="author">
-                                                <div
-                                                    href="profile.html">{{\Illuminate\Support\Facades\Auth::user()->name}}</div>
+                                                <div>{{\Illuminate\Support\Facades\Auth::user()->name}}</div>
                                             </h6>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda
                                                 culpa eos laborum magni repellendus?</p>

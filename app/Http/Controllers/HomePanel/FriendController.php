@@ -4,7 +4,6 @@ namespace App\Http\Controllers\HomePanel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Friend;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -42,6 +41,11 @@ class FriendController extends Controller
         DB::table('friends')
             ->where('friend_id', '=', Auth::id())
             ->where('user_id', '=', $fid)
+            ->orWhere(function ($query) use ($fid) {
+                $query
+                    ->where('friend_id', '=', $fid)
+                    ->where('user_id', '=', Auth::id());
+            })
             ->delete();
 
         return back();

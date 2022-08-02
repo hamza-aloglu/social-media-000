@@ -32,7 +32,6 @@
                                                 <li><a href="{{route('userpanel.friend')}}">friends</a></li>
                                                 <li><a href="{{route('userpanel.edit')}}">edit profile</a></li>
                                             @elseif(\Illuminate\Support\Facades\Auth::check() && !$isFriendRequestSent)
-
                                                 <li style="float: right"><a
                                                         href="{{route('userpanel.friendrequest', ['fid'=>$user->id])}}"
                                                         class="btn btn-primary ">
@@ -77,7 +76,8 @@
                                 <div class="widget-body">
                                     <form action="{{route('userpanel.updatepictures')}}" method="post"
                                           enctype="multipart/form-data">
-                                        @if ($errors->any())
+                                        @csrf
+                                    @if ($errors->any())
                                             <div class="alert alert-danger">
                                                 <ul>
                                                     @foreach ($errors->all() as $error)
@@ -86,7 +86,6 @@
                                                 </ul>
                                             </div>
                                         @endif
-                                        @csrf
                                         <div class="section">
                                             <h3>Profile Image</h3>
                                             <input type="file" class="gui-file" name="profile_photo_path" id="file2"

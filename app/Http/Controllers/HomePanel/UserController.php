@@ -7,11 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\category;
 use App\Models\Comment;
 use App\Models\Post;
-use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use function back;
 use function redirect;
 use function view;
@@ -28,6 +26,9 @@ class UserController extends Controller
         $uid = $user->getAttribute('id');
         if (Auth::check()) {
             $onlineUser = Auth::user();
+
+
+
             foreach ($onlineUser->friendsTo as $friend) {
                 if ($friend->id == $uid)
                     $isFriendRequestSent = 1;
