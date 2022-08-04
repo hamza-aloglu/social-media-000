@@ -71,47 +71,6 @@
                             </div>
                             <!-- widget single item end -->
                         </aside>
-                        @if(!$visitorFlag)
-                            <div class="mt-3 card widget-item">
-                                <div class="widget-body">
-                                    <form action="{{route('userpanel.updatepictures')}}" method="post"
-                                          enctype="multipart/form-data">
-                                        @csrf
-                                    @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
-                                        <div class="section">
-                                            <h3>Profile Image</h3>
-                                            <input type="file" class="gui-file" name="profile_photo_path" id="file2"
-                                                   onchange="document.getElementById('uploader2').value = this.value;">
-                                            <input type="text" class="gui-input" id="uploader2"
-                                                   placeholder="Select File">
-                                            <i class="fa fa-upload"></i>
-                                        </div>
-
-                                        <br>
-                                        <div class="section">
-                                            <h3>Background Image</h3>
-                                            <input type="file" class="gui-file" name="background_photo_path" id="file3"
-                                                   onchange="document.getElementById('uploader3').value = this.value;">
-                                            <input type="text" class="gui-input" id="uploader3"
-                                                   placeholder="Select File">
-                                            <i class="fa fa-upload"></i>
-                                        </div>
-
-                                        <div class="section mt-4">
-                                            <input type="submit" class="button btn-info py-1 px-2"  value="save">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        @endif
                     </div>
 
                     <div class="col-lg-9 order-1 order-lg-2">

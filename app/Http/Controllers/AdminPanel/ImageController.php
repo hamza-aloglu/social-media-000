@@ -19,6 +19,10 @@ class ImageController extends Controller
 
     public static function updateFileFromPublicStorage(Request $request, $oldFilePath, string $newFileName = 'image'): string
     {
+        if ($oldFilePath) {
+            Storage::disk('public')->delete($oldFilePath);
+        }
+
         if ($newImage = $request->file($newFileName)) {
             $newImage = $newImage->store('public/images');
             if ($oldFilePath) {

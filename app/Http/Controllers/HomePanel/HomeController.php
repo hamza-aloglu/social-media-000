@@ -24,7 +24,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $postlist1 = Post::limit(8)->get();
+        $postlist1 = Post::limit(8)->latest()->get();
         $setting = Setting::first();
         $categories = Category::all();
         return view('home.main-page.index', [
