@@ -54,12 +54,11 @@
                                     </div>
                                 @endif
                                 <div class="post-meta">
-                                    <button class="post-meta-like">
-                                        <i class="bi bi-heart-beat"></i>
-                                        <span>0</span>
-                                        <strong>201</strong>
-                                    </button>
-                                    <ul class="comment-share-meta">
+                                    @include('home.like-count', ['model' => $data])
+                                    <ul class="comment-share-meta ">
+                                        <li class="">
+                                            @include('home.like', ['model' => $data])
+                                        </li>
                                         <li>
                                             <button class="post-comment">
                                                 <i class="bi bi-chat-bubble"></i>
@@ -173,21 +172,6 @@
                                         <p class="post-desc">
                                             {{ $rs->comment }}
                                         </p>
-                                    </div>
-                                    <div class="post-meta">
-                                        <button class="post-meta-like">
-                                            <i class="bi bi-heart-beat"></i>
-                                            <span>0</span>
-                                            <strong>201</strong>
-                                        </button>
-                                        <ul class="comment-share-meta">
-                                            <li>
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div class="ratings">
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>

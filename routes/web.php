@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminPanel\MessageController as AdminMessageController;
 use App\Http\Controllers\AdminPanel\PostController as AdminPostController;
 use App\Http\Controllers\HomePanel\FriendController;
 use App\Http\Controllers\HomePanel\HomeController;
+use App\Http\Controllers\HomePanel\LikeController;
 use App\Http\Controllers\HomePanel\SettingsController;
 use App\Http\Controllers\HomePanel\UserController;
 use Illuminate\Support\Facades\Route;
@@ -51,23 +52,27 @@ Route::prefix('userpanel')->name('userpanel.')->
 controller(UserController::class)->group(function () {
     Route::get('/index/{user}', 'index')->name('index');
     Route::get('/comments/{user}', 'getCommentsOfTheUser')->name('comments');
-    Route::get('/commentDestroy/{comment}', 'commentdestroy')->name('commentdestroy')->middleware('auth');
-    Route::get('/postDestroy/{post}', 'postdestroy')->name('postdestroy')->middleware('auth');
-    Route::get('/edit', 'edit')->name('edit')->middleware('auth');
-    Route::post('/updatepictures', 'updatePictures')->name('updatepictures')->middleware('auth');
+    Route::middleware('auth')->group(function () {
+        Route::post('like', [LikeController::class, 'like'])->name('like');
+        Route::delete('like', [LikeController::class, 'unlike'])->name('unlike');
+        Route::get('/commentDestroy/{comment}', 'commentdestroy')->name('commentdestroy');
+        Route::get('/postDestroy/{post}', 'postdestroy')->name('postdestroy');
+        Route::get('/edit', 'edit')->name('edit');
+        Route::post('/updatepictures', 'updatePictures')->name('updatepictures');
+
+    });
 });
 
 // FRIEND ROUTES **************************************************
 Route::prefix('userpanel')->name('userpanel.')
-->controller(FriendController::class)->middleware('auth')->group(function () {
-   Route::get('/friend', 'index')->name('friend');
-   Route::get('/friendrequest/{fid}', 'friendRequest')->name('friendrequest');
-   Route::get('/friendaccept/{fid}', 'friendAccept')->name('friendaccept');
-   Route::get('/frienddelete/{fid}', 'friendDelete')->name('frienddelete');
-});
+    ->controller(FriendController::class)->middleware('auth')->group(function () {
+        Route::get('/friend', 'index')->name('friend');
+        Route::get('/friendrequest/{fid}', 'friendRequest')->name('friendrequest');
+        Route::get('/friendaccept/{fid}', 'friendAccept')->name('friendaccept');
+        Route::get('/frienddelete/{fid}', 'friendDelete')->name('frienddelete');
+    });
 
 Route::get('/searchuser', [UserController::class, 'searchUsers'])->name('searchuser');
-
 
 
 // ADMIN ROUTES ****************************************************************

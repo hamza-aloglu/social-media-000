@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Contracts\Likeable;
+use App\Models\Like;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -108,5 +110,50 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class)->latest();
+    }
+
+    //--- Like stuffs ---
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function like(Likeable $likeableInstance): self
+    {
+        if ($this->hasLiked($likeableInstance)) {
+            return $this;
+        }
+
+        (new Like())
+            ->user()->associate($this)
+            ->likeable()->associate($likeableInstance)
+            ->save();
+
+
+        return $this;
+    }
+
+    public function unlike(Likeable $likeableInstance): self
+    {
+        if (!$this->hasLiked($likeableInstance)) {
+            return $this;
+        }
+
+        $likeableInstance->likes()
+            ->whereHas('user', fn($q) => $q->whereId($this->id))
+            ->delete();
+
+        return $this;
+    }
+
+    public function hasLiked(Likeable $likeableInstance): bool
+    {
+        if (!$likeableInstance->exists) {
+            return false;
+        }
+
+        return $likeableInstance->likes()
+            ->whereHas('user', fn($q) => $q->whereId($this->id))
+            ->exists();
     }
 }

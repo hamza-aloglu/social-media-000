@@ -192,12 +192,11 @@
                                         </div>
                                     @endif
                                     <div class="post-meta">
-                                        <button class="post-meta-like">
-                                            <i class="bi bi-heart-beat"></i>
-                                            <span>0</span>
-                                            <strong>201</strong>
-                                        </button>
-                                        <ul class="comment-share-meta">
+                                        @include('home.like-count', ['model' => $rs])
+                                        <ul class="comment-share-meta ">
+                                            <li class="">
+                                                @include('home.like', ['model' => $rs])
+                                            </li>
                                             <li>
                                                 <a href="{{route('post', ['post'=>$rs->id])}}" class="post-comment">
                                                     <i class="bi bi-chat-bubble"></i>
