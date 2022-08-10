@@ -4,7 +4,7 @@ namespace App\Http\Controllers\HomePanel;
 
 use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\Controller;
-use App\Models\category;
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
@@ -18,7 +18,7 @@ class UserController extends Controller
 {
     public function index(User $user)
     {
-        $categories = category::all(); // categories are taken for creating post on profile.
+        $categories = Category::all(); // categories are taken for creating post on profile.
         $postlist1 = $user->posts;
 
         $visitorFlag = 1;

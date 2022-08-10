@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-md-7">
                     <h1 class="mb-4 text-danger">@include('home.messages')</h1>
-                    @if($setting->contact)
+                    @if(isset($setting->contact))
                     {!!   $setting->contact  !!}
                     @endif
                 </div>
