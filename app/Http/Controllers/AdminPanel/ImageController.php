@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use Cloudinary\Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -32,6 +33,11 @@ class ImageController extends Controller
         }
 
         return "";
+    }
+
+    public static function uploadImageToCloudinary(Request $request, string $imageFileName = 'image') : string
+    {
+        return cloudinary()->upload($request->file($imageFileName)->getRealPath())->getSecurePath();
     }
 
     public static function destroyFileFromPublicStorage($filePath)

@@ -111,7 +111,7 @@
                             <div class="profile-thumb-small">
                                 <a href="javascript:void(0)" class="profile-triger">
                                     <figure>
-                                        <img src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path)}}"
+                                        <img src="{{\Illuminate\Support\Facades\Auth::user()->profile_photo_path}}"
                                              alt="profile picture">
                                     </figure>
                                 </a>

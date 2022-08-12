@@ -101,10 +101,14 @@ class UserController extends Controller
         $request->validate([
             'profile_photo_path' => 'image',
         ]);
+        /*
         $user->profile_photo_path = ImageController::updateFileFromPublicStorage(
             $request,
             $user->profile_photo_path,
             'profile_photo_path');
+        */
+
+        $user->profile_photo_path = ImageController::uploadImageToCloudinary($request, 'profile_photo_path');
 
 
         $request->validate([

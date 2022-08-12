@@ -1,5 +1,4 @@
 {
-    "post-install-cmd": [ "ln -sr storage/app/public public/storage storage/app/public/images public/storage/images" ],
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
@@ -7,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "cloudinary-labs/cloudinary-laravel": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.2",
         "laravel/jetstream": "^2.6",
