@@ -35,7 +35,7 @@ class ImageController extends Controller
         return "";
     }
 
-    public static function uploadImageToCloudinary(Request $request, ? int $oldImageCloudinaryId, string $imageFileName = 'image') : array
+    public static function uploadImageToCloudinary(Request $request, ? string $oldImageCloudinaryId, string $imageFileName = 'image') : array
     {
         if ($oldImageCloudinaryId)
             cloudinary()->admin()->deleteAssets([$oldImageCloudinaryId]);
