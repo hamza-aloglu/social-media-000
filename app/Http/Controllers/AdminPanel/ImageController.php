@@ -13,6 +13,10 @@ class ImageController extends Controller
     {
         ImageController::destroyImageFromCloudinary($oldImageCloudinaryId);
 
+        if (!$request->file($imageFileName)) {
+            return [null, null];
+        }
+
         $response = $request->file($imageFileName)->storeOnCloudinary();
         $cloudinaryImageURL = $response->getPath();
         $cloudinaryImagePublicID = $response->getPublicId();
