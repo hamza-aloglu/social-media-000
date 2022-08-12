@@ -35,9 +35,16 @@ class ImageController extends Controller
         return "";
     }
 
-    public static function uploadImageToCloudinary(Request $request, string $imageFileName = 'image') : string
+    public static function uploadImageToCloudinary(Request $request, ? int $oldImageCloudinaryId, string $imageFileName = 'image') : array
     {
-        return cloudinary()->upload($request->file($imageFileName)->getRealPath())->getSecurePath();
+        if ($oldImageCloudinaryId)
+            cloudinary()->admin()->deleteAssets([$oldImageCloudinaryId]);
+
+        $response = $request->file($imageFileName)->storeOnCloudinary();
+        $cloudinaryImageURL = $response->getPath();
+        $cloudinaryImagePublicID = $response->getPublicId();
+
+        return [$cloudinaryImageURL, $cloudinaryImagePublicID];
     }
 
     public static function destroyFileFromPublicStorage($filePath)

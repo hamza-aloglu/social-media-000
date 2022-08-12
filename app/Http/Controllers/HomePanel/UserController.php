@@ -28,7 +28,6 @@ class UserController extends Controller
             $onlineUser = Auth::user();
 
 
-
             foreach ($onlineUser->friendsTo as $friend) {
                 if ($friend->id == $uid)
                     $isFriendRequestSent = 1;
@@ -108,7 +107,10 @@ class UserController extends Controller
             'profile_photo_path');
         */
 
-        $user->profile_photo_path = ImageController::uploadImageToCloudinary($request, 'profile_photo_path');
+        [$user->profile_photo_path, $user->profile_photo_public_id] = ImageController::uploadImageToCloudinary(
+            $request,
+            $user->profile_photo_public_id,
+            'profile_photo_path');
 
 
         $request->validate([
