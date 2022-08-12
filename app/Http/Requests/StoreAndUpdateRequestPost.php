@@ -27,6 +27,7 @@ class StoreAndUpdateRequestPost extends FormRequest
             'category_id' => ['required', 'integer'],
             'user_id' => ['required', 'integer'],
             'image' => ['image'],
+            'image_public_id' => ['string'],
             'detail' => ['string'],
         ];
     }

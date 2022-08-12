@@ -68,7 +68,7 @@
                 <div class="table-row">
                     <div class="table-header">Image:</div>
                     @if($data -> image)
-                        <img src="{{Storage::url($data -> image)}}" alt="{{$data->title}}" style="height: 200px">
+                        <img src="{{$rs->image}}" alt="{{$data->title}}" style="height: 200px">
                     @endif
                 </div>
                 <div class="table-row">

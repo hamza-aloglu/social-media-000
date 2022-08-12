@@ -46,7 +46,7 @@
         <tr class="table-primary">
             <td class="table-secondary w-25 fw-bold">Add role to user</td>
             <td class="table-secondary">
-                <form action="{{route('admin.user.addroleimage', ['uid'=>$data -> id])}}" method="post"
+                <form action="{{route('admin.user.addrole', ['uid'=>$data -> id])}}" method="post"
                       enctype="multipart/form-data">
                     @csrf
                     <select name="role_id">

@@ -20,7 +20,7 @@
                                     <a href="{{route('userpanel.index', ['user'=>$data->user->id])}}">
                                         <figure class="profile-thumb-middle">
                                             <img
-                                                src="{{\Illuminate\Support\Facades\Storage::url($data->user->profile_photo_path)}}"
+                                                src="{{$data->user->profile_photo_path}}" style="border-radius: 50%"
                                                 alt="profile picture">
                                         </figure>
                                     </a>
@@ -44,10 +44,10 @@
                                     <div class="photo-group">
                                         <div class="gallery-toggle">
                                             <div class="d-none product-thumb-large-view">
-                                                <img src="{{Storage::url($data->image)}}" alt="Photo Gallery">
+                                                <img src="{{$data->image}}" alt="Photo Gallery">
                                             </div>
                                             <div class="gallery-overlay">
-                                                <img src="{{Storage::url($data->image)}}" alt="Photo Gallery">
+                                                <img src="{{$data->image}}" alt="Photo Gallery">
                                                 <div class="view-icon"></div>
                                             </div>
                                         </div>
@@ -81,7 +81,7 @@
                                         <a href="{{route('userpanel.index', ['user'=>\Illuminate\Support\Facades\Auth::id()])}}">
                                             <figure class="profile-thumb-middle">
                                                 <img
-                                                    src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path)}}"
+                                                    src="{{\Illuminate\Support\Facades\Auth::user()->profile_photo_path}}" style="border-radius: 50%"
                                                     alt="profile picture">
                                             </figure>
                                         </a>
@@ -152,7 +152,7 @@
                                         <a href="{{route('userpanel.index', ['user'=>$rs->user->id])}}">
                                             <figure class="profile-thumb-middle">
                                                 <img
-                                                    src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_photo_path)}}"
+                                                    src="{{$rs->user->profile_photo_path}}" style="border-radius: 50%"
                                                     alt="profile picture">
                                             </figure>
                                         </a>

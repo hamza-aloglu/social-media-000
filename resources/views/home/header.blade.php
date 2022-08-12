@@ -41,7 +41,7 @@
                                                 <div class="profile-thumb">
                                                     <figure class="profile-thumb-middle">
                                                         @if($rs -> image)
-                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" alt="profile picture">
+                                                            <img src="{{$rs->image}}" alt="profile picture">
                                                         @else
                                                             <img src="{{asset('assets')}}/images/profile/profile-small-3.jpg" alt="profile picture">
                                                         @endif
@@ -111,7 +111,7 @@
                             <div class="profile-thumb-small">
                                 <a href="javascript:void(0)" class="profile-triger">
                                     <figure>
-                                        <img src="{{\Illuminate\Support\Facades\Auth::user()->profile_photo_path}}"
+                                        <img src="{{\Illuminate\Support\Facades\Auth::user()->profile_photo_path}}" style="border-radius: 50%"
                                              alt="profile picture">
                                     </figure>
                                 </a>
@@ -198,7 +198,7 @@
                             <div class="profile-thumb-small">
                                 <a href="javascript:void(0)" class="profile-triger">
                                     <figure>
-                                        <img src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_picture)}}"
+                                        <img src="{{\Illuminate\Support\Facades\Auth::user()->profile_picture}}" style="border-radius: 50%"
                                              alt="profile picture">
                                     </figure>
                                 </a>

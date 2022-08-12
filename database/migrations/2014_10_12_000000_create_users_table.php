@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('profile_photo_public_id')->nullable();
             $table->string('background_photo_path', 2048)->nullable();
+            $table->string('background_photo_public_id')->nullable();
             $table->timestamps();
         });
     }

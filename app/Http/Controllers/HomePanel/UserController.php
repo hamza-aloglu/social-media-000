@@ -73,7 +73,7 @@ class UserController extends Controller
 
     public function postDestroy(Post $post)
     {
-        ImageController::destroyFileFromPublicStorage($post->getAttribute('image'));
+        ImageController::destroyImageFromCloudinary($post->getAttribute('image_public_id'));
 
         $post->delete();
         return back();
@@ -100,12 +100,6 @@ class UserController extends Controller
         $request->validate([
             'profile_photo_path' => 'image',
         ]);
-        /*
-        $user->profile_photo_path = ImageController::updateFileFromPublicStorage(
-            $request,
-            $user->profile_photo_path,
-            'profile_photo_path');
-        */
 
         [$user->profile_photo_path, $user->profile_photo_public_id] = ImageController::uploadImageToCloudinary(
             $request,
@@ -116,9 +110,9 @@ class UserController extends Controller
         $request->validate([
             'background_photo_path' => 'image',
         ]);
-        $user->background_photo_path = ImageController::updateFileFromPublicStorage(
+        [$user->background_photo_path, $user->background_photo_public_id] = ImageController::uploadImageToCloudinary(
             $request,
-            $user->background_photo_path,
+            $user->background_photo_public_id,
             'background_photo_path');
 
         $user->save();

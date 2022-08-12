@@ -8,7 +8,7 @@
 
         <div class="main-wrapper">
             <div class="profile-banner-large bg-img"
-                 data-bg="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->background_photo_path)}}">
+                 data-bg="{{\Illuminate\Support\Facades\Auth::user()->background_photo_path}}">
             </div>
             <div class="profile-menu-area bg-white">
                 <div class="container">
@@ -18,7 +18,7 @@
                                 <figure class="profile-picture">
                                     <div href="profile.html">
                                         <img
-                                            src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path)}}"
+                                            src="{{\Illuminate\Support\Facades\Auth::user()->profile_photo_path}}"
                                             alt="profile picture" style="height: 125px; width: 125px">
                                     </div>
                                 </figure>
@@ -61,7 +61,7 @@
                                                     <a href="#">
                                                         <figure class="profile-thumb-middle">
                                                             <img
-                                                                src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_photo_path)}}"
+                                                                src="{{$friend->profile_photo_path}}" style="border-radius: 50%"
                                                                 alt="profile picture">
                                                         </figure>
                                                     </a>
@@ -86,7 +86,7 @@
                                                     <a href="#">
                                                         <figure class="profile-thumb-middle">
                                                             <img
-                                                                src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_photo_path)}}"
+                                                                src="{{$friend->profile_photo_path}}" style="border-radius: 50%"
                                                                 alt="profile picture">
                                                         </figure>
                                                     </a>
@@ -111,7 +111,7 @@
                                                     <a href="#">
                                                         <figure class="profile-thumb-middle">
                                                             <img
-                                                                src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_photo_path)}}"
+                                                                src="{{$friend->profile_photo_path}}" style="border-radius: 50%"
                                                                 alt="profile picture">
                                                         </figure>
                                                     </a>

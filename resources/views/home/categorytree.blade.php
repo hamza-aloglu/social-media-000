@@ -23,7 +23,7 @@
                         <div class="profile-thumb">
                             <figure class="profile-thumb-middle">
                                 @if($subcategory -> image)
-                                    <img src="{{\Illuminate\Support\Facades\Storage::url($subcategory->image)}}" alt="profile picture">
+                                    <img src="{{$subcategory->image}}" alt="profile picture">
                                 @else
                                 <img src="{{asset('assets')}}/images/profile/profile-small-3.jpg" alt="profile picture">
                                 @endif

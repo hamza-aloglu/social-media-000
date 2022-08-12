@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAndUpdateRequestPost;
 use App\Models\Category;
 use App\Models\Comment;
-use App\Models\Image;
 use App\Models\Post;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -51,7 +50,7 @@ class HomeController extends Controller
     public function storePost(StoreAndUpdateRequestPost $request)
     {
         $validated = $request->validated();
-        $validated['image'] = ImageController::storeFileToPublicStorage($request);
+        [$validated['image'], $validated['image_public_id']] = ImageController::uploadImageToCloudinary($request);
 
         Post::create($validated);
         return redirect()->route('home');

@@ -7,7 +7,7 @@
     <main>
 
         <div class="main-wrapper">
-            <div class="profile-banner-large bg-img" data-bg="{{Storage::url($user->background_photo_path)}}"></div>
+            <div class="profile-banner-large bg-img" data-bg="{{$user->background_photo_path}}"></div>
             <div class="profile-menu-area bg-white">
                 <div class="container">
                     <div class="row align-items-center">
@@ -15,7 +15,7 @@
                             <div class="profile-picture-box">
                                 <figure class="profile-picture">
                                     <img style="height: 125px; width: 125px;"
-                                         src="{{Storage::url($user->profile_photo_path)}}" alt="profile picture">
+                                         src="{{$user->profile_photo_path}}" style="border-radius: 50%" alt="profile picture">
                                 </figure>
                             </div>
                         </div>
@@ -150,7 +150,7 @@
                                         <a href="#">
                                             <figure class="profile-thumb-middle">
                                                 <img
-                                                    src="{{\Illuminate\Support\Facades\Storage::url($user->profile_photo_path)}}"
+                                                    src="{{$user->profile_photo_path}}" style="border-radius: 50%"
                                                     alt="profile picture">
                                             </figure>
                                         </a>
@@ -186,7 +186,7 @@
                                         <div class="post-thumb-gallery img-gallery">
                                             <figure class="post-thumb">
                                                 <a class="" href="{{route('post', ['post'=>$rs->id])}}">
-                                                    <img src="{{Storage::url($rs->image)}}" alt="post image">
+                                                    <img src="{{$rs->image}}" alt="post image">
                                                 </a>
                                             </figure>
                                         </div>

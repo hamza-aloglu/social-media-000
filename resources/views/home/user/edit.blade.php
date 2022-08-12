@@ -7,7 +7,7 @@
     <main>
 
         <div class="main-wrapper">
-            <div class="profile-banner-large bg-img" data-bg="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->background_photo_path)}}">
+            <div class="profile-banner-large bg-img" data-bg="{{\Illuminate\Support\Facades\Auth::user()->background_photo_path}}">
             </div>
             <div class="profile-menu-area bg-white">
                 <div class="container">

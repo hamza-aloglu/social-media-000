@@ -42,7 +42,7 @@
                                 </td>
                                 <td class="">
                                     @if($rs -> image)
-                                        <img src="{{Storage::url($rs -> image)}}" alt="{{$rs->title}}" style="height: 50px">
+                                        <img src="{{$rs->image}}" alt="{{$rs->title}}" style="height: 50px">
                                     @endif
                                 </td>
                                 <td class="">

@@ -15,13 +15,13 @@
                                         <figure class="profile-banner-small">
                                             <div class="profile-thumb-1">
                                                 <img
-                                                    src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->background_photo_path)}}"
+                                                    src="{{\Illuminate\Support\Facades\Auth::user()->background_photo_path}}"
                                                     alt="">
                                             </div>
 
                                             <div href="profile.html" class="profile-thumb-2">
                                                 <img
-                                                    src="{{\Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->profile_photo_path)}}"
+                                                    src="{{\Illuminate\Support\Facades\Auth::user()->profile_photo_path}}" style="border-radius: 50%"
                                                     alt="">
                                             </div>
                                         </figure>
@@ -122,7 +122,7 @@
                                         <a href="{{route('userpanel.index', ['user'=>$rs->user->id])}}">
                                             <figure class="profile-thumb-middle">
                                                 <img
-                                                    src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_photo_path)}}"
+                                                    src="{{$rs->user->profile_photo_path}}" style="border-radius: 50%"
                                                     alt="profile picture">
                                             </figure>
                                         </a>
@@ -146,7 +146,7 @@
                                         <div class="post-thumb-gallery img-gallery">
                                             <figure class="post-thumb">
                                                 <a class="" href="{{route('post', ['post'=>$rs->id])}}">
-                                                    <img src="{{Storage::url($rs->image)}}" alt="post image">
+                                                    <img src="{{$rs->image}}" alt="post image">
                                                 </a>
                                             </figure>
                                         </div>
@@ -187,7 +187,7 @@
                                                         <a href="{{route('userpanel.index', ['user'=>$friend->id])}}">
                                                             <figure class="profile-thumb-small">
                                                                 <img
-                                                                    src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_photo_path)}}"
+                                                                    src="{{$friend->profile_photo_path}}" style="border-radius: 50%"
                                                                     alt="profile picture">
                                                             </figure>
                                                         </a>
@@ -209,7 +209,7 @@
                                                         <a href="{{route('userpanel.index', ['user'=>$friend->id])}}">
                                                             <figure class="profile-thumb-small">
                                                                 <img
-                                                                    src="{{\Illuminate\Support\Facades\Storage::url($friend->profile_photo_path)}}"
+                                                                    src="{{$friend->profile_photo_path}}" style="border-radius: 50%"
                                                                     alt="profile picture">
                                                             </figure>
                                                         </a>

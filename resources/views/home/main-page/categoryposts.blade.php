@@ -20,7 +20,7 @@
                                     <div class="profile-thumb">
                                         <a href="{{route('userpanel.index', ['user'=>$rs->user->id])}}">
                                             <figure class="profile-thumb-middle">
-                                                <img src="{{\Illuminate\Support\Facades\Storage::url($rs->user->profile_photo_path)}}" alt="profile picture">
+                                                <img src="{{$rs->user->profile_photo_path}}" style="border-radius: 50%" alt="profile picture">
                                             </figure>
                                         </a>
                                     </div>
@@ -41,7 +41,7 @@
                                         <div class="post-thumb-gallery img-gallery">
                                             <figure class="post-thumb">
                                                 <a class="" href="{{route('post', ['post'=>$rs->id])}}">
-                                                    <img src="{{Storage::url($rs->image)}}" alt="post image">
+                                                    <img src="{{$rs->image}}" alt="post image">
                                                 </a>
                                             </figure>
                                         </div>

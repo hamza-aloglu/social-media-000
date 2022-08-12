@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -60,7 +59,7 @@ class CategoryController extends Controller
     {
         $validated = $request->validated();
 
-        $validated['image'] = ImageController::storeFileToPublicStorage($request);
+        [$validated['image'], $validated['image_public_id']] = ImageController::uploadImageToCloudinary($request);
 
         Category::create($validated);
         return \response(redirect(route('admin.category.index')));
@@ -101,10 +100,10 @@ class CategoryController extends Controller
      * @param Category $category
      * @return Response
      */
-    public function update(StorAndUpdateRequestCategory $request, category $category): Response
+    public function update(StorAndUpdateRequestCategory $request, Category $category): Response
     {
         $validated = $request->validated();
-        $validated['image'] = ImageController::updateFileFromPublicStorage($request, $category->getAttribute('image'));
+        [$validated['image'], $validated['image_public_id']] = ImageController::uploadImageToCloudinary($request, $category->getAttribute('image_public_id'));
 
         $category->update($validated);
 
@@ -119,7 +118,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category): Response
     {
-        ImageController::destroyFileFromPublicStorage($category->getAttribute('image'));
+        ImageController::destroyImageFromCloudinary($category->getAttribute('_image_public_id'));
 
         $category->delete();
         return \response(redirect('/admin/category'));

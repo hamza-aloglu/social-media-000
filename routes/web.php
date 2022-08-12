@@ -99,7 +99,7 @@ Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/show/{user}', 'show')->name('show');
         Route::get('destroy/{user}', 'destroy')->name('destroy');
-        Route::post('addroleimage/{uid}', 'addRoleImage')->name('addroleimage');
+        Route::post('addrole/{uid}', 'addRole')->name('addrole');
         Route::get('destroyrole/{user}/{rid}', 'destroyRole')->name('destroyrole');
     });
 

@@ -46,7 +46,7 @@ class PostController extends Controller
     public function store(StoreAndUpdateRequestPost $request): Response
     {
         $validated = $request->validated();
-        $validated['image'] = ImageController::storeFileToPublicStorage($request);
+        [$validated['image'], $validated['image_public_id']] = ImageController::uploadImageToCloudinary($request);
 
         Post::create($validated);
 
@@ -92,7 +92,7 @@ class PostController extends Controller
     {
         $validated = $request->validated();
 
-        $validated['image'] = ImageController::updateFileFromPublicStorage($request, $post->getAttribute('image'));
+        [$validated['image'], $validated['image_public_id']] = ImageController::uploadImageToCloudinary($request, $post->getAttribute('image_public_id'));
 
         $post->update($validated);
         return \response(redirect(route('admin.post.index')));
@@ -106,7 +106,7 @@ class PostController extends Controller
      */
     public function destroy(post $post): Response
     {
-        ImageController::destroyFileFromPublicStorage($post->getAttribute('image'));
+        ImageController::destroyImageFromCloudinary($post->getAttribute('image_public_id'));
 
         $post->delete();
         return \response(redirect(route('admin.post.index')));

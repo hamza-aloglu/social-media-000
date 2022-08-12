@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('parentid')->nullable()->constrained('categories')->onDelete('cascade');
             $table->string('title');
             $table->string('image')->nullable();
+            $table->string('image_public_id')->nullable();
         });
     }
 

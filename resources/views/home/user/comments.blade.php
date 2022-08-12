@@ -8,7 +8,7 @@
 
         <div class="main-wrapper">
             <div class="profile-banner-large bg-img"
-                 data-bg="{{\Illuminate\Support\Facades\Storage::url($user->background_photo_path)}}">
+                 data-bg="{{$user->background_photo_path}}">
             </div>
             <div class="profile-menu-area bg-white">
                 <div class="container">

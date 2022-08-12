@@ -35,7 +35,7 @@ class UserController extends Controller
         return redirect(route('admin.user.index'));
     }
 
-    public function addRoleImage($uid, Request $request)
+    public function addRole($uid, Request $request)
     {
         RoleUser::create([
             'user_id' => $uid,
