@@ -44,7 +44,7 @@
                                     <span>{{$rs -> friend->name}}</span>
                                 </td>
                                 <td class="">
-                                    @if($rs->accepted)
+                                    @if($rs->accepted == 1)
                                         <span>accepted</span>
                                     @else
                                         <span>not accepted by {{$rs->friend->name}}</span>
