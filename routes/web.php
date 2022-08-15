@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPanel\RoleController as AdminRoleController;
 use App\Http\Controllers\AdminPanel\UserController as AdminUserController;
 use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController;
 use App\Http\Controllers\AdminPanel\CommentController as AdminCommentController;
@@ -81,6 +82,7 @@ Route::post('/loginadmincheck', [AdminUserController::class, 'loginadmincheck'])
 
 Route::prefix('admin')->middleware('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('index');
+    Route::post('/role/store', [AdminRoleController::class, 'store'])->name('role.store');
 
     Route::resource('faq', AdminFaqController::class);
 
