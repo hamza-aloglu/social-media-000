@@ -84,7 +84,7 @@ class CategoryController extends Controller
      * @param Category $category
      * @return Response
      */
-    public function edit(category $category): Response
+    public function edit(Category $category): Response
     {
         $datalist = Category::all();
         return \response(view('admin.category.edit', [

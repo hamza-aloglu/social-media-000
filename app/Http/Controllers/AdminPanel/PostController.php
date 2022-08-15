@@ -5,9 +5,8 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAndUpdateRequestPost;
 use App\Models\Post;
-use App\Models\category;
+use App\Models\Category;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -74,7 +73,7 @@ class PostController extends Controller
      */
     public function edit(Post $post): Response
     {
-        $datalist = category::all();
+        $datalist = Category::all();
         return \response(view('admin.post.edit', [
             'data' => $post,
             'datalist' => $datalist
