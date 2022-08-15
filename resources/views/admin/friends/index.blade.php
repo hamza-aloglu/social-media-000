@@ -44,7 +44,7 @@
                                     <span>{{$rs -> friend->name}}</span>
                                 </td>
                                 <td class="">
-                                    @if($rs->accepted == 1)
+                                    @if($rs->accepted === "1")
                                         <span>accepted</span>
                                     @else
                                         <span>not accepted by {{$rs->friend->name}}</span>
@@ -67,12 +67,6 @@
                                                         Destroy
                                                     </button>
                                                 </form>
-                                            </li>
-                                            <li>
-                                                <a href="{{route('admin.friend.show', ['friend' => $rs -> id])}}"
-                                                   onclick="return !window.open(this.href, '', 'top=50 left=100 width=1100, height = 700')">
-                                                    show
-                                                </a>
                                             </li>
                                         </ul>
                                     </div>

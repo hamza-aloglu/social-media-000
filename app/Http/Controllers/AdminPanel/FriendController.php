@@ -23,19 +23,6 @@ class FriendController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param Friend $friend
-     * @return Response
-     */
-    public function show(Friend $friend): Response
-    {
-        return \response(view('admin.friends.show', [
-            'data' => $friend,
-        ]));
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param Friend $friend
