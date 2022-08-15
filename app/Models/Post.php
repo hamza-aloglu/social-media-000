@@ -28,7 +28,7 @@ class Post extends Model implements likeable
     #many to one
     public function category ()
     {
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function comments()
