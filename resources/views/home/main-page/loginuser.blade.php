@@ -1,6 +1,6 @@
 @extends('layouts.frontbase')
 
-@section('title', "Login -Adda")
+@section('title', "Login")
 
 
 

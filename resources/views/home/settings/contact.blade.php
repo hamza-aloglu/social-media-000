@@ -1,5 +1,7 @@
 @extends('layouts.frontbase')
 
+@section('title', 'contact')
+
 @section('content')
     <main>
     <div class="main-wrapper pt-80">

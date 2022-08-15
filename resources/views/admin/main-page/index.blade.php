@@ -5,5 +5,8 @@
 @endsection
 
 @section('content')
+
+    <form action="{{route('')}}"></form>
+
     <div style="height: 60vh"></div>
 @endsection

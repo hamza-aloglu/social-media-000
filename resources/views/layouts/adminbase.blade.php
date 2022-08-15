@@ -3,7 +3,7 @@
 <head>
     <!-- Meta and Title -->
     <meta charset="utf-8">
-    <title> @yield('title') </title>
+    <title> Social Media Admin @yield('title') </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('assets-admin')}}/img/favicon.png">

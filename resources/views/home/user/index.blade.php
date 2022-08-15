@@ -80,6 +80,15 @@
                                 <div class="share-box-inner">
                                     <!-- share content box start -->
                                     <div class="share-content-box w-100">
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                         <form class="share-text-box">
                                             <textarea name="share" class="share-text-field" aria-disabled="true"
                                                       placeholder="Say Something" data-bs-toggle="modal"
