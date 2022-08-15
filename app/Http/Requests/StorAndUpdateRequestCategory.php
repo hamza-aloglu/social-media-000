@@ -27,6 +27,7 @@ class StorAndUpdateRequestCategory extends FormRequest
             'parentid' => ['nullable', 'int'],
             'title' => ['required', 'max:255'],
             'image' => ['image'],
+            'image_public_id' => ['nullable', 'int'],
         ];
     }
 }

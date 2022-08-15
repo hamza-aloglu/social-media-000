@@ -118,7 +118,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category): Response
     {
-        ImageController::destroyImageFromCloudinary($category->getAttribute('_image_public_id'));
+        ImageController::destroyImageFromCloudinary($category->getAttribute('image_public_id'));
 
         $category->delete();
         return \response(redirect('/admin/category'));

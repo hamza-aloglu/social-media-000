@@ -16,6 +16,7 @@ class Category extends Model
         'keywords',
         'description',
         'image',
+        'image_public_id',
         'status',
     ];
 

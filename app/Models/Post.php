@@ -20,6 +20,7 @@ class Post extends Model implements likeable
         'keywords',
         'description',
         'image',
+        'image_public_id',
         'detail',
         'status',
     ];

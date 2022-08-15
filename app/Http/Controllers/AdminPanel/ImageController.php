@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-
-
     public static function uploadImageToCloudinary(Request $request, ?string $oldImageCloudinaryId = null, string $imageFileName = 'image') : array
     {
         ImageController::destroyImageFromCloudinary($oldImageCloudinaryId);
