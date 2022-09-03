@@ -4,7 +4,7 @@
 
 <h3>  Backend: Laravel 9, php 8, mysql</h3>
 
-<h3> Frontend: Bootstrap 5, html, css, js </h3>
+<h3> Frontend: Bootstrap , html, css, js </h3>
 
  [<h2>Database structure</h2>](https://github.com/hamza-aloglu/Laravel9-SocialMedia/tree/master/database)
  
