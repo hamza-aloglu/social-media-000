@@ -6,7 +6,12 @@
 
 <h3> Frontend: Bootstrap, html, css, js </h3>
 
- [<h2>Database structure</h2>](https://github.com/hamza-aloglu/Laravel9-SocialMedia/tree/master/database)
+<br>
+
+ <h2>Database structure</h2>
+ 
+ <img width="700" alt="185167091-6c7c6466-6743-4d79-a493-17f8d863700d" src="https://user-images.githubusercontent.com/74200100/192967472-46852317-ca72-4ac3-af00-b22b89582713.png">
+
  
  [<h2>See live version on Heroku</h2>](https://social-media-000.herokuapp.com/) 
 
